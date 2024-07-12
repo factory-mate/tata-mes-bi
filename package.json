@@ -1,0 +1,58 @@
+{
+  "name": "tata-mes-bi",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc -b && vite build",
+    "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
+    "preview": "vite preview",
+    "type:check": "tsc --pretty --noEmit",
+    "cspell:check": "cspell --no-progress --show-suggestions --show-context --cache **",
+    "eslint:check": "eslint . --color --cache",
+    "eslint:fix": "eslint . --color --cache --fix",
+    "prettier:check": "prettier --check --cache --ignore-unknown .",
+    "prettier:fix": "prettier --write --cache --ignore-unknown .",
+    "cz": "git-cz",
+    "prepare": "husky"
+  },
+  "dependencies": {
+    "@bit-ocean/echarts": "^0.0.40",
+    "echarts": "^5.5.1",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  },
+  "devDependencies": {
+    "@bit-ocean/auto-import": "^0.0.40",
+    "@bit-ocean/cli": "^0.0.40",
+    "@bit-ocean/commitlint-config": "^0.0.40",
+    "@bit-ocean/cspell": "^0.0.40",
+    "@bit-ocean/eslint-config": "^0.0.40",
+    "@bit-ocean/prettier-config": "^0.0.40",
+    "@bit-ocean/tsconfig": "^0.0.40",
+    "@commitlint/cli": "^19.3.0",
+    "@commitlint/config-conventional": "^19.2.2",
+    "@types/node": "^20.14.10",
+    "@types/react": "^18.3.3",
+    "@types/react-dom": "^18.3.0",
+    "@vitejs/plugin-react-swc": "^3.7.0",
+    "autoprefixer": "^10.4.19",
+    "commitizen": "^4.3.0",
+    "cspell": "^8.10.4",
+    "cz-git": "^1.9.3",
+    "eslint": "^8.57.0",
+    "husky": "^9.0.11",
+    "lint-staged": "^15.2.7",
+    "postcss": "^8.4.39",
+    "sass": "^1.77.8",
+    "tailwindcss": "^3.4.4",
+    "typescript": "^5.5.3",
+    "unplugin-auto-import": "^0.18.0",
+    "vite": "^5.3.3"
+  },
+  "config": {
+    "commitizen": {
+      "path": "node_modules/cz-git"
+    }
+  },
+  "private": true
+}
