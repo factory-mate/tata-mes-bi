@@ -1,0 +1,54 @@
+$corner-border: 2px solid #02a6b5;
+
+@mixin corner-base {
+  position: absolute;
+  width: 0.75rem;
+  height: 0.75rem;
+  content: '';
+}
+
+.boxContainer {
+  border: 1px solid rgba(25, 186, 139, 0.17);
+  padding: 0 0.2rem 0.4rem 0.15rem;
+  background: rgba(255, 255, 255, 0.05) url('@/assets/images/stripe.png');
+  background-size: auto;
+  background-repeat: repeat;
+  position: relative;
+  z-index: 10;
+  padding: 20px;
+  &::before {
+    @include corner-base;
+    left: 0;
+    top: 0;
+    border-left: $corner-border;
+    border-top: $corner-border;
+  }
+  &::after {
+    @include corner-base;
+    right: 0;
+    top: 0;
+    border-right: $corner-border;
+    border-top: $corner-border;
+  }
+}
+
+.boxFooter {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  left: 0;
+  &::before {
+    @include corner-base;
+    bottom: 0;
+    left: 0;
+    border-bottom: $corner-border;
+    border-left: $corner-border;
+  }
+  &::after {
+    @include corner-base;
+    bottom: 0;
+    right: 0;
+    border-bottom: $corner-border;
+    border-right: $corner-border;
+  }
+}
