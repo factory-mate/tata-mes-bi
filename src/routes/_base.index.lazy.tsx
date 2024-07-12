@@ -6,8 +6,8 @@ export const Route = createLazyFileRoute('/_base/')({
 
 function Page() {
   return (
-    <div className="p-4">
-      <div className="mb-4 text-3xl">TaTa 看板</div>
+    <div className="flex flex-col p-4">
+      <div className="mb-4 text-nowrap text-3xl">TaTa 看板</div>
       <div className="flex flex-col space-y-4">
         {router.flatRoutes.map((i) => {
           if (i.fullPath === '/' || i.fullPath === '/$') {

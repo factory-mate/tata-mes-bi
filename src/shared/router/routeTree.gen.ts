@@ -25,23 +25,27 @@ const BaseIndexLazyImport = createFileRoute('/_base/')()
 
 const BaseLazyRoute = BaseLazyImport.update({
   id: '/_base',
-  getParentRoute: () => rootRoute
+  getParentRoute: () => rootRoute,
 } as any).lazy(() => import('./../../routes/_base.lazy').then((d) => d.Route))
 
 const SplatLazyRoute = SplatLazyImport.update({
   path: '/$',
-  getParentRoute: () => rootRoute
+  getParentRoute: () => rootRoute,
 } as any).lazy(() => import('./../../routes/$.lazy').then((d) => d.Route))
 
 const BaseIndexLazyRoute = BaseIndexLazyImport.update({
   path: '/',
-  getParentRoute: () => BaseLazyRoute
-} as any).lazy(() => import('./../../routes/_base.index.lazy').then((d) => d.Route))
+  getParentRoute: () => BaseLazyRoute,
+} as any).lazy(() =>
+  import('./../../routes/_base.index.lazy').then((d) => d.Route),
+)
 
 const BaseDoorLeafWorkshopRoute = BaseDoorLeafWorkshopImport.update({
   path: '/door-leaf/workshop',
-  getParentRoute: () => BaseLazyRoute
-} as any).lazy(() => import('./../../routes/_base.door-leaf_.workshop.lazy').then((d) => d.Route))
+  getParentRoute: () => BaseLazyRoute,
+} as any).lazy(() =>
+  import('./../../routes/_base.door-leaf_.workshop.lazy').then((d) => d.Route),
+)
 
 // Populate the FileRoutesByPath interface
 
@@ -84,8 +88,8 @@ export const routeTree = rootRoute.addChildren({
   SplatLazyRoute,
   BaseLazyRoute: BaseLazyRoute.addChildren({
     BaseIndexLazyRoute,
-    BaseDoorLeafWorkshopRoute
-  })
+    BaseDoorLeafWorkshopRoute,
+  }),
 })
 
 /* prettier-ignore-end */

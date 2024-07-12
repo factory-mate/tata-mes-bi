@@ -19,3 +19,4 @@ export default function BlockContainer(props: BlockContainerProps) {
     </div>
   )
 }
+BlockContainer.displayName = 'BlockContainer'

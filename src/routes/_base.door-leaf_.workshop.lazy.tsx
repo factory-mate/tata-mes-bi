@@ -1,10 +1,14 @@
 import { createLazyFileRoute } from '@tanstack/react-router'
 
 import {
+  DeviceRepairTable,
+  GaugeStatistics,
   InternalReturnStatistics,
   MaterialStatistics,
+  MaterialTable,
   PrimaryYieldStatistics,
   ProductionReachedStatistics,
+  ProductionTable,
   StatisticsRow,
   TitleRow
 } from '@/features/door-leaf/workshop'
@@ -24,27 +28,35 @@ function Page() {
         <StatisticsRow />
       </BlockContainer>
 
-      <BlockContainer className="col-span-4 row-span-4 p-2">Block</BlockContainer>
+      <BlockContainer className="col-span-4 row-span-4 p-2">
+        <ProductionTable />
+      </BlockContainer>
 
       <BlockContainer className="col-span-4 row-span-4 p-2">
         <ProductionReachedStatistics />
       </BlockContainer>
 
-      <BlockContainer className="col-span-4 row-span-4 p-2">Block</BlockContainer>
+      <BlockContainer className="col-span-4 row-span-4 p-2">
+        <GaugeStatistics />
+      </BlockContainer>
 
       <BlockContainer className="col-span-4 row-span-7 p-2">
         <MaterialStatistics />
       </BlockContainer>
 
-      <BlockContainer className="col-span-4 row-span-4 p-2">
+      <BlockContainer className="col-span-4 row-span-3 p-2">
         <PrimaryYieldStatistics />
       </BlockContainer>
-      <BlockContainer className="col-span-4 row-span-4 p-2">
+      <BlockContainer className="col-span-4 row-span-3 p-2">
         <InternalReturnStatistics />
       </BlockContainer>
 
-      <BlockContainer className="col-span-4 row-span-3 p-2">Block</BlockContainer>
-      <BlockContainer className="col-span-4 row-span-3 p-2">Block</BlockContainer>
+      <BlockContainer className="col-span-4 row-span-4 p-2">
+        <DeviceRepairTable />
+      </BlockContainer>
+      <BlockContainer className="col-span-4 row-span-4 p-2">
+        <MaterialTable />
+      </BlockContainer>
     </>
   )
 }

@@ -1,4 +1,4 @@
-import { BarChart, LineChart, MapChart, PieChart } from 'echarts/charts'
+import { BarChart, GaugeChart, LineChart, MapChart, PieChart } from 'echarts/charts'
 import {
   AxisPointerComponent,
   DatasetComponent,
@@ -29,6 +29,7 @@ echarts.use([
   BarChart,
   LineChart,
   PieChart,
+  GaugeChart,
   MapChart,
   LabelLayout,
   CanvasRenderer,
