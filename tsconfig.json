@@ -1,9 +1,12 @@
 {
-  "files": [],
+  "extends": "@bit-ocean/tsconfig/react",
+  "compilerOptions": {
+    "paths": {
+      "@/*": ["./src/*"]
+    }
+  },
+  "include": ["src", "@types"],
   "references": [
-    {
-      "path": "./tsconfig.app.json"
-    },
     {
       "path": "./tsconfig.node.json"
     }
