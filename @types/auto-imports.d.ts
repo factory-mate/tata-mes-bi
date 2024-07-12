@@ -6,10 +6,13 @@
 export {}
 declare global {
   const ReactChart: (typeof import('@bit-ocean/echarts'))['ReactChart']
+  const clsx: (typeof import('clsx'))['default']
   const createRef: (typeof import('react'))['createRef']
   const forwardRef: (typeof import('react'))['forwardRef']
   const lazy: (typeof import('react'))['lazy']
   const memo: (typeof import('react'))['memo']
+  const queryClient: (typeof import('@/shared/query-client'))['queryClient']
+  const router: (typeof import('@/shared/router'))['router']
   const startTransition: (typeof import('react'))['startTransition']
   const useCallback: (typeof import('react'))['useCallback']
   const useContext: (typeof import('react'))['useContext']
@@ -17,6 +20,7 @@ declare global {
   const useDeferredValue: (typeof import('react'))['useDeferredValue']
   const useEffect: (typeof import('react'))['useEffect']
   const useId: (typeof import('react'))['useId']
+  const useImmer: (typeof import('use-immer'))['useImmer']
   const useImperativeHandle: (typeof import('react'))['useImperativeHandle']
   const useInsertionEffect: (typeof import('react'))['useInsertionEffect']
   const useLayoutEffect: (typeof import('react'))['useLayoutEffect']

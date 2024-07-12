@@ -1,0 +1,11 @@
+@layer tailwind-base, global;
+
+@layer global {
+  @import 'global.scss';
+}
+
+@layer tailwind-base {
+  @tailwind base;
+}
+@tailwind components;
+@tailwind utilities;
