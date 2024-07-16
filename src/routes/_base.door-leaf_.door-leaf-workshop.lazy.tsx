@@ -9,11 +9,10 @@ import {
   PrimaryYieldStatistics,
   ProductionReachedStatistics,
   ProductionTable,
-  StatisticsRow,
-  TitleRow
-} from '@/features/door-leaf/workshop'
+  StatisticsRow
+} from '@/features/door-leaf/door-leaf-workshop'
 
-export const Route = createLazyFileRoute('/_base/door-leaf/workshop')({
+export const Route = createLazyFileRoute('/_base/door-leaf/door-leaf-workshop')({
   component: Page
 })
 
@@ -21,7 +20,7 @@ function Page() {
   return (
     <>
       <div className="col-span-12 row-span-1 p-2">
-        <TitleRow />
+        <TitleRow right={<ClockPanel />} />
       </div>
 
       <BlockContainer className="col-span-12 row-span-1 p-2">

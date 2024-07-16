@@ -6,8 +6,10 @@
 export {}
 declare global {
   const BlockContainer: typeof import('../src/shared/components/BlockContainer/index')['default']
+  const ClockPanel: typeof import('../src/shared/components/ClockPanel/index')['default']
   const ReactChart: typeof import('@bit-ocean/echarts')['ReactChart']
   const ScrollTable: typeof import('../src/shared/components/ScrollTable/index')['default']
+  const TitleRow: typeof import('../src/shared/components/TitleRow/index')['default']
   const clsx: typeof import('clsx')['default']
   const createRef: typeof import('react')['createRef']
   const echarts: typeof import('../src/shared/echarts/index')['default']
@@ -31,6 +33,7 @@ declare global {
   const useMemo: typeof import('react')['useMemo']
   const useReducer: typeof import('react')['useReducer']
   const useRef: typeof import('react')['useRef']
+  const useRouteStaticData: typeof import('../src/shared/hooks/useRouteStaticData')['useRouteStaticData']
   const useState: typeof import('react')['useState']
   const useSyncExternalStore: typeof import('react')['useSyncExternalStore']
   const useTransition: typeof import('react')['useTransition']

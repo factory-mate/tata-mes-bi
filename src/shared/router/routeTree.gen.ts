@@ -13,7 +13,11 @@ import { createFileRoute } from '@tanstack/react-router'
 // Import Routes
 
 import { Route as rootRoute } from './../../routes/__root'
-import { Route as BaseDoorLeafWorkshopImport } from './../../routes/_base.door-leaf_.workshop'
+import { Route as BaseDeviceImport } from './../../routes/_base.device'
+import { Route as BaseDoorLeafDoorSkinPanelWorkshopImport } from './../../routes/_base.door-leaf_.door-skin-panel-workshop'
+import { Route as BaseDoorLeafDoorSkinPanelProductionLineImport } from './../../routes/_base.door-leaf_.door-skin-panel-production-line'
+import { Route as BaseDoorLeafDoorLeafWorkshopImport } from './../../routes/_base.door-leaf_.door-leaf-workshop'
+import { Route as BaseDoorLeafDoorLeafProductionLineImport } from './../../routes/_base.door-leaf_.door-leaf-production-line'
 
 // Create Virtual Routes
 
@@ -40,12 +44,52 @@ const BaseIndexLazyRoute = BaseIndexLazyImport.update({
   import('./../../routes/_base.index.lazy').then((d) => d.Route),
 )
 
-const BaseDoorLeafWorkshopRoute = BaseDoorLeafWorkshopImport.update({
-  path: '/door-leaf/workshop',
+const BaseDeviceRoute = BaseDeviceImport.update({
+  path: '/device',
   getParentRoute: () => BaseLazyRoute,
 } as any).lazy(() =>
-  import('./../../routes/_base.door-leaf_.workshop.lazy').then((d) => d.Route),
+  import('./../../routes/_base.device.lazy').then((d) => d.Route),
 )
+
+const BaseDoorLeafDoorSkinPanelWorkshopRoute =
+  BaseDoorLeafDoorSkinPanelWorkshopImport.update({
+    path: '/door-leaf/door-skin-panel-workshop',
+    getParentRoute: () => BaseLazyRoute,
+  } as any).lazy(() =>
+    import(
+      './../../routes/_base.door-leaf_.door-skin-panel-workshop.lazy'
+    ).then((d) => d.Route),
+  )
+
+const BaseDoorLeafDoorSkinPanelProductionLineRoute =
+  BaseDoorLeafDoorSkinPanelProductionLineImport.update({
+    path: '/door-leaf/door-skin-panel-production-line',
+    getParentRoute: () => BaseLazyRoute,
+  } as any).lazy(() =>
+    import(
+      './../../routes/_base.door-leaf_.door-skin-panel-production-line.lazy'
+    ).then((d) => d.Route),
+  )
+
+const BaseDoorLeafDoorLeafWorkshopRoute =
+  BaseDoorLeafDoorLeafWorkshopImport.update({
+    path: '/door-leaf/door-leaf-workshop',
+    getParentRoute: () => BaseLazyRoute,
+  } as any).lazy(() =>
+    import('./../../routes/_base.door-leaf_.door-leaf-workshop.lazy').then(
+      (d) => d.Route,
+    ),
+  )
+
+const BaseDoorLeafDoorLeafProductionLineRoute =
+  BaseDoorLeafDoorLeafProductionLineImport.update({
+    path: '/door-leaf/door-leaf-production-line',
+    getParentRoute: () => BaseLazyRoute,
+  } as any).lazy(() =>
+    import(
+      './../../routes/_base.door-leaf_.door-leaf-production-line.lazy'
+    ).then((d) => d.Route),
+  )
 
 // Populate the FileRoutesByPath interface
 
@@ -65,6 +109,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof BaseLazyImport
       parentRoute: typeof rootRoute
     }
+    '/_base/device': {
+      id: '/_base/device'
+      path: '/device'
+      fullPath: '/device'
+      preLoaderRoute: typeof BaseDeviceImport
+      parentRoute: typeof BaseLazyImport
+    }
     '/_base/': {
       id: '/_base/'
       path: '/'
@@ -72,11 +123,32 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof BaseIndexLazyImport
       parentRoute: typeof BaseLazyImport
     }
-    '/_base/door-leaf/workshop': {
-      id: '/_base/door-leaf/workshop'
-      path: '/door-leaf/workshop'
-      fullPath: '/door-leaf/workshop'
-      preLoaderRoute: typeof BaseDoorLeafWorkshopImport
+    '/_base/door-leaf/door-leaf-production-line': {
+      id: '/_base/door-leaf/door-leaf-production-line'
+      path: '/door-leaf/door-leaf-production-line'
+      fullPath: '/door-leaf/door-leaf-production-line'
+      preLoaderRoute: typeof BaseDoorLeafDoorLeafProductionLineImport
+      parentRoute: typeof BaseLazyImport
+    }
+    '/_base/door-leaf/door-leaf-workshop': {
+      id: '/_base/door-leaf/door-leaf-workshop'
+      path: '/door-leaf/door-leaf-workshop'
+      fullPath: '/door-leaf/door-leaf-workshop'
+      preLoaderRoute: typeof BaseDoorLeafDoorLeafWorkshopImport
+      parentRoute: typeof BaseLazyImport
+    }
+    '/_base/door-leaf/door-skin-panel-production-line': {
+      id: '/_base/door-leaf/door-skin-panel-production-line'
+      path: '/door-leaf/door-skin-panel-production-line'
+      fullPath: '/door-leaf/door-skin-panel-production-line'
+      preLoaderRoute: typeof BaseDoorLeafDoorSkinPanelProductionLineImport
+      parentRoute: typeof BaseLazyImport
+    }
+    '/_base/door-leaf/door-skin-panel-workshop': {
+      id: '/_base/door-leaf/door-skin-panel-workshop'
+      path: '/door-leaf/door-skin-panel-workshop'
+      fullPath: '/door-leaf/door-skin-panel-workshop'
+      preLoaderRoute: typeof BaseDoorLeafDoorSkinPanelWorkshopImport
       parentRoute: typeof BaseLazyImport
     }
   }
@@ -87,8 +159,12 @@ declare module '@tanstack/react-router' {
 export const routeTree = rootRoute.addChildren({
   SplatLazyRoute,
   BaseLazyRoute: BaseLazyRoute.addChildren({
+    BaseDeviceRoute,
     BaseIndexLazyRoute,
-    BaseDoorLeafWorkshopRoute,
+    BaseDoorLeafDoorLeafProductionLineRoute,
+    BaseDoorLeafDoorLeafWorkshopRoute,
+    BaseDoorLeafDoorSkinPanelProductionLineRoute,
+    BaseDoorLeafDoorSkinPanelWorkshopRoute,
   }),
 })
 
@@ -110,16 +186,36 @@ export const routeTree = rootRoute.addChildren({
     "/_base": {
       "filePath": "_base.lazy.tsx",
       "children": [
+        "/_base/device",
         "/_base/",
-        "/_base/door-leaf/workshop"
+        "/_base/door-leaf/door-leaf-production-line",
+        "/_base/door-leaf/door-leaf-workshop",
+        "/_base/door-leaf/door-skin-panel-production-line",
+        "/_base/door-leaf/door-skin-panel-workshop"
       ]
+    },
+    "/_base/device": {
+      "filePath": "_base.device.tsx",
+      "parent": "/_base"
     },
     "/_base/": {
       "filePath": "_base.index.lazy.tsx",
       "parent": "/_base"
     },
-    "/_base/door-leaf/workshop": {
-      "filePath": "_base.door-leaf_.workshop.tsx",
+    "/_base/door-leaf/door-leaf-production-line": {
+      "filePath": "_base.door-leaf_.door-leaf-production-line.tsx",
+      "parent": "/_base"
+    },
+    "/_base/door-leaf/door-leaf-workshop": {
+      "filePath": "_base.door-leaf_.door-leaf-workshop.tsx",
+      "parent": "/_base"
+    },
+    "/_base/door-leaf/door-skin-panel-production-line": {
+      "filePath": "_base.door-leaf_.door-skin-panel-production-line.tsx",
+      "parent": "/_base"
+    },
+    "/_base/door-leaf/door-skin-panel-workshop": {
+      "filePath": "_base.door-leaf_.door-skin-panel-workshop.tsx",
       "parent": "/_base"
     }
   }

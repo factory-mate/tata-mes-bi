@@ -22,7 +22,12 @@ export default defineConfig(({ mode }) => ({
         { from: '@/shared/query-client', imports: ['queryClient'] },
         { from: '@bit-ocean/echarts', imports: ['ReactChart'] }
       ],
-      dirs: ['src/shared/components/*', 'src/shared/echarts/*', 'src/shared/store/*'],
+      dirs: [
+        'src/shared/components/*',
+        'src/shared/echarts/*',
+        'src/shared/hooks/*',
+        'src/shared/store/*'
+      ],
       dts: '@types/auto-imports.d.ts',
       include: [
         /\.[tj]sx?$/, // .ts, .tsx, .js, .jsx

@@ -1,19 +1,18 @@
-import dayjs from 'dayjs'
+interface TitleRowProps {
+  title?: string
+  left?: React.ReactNode
+  right?: React.ReactNode
+}
 
-export function TitleRow() {
-  const [currentTime, setCurrentTime] = useState(dayjs(Date.now()).format('YYYY-MM-DD HH:mm:ss'))
+export default function TitleRow(props: TitleRowProps) {
+  const { title, left, right } = props
 
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setCurrentTime(dayjs(Date.now()).format('YYYY-MM-DD HH:mm:ss'))
-    }, 1000)
-    return () => clearInterval(timer)
-  })
+  const defaultTitle = useRouteStaticData().title
 
   return (
     <div className="relative size-full">
       <div className="flex size-full flex-col items-center justify-center">
-        <div className="absolute top-0 text-3xl font-semibold">门扇车间看板</div>
+        <div className="absolute top-0 text-3xl font-semibold">{title ?? defaultTitle}</div>
 
         <div className="scale-75">
           <svg
@@ -61,7 +60,8 @@ export function TitleRow() {
           </svg>
         </div>
       </div>
-      <div className="absolute inset-y-0 right-0 my-auto h-fit text-2xl">{currentTime}</div>
+      <div className="absolute inset-y-0 left-0 my-auto h-fit">{left}</div>
+      <div className="absolute inset-y-0 right-0 my-auto h-fit">{right}</div>
     </div>
   )
 }
