@@ -1,5 +1,61 @@
 import { createLazyFileRoute } from '@tanstack/react-router'
 
+import {
+  DeviceRepairTable,
+  GaugeStatistics,
+  InternalReturnStatistics,
+  MaterialStatistics,
+  MaterialTable,
+  PrimaryYieldStatistics,
+  ProductionReachedStatistics,
+  ProductionTable,
+  StatisticsRow
+} from '@/features/door-leaf/door-skin-panel-workshop'
+
 export const Route = createLazyFileRoute('/_base/door-leaf/door-skin-panel-workshop')({
-  component: () => <div>Hello /_base/door-leaf/door-skin-panel-workshop!</div>
+  component: Page
 })
+
+function Page() {
+  return (
+    <>
+      <div className="col-span-12 row-span-1 p-2">
+        <TitleRow right={<ClockPanel />} />
+      </div>
+
+      <BlockContainer className="col-span-12 row-span-1 p-2">
+        <StatisticsRow />
+      </BlockContainer>
+
+      <BlockContainer className="col-span-4 row-span-4 p-2">
+        <ProductionTable />
+      </BlockContainer>
+
+      <BlockContainer className="col-span-4 row-span-4 p-2">
+        <ProductionReachedStatistics />
+      </BlockContainer>
+
+      <BlockContainer className="col-span-4 row-span-4 p-2">
+        <GaugeStatistics />
+      </BlockContainer>
+
+      <BlockContainer className="col-span-4 row-span-7 p-2">
+        <MaterialStatistics />
+      </BlockContainer>
+
+      <BlockContainer className="col-span-4 row-span-3 p-2">
+        <PrimaryYieldStatistics />
+      </BlockContainer>
+      <BlockContainer className="col-span-4 row-span-3 p-2">
+        <InternalReturnStatistics />
+      </BlockContainer>
+
+      <BlockContainer className="col-span-4 row-span-4 p-2">
+        <DeviceRepairTable />
+      </BlockContainer>
+      <BlockContainer className="col-span-4 row-span-4 p-2">
+        <MaterialTable />
+      </BlockContainer>
+    </>
+  )
+}
