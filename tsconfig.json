@@ -1,6 +1,7 @@
 {
   "extends": "@bit-ocean/tsconfig/react",
   "compilerOptions": {
+    "target": "ES2015",
     "paths": {
       "@/*": ["./src/*"]
     }

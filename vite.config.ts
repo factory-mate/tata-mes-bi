@@ -50,7 +50,7 @@ export default defineConfig(({ mode }) => ({
     TurboConsole(),
     WebfontDownload(),
     LegacyPlugin({
-      targets: ['chrome 52', 'Android > 39', 'iOS >= 10.3', 'iOS >= 10.3'],
+      targets: ['> 0%', 'Chrome > 4', 'Android >= 4', 'IOS >= 7', 'not ie <= 6', 'Firefox ESR'],
       additionalLegacyPolyfills: ['regenerator-runtime/runtime']
     })
   ],
