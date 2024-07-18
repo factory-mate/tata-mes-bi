@@ -1,6 +1,7 @@
 import { fileURLToPath, URL } from 'node:url'
 
 import { TanStackRouterVite } from '@tanstack/router-plugin/vite'
+import LegacyPlugin from '@vitejs/plugin-legacy'
 import ReactSWC from '@vitejs/plugin-react-swc'
 import AutoImport from 'unplugin-auto-import/vite'
 import iconsResolver from 'unplugin-icons/resolver'
@@ -47,7 +48,11 @@ export default defineConfig(({ mode }) => ({
       jsx: 'react'
     }),
     TurboConsole(),
-    WebfontDownload()
+    WebfontDownload(),
+    LegacyPlugin({
+      targets: ['chrome 52', 'Android > 39', 'iOS >= 10.3', 'iOS >= 10.3'],
+      additionalLegacyPolyfills: ['regenerator-runtime/runtime']
+    })
   ],
   resolve: {
     alias: {
