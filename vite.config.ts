@@ -51,7 +51,8 @@ export default defineConfig(({ mode }) => ({
     WebfontDownload(),
     LegacyPlugin({
       targets: ['> 0%', 'Chrome > 4', 'Android >= 4', 'IOS >= 7', 'not ie <= 6', 'Firefox ESR'],
-      additionalLegacyPolyfills: ['regenerator-runtime/runtime']
+      additionalLegacyPolyfills: ['regenerator-runtime/runtime'],
+      modernPolyfills: true
     })
   ],
   resolve: {
