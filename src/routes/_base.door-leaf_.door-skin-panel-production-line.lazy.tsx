@@ -4,6 +4,7 @@ import {
   CheckTable,
   DeviceStatusGauge,
   Gauge,
+  HourCompletionLine,
   InternalReturnReasonBar,
   InternalReturnTypePie,
   KnifeTable,
@@ -14,7 +15,6 @@ import {
   PVCTable,
   UnfinishedTasksTable
 } from '@/features/door-leaf/door-skin-panel-production-line'
-import { PrimaryYieldStatistics } from '@/features/door-leaf/door-skin-panel-workshop'
 
 export const Route = createLazyFileRoute('/_base/door-leaf/door-skin-panel-production-line')({
   component: Page
@@ -61,7 +61,7 @@ function Page() {
       </BlockContainer>
 
       <BlockContainer className="col-span-4 row-span-4">
-        <PrimaryYieldStatistics />
+        <HourCompletionLine />
       </BlockContainer>
       <BlockContainer className="col-span-4 row-span-4">
         <KnifeTable />

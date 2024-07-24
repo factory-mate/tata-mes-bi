@@ -9,7 +9,7 @@ export function RepairStatistics() {
   ]
 
   return (
-    <div className="flex size-full flex-col items-center justify-between space-y-2">
+    <div className="flex size-full flex-col items-center justify-center space-y-2">
       <div className="text-2xl">{title}</div>
       <div className="grid w-full grid-cols-2 grid-rows-2 gap-4">
         {data.map((i) => (
