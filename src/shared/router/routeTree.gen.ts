@@ -18,6 +18,7 @@ import { Route as BaseDoorLeafDoorSkinPanelWorkshopImport } from './../../routes
 import { Route as BaseDoorLeafDoorSkinPanelProductionLineImport } from './../../routes/_base.door-leaf_.door-skin-panel-production-line'
 import { Route as BaseDoorLeafDoorLeafWorkshopImport } from './../../routes/_base.door-leaf_.door-leaf-workshop'
 import { Route as BaseDoorLeafDoorLeafProductionLineImport } from './../../routes/_base.door-leaf_.door-leaf-production-line'
+import { Route as BaseDoorLeafDoorLeafPackageImport } from './../../routes/_base.door-leaf_.door-leaf-package'
 
 // Create Virtual Routes
 
@@ -91,6 +92,16 @@ const BaseDoorLeafDoorLeafProductionLineRoute =
     ).then((d) => d.Route),
   )
 
+const BaseDoorLeafDoorLeafPackageRoute =
+  BaseDoorLeafDoorLeafPackageImport.update({
+    path: '/door-leaf/door-leaf-package',
+    getParentRoute: () => BaseLazyRoute,
+  } as any).lazy(() =>
+    import('./../../routes/_base.door-leaf_.door-leaf-package.lazy').then(
+      (d) => d.Route,
+    ),
+  )
+
 // Populate the FileRoutesByPath interface
 
 declare module '@tanstack/react-router' {
@@ -121,6 +132,13 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof BaseIndexLazyImport
+      parentRoute: typeof BaseLazyImport
+    }
+    '/_base/door-leaf/door-leaf-package': {
+      id: '/_base/door-leaf/door-leaf-package'
+      path: '/door-leaf/door-leaf-package'
+      fullPath: '/door-leaf/door-leaf-package'
+      preLoaderRoute: typeof BaseDoorLeafDoorLeafPackageImport
       parentRoute: typeof BaseLazyImport
     }
     '/_base/door-leaf/door-leaf-production-line': {
@@ -161,6 +179,7 @@ export const routeTree = rootRoute.addChildren({
   BaseLazyRoute: BaseLazyRoute.addChildren({
     BaseDeviceRoute,
     BaseIndexLazyRoute,
+    BaseDoorLeafDoorLeafPackageRoute,
     BaseDoorLeafDoorLeafProductionLineRoute,
     BaseDoorLeafDoorLeafWorkshopRoute,
     BaseDoorLeafDoorSkinPanelProductionLineRoute,
@@ -188,6 +207,7 @@ export const routeTree = rootRoute.addChildren({
       "children": [
         "/_base/device",
         "/_base/",
+        "/_base/door-leaf/door-leaf-package",
         "/_base/door-leaf/door-leaf-production-line",
         "/_base/door-leaf/door-leaf-workshop",
         "/_base/door-leaf/door-skin-panel-production-line",
@@ -200,6 +220,10 @@ export const routeTree = rootRoute.addChildren({
     },
     "/_base/": {
       "filePath": "_base.index.lazy.tsx",
+      "parent": "/_base"
+    },
+    "/_base/door-leaf/door-leaf-package": {
+      "filePath": "_base.door-leaf_.door-leaf-package.tsx",
       "parent": "/_base"
     },
     "/_base/door-leaf/door-leaf-production-line": {
