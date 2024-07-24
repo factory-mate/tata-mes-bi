@@ -14,6 +14,9 @@ import { createFileRoute } from '@tanstack/react-router'
 
 import { Route as rootRoute } from './../../routes/__root'
 import { Route as BaseDeviceImport } from './../../routes/_base.device'
+import { Route as BasePlateLineWorkshopImport } from './../../routes/_base.plate_.line-workshop'
+import { Route as BasePlateHangingBoardWorkshopImport } from './../../routes/_base.plate_.hanging-board-workshop'
+import { Route as BasePlateDoorFrameWorkshopImport } from './../../routes/_base.plate_.door-frame-workshop'
 import { Route as BaseDoorLeafDoorSkinPanelWorkshopImport } from './../../routes/_base.door-leaf_.door-skin-panel-workshop'
 import { Route as BaseDoorLeafDoorSkinPanelProductionLineImport } from './../../routes/_base.door-leaf_.door-skin-panel-production-line'
 import { Route as BaseDoorLeafDoorLeafWorkshopImport } from './../../routes/_base.door-leaf_.door-leaf-workshop'
@@ -50,6 +53,34 @@ const BaseDeviceRoute = BaseDeviceImport.update({
   getParentRoute: () => BaseLazyRoute,
 } as any).lazy(() =>
   import('./../../routes/_base.device.lazy').then((d) => d.Route),
+)
+
+const BasePlateLineWorkshopRoute = BasePlateLineWorkshopImport.update({
+  path: '/plate/line-workshop',
+  getParentRoute: () => BaseLazyRoute,
+} as any).lazy(() =>
+  import('./../../routes/_base.plate_.line-workshop.lazy').then((d) => d.Route),
+)
+
+const BasePlateHangingBoardWorkshopRoute =
+  BasePlateHangingBoardWorkshopImport.update({
+    path: '/plate/hanging-board-workshop',
+    getParentRoute: () => BaseLazyRoute,
+  } as any).lazy(() =>
+    import('./../../routes/_base.plate_.hanging-board-workshop.lazy').then(
+      (d) => d.Route,
+    ),
+  )
+
+const BasePlateDoorFrameWorkshopRoute = BasePlateDoorFrameWorkshopImport.update(
+  {
+    path: '/plate/door-frame-workshop',
+    getParentRoute: () => BaseLazyRoute,
+  } as any,
+).lazy(() =>
+  import('./../../routes/_base.plate_.door-frame-workshop.lazy').then(
+    (d) => d.Route,
+  ),
 )
 
 const BaseDoorLeafDoorSkinPanelWorkshopRoute =
@@ -169,6 +200,27 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof BaseDoorLeafDoorSkinPanelWorkshopImport
       parentRoute: typeof BaseLazyImport
     }
+    '/_base/plate/door-frame-workshop': {
+      id: '/_base/plate/door-frame-workshop'
+      path: '/plate/door-frame-workshop'
+      fullPath: '/plate/door-frame-workshop'
+      preLoaderRoute: typeof BasePlateDoorFrameWorkshopImport
+      parentRoute: typeof BaseLazyImport
+    }
+    '/_base/plate/hanging-board-workshop': {
+      id: '/_base/plate/hanging-board-workshop'
+      path: '/plate/hanging-board-workshop'
+      fullPath: '/plate/hanging-board-workshop'
+      preLoaderRoute: typeof BasePlateHangingBoardWorkshopImport
+      parentRoute: typeof BaseLazyImport
+    }
+    '/_base/plate/line-workshop': {
+      id: '/_base/plate/line-workshop'
+      path: '/plate/line-workshop'
+      fullPath: '/plate/line-workshop'
+      preLoaderRoute: typeof BasePlateLineWorkshopImport
+      parentRoute: typeof BaseLazyImport
+    }
   }
 }
 
@@ -184,6 +236,9 @@ export const routeTree = rootRoute.addChildren({
     BaseDoorLeafDoorLeafWorkshopRoute,
     BaseDoorLeafDoorSkinPanelProductionLineRoute,
     BaseDoorLeafDoorSkinPanelWorkshopRoute,
+    BasePlateDoorFrameWorkshopRoute,
+    BasePlateHangingBoardWorkshopRoute,
+    BasePlateLineWorkshopRoute,
   }),
 })
 
@@ -211,7 +266,10 @@ export const routeTree = rootRoute.addChildren({
         "/_base/door-leaf/door-leaf-production-line",
         "/_base/door-leaf/door-leaf-workshop",
         "/_base/door-leaf/door-skin-panel-production-line",
-        "/_base/door-leaf/door-skin-panel-workshop"
+        "/_base/door-leaf/door-skin-panel-workshop",
+        "/_base/plate/door-frame-workshop",
+        "/_base/plate/hanging-board-workshop",
+        "/_base/plate/line-workshop"
       ]
     },
     "/_base/device": {
@@ -240,6 +298,18 @@ export const routeTree = rootRoute.addChildren({
     },
     "/_base/door-leaf/door-skin-panel-workshop": {
       "filePath": "_base.door-leaf_.door-skin-panel-workshop.tsx",
+      "parent": "/_base"
+    },
+    "/_base/plate/door-frame-workshop": {
+      "filePath": "_base.plate_.door-frame-workshop.tsx",
+      "parent": "/_base"
+    },
+    "/_base/plate/hanging-board-workshop": {
+      "filePath": "_base.plate_.hanging-board-workshop.tsx",
+      "parent": "/_base"
+    },
+    "/_base/plate/line-workshop": {
+      "filePath": "_base.plate_.line-workshop.tsx",
       "parent": "/_base"
     }
   }
