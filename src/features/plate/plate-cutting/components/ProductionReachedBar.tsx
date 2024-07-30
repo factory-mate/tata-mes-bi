@@ -2,17 +2,17 @@ import type { EChartsOption } from 'echarts'
 
 import { getRandomValues } from '@/features/random'
 
-export function MaterialBar() {
+export function ProductionReachedBar() {
   const chartStore = useChartStore()
 
   const [data, setData] = useState([
-    [120, 140, 115, 100, 120, 100],
-    [50, 60, 70, 80, 90, 100]
+    [400, 440, 415, 500, 420, 440],
+    [220, 230, 340, 325, 316, 200]
   ])
 
   useEffect(() => {
     const timer = setInterval(() => {
-      setData([getRandomValues(12, 150), getRandomValues(12, 150)])
+      setData([getRandomValues(6, 500), getRandomValues(6, 500)])
     }, 5000)
 
     return () => clearInterval(timer)
@@ -25,7 +25,7 @@ export function MaterialBar() {
       },
       backgroundColor: '',
       title: {
-        text: '物料计划量 - 配送量对比',
+        text: '生产达成统计',
         left: 'center'
       },
       tooltip: {
@@ -36,39 +36,44 @@ export function MaterialBar() {
       },
       grid: {
         left: 0,
-        right: 10,
+        right: 0,
         bottom: 10,
         tooltip: true,
         containLabel: true
       },
       legend: {
-        data: ['计划数量', '配送数量'],
+        data: ['计划数量', '完成数量'],
         align: 'left',
         top: 0,
         right: 0,
         orient: 'horizontal'
       },
-      xAxis: { type: 'value', name: '数量', min: 0, max: 150 },
-      yAxis: {
+      xAxis: {
         type: 'category',
-        name: '物料',
-        data: ['物料 A', '物料 B', '物料 C', '物料 D', '物料 E', '物料 F'],
+        name: '工位',
+        data: ['工位A', '工位B', '工位C', '工位D', '工位E', '工位F'],
         axisTick: {
           alignWithLabel: true
         }
+      },
+      yAxis: {
+        type: 'value',
+        name: '门数',
+        min: 0,
+        max: 500
       },
       series: [
         {
           type: 'bar',
           name: '计划数量',
           data: data[0],
-          label: { show: true, position: 'right' }
+          label: { show: true, position: 'top' }
         },
         {
           type: 'bar',
-          name: '配送数量',
+          name: '完成数量',
           data: data[1],
-          label: { show: true, position: 'right' }
+          label: { show: true, position: 'top' }
         }
       ]
     }),
