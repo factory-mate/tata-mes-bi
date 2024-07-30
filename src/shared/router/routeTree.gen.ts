@@ -16,6 +16,7 @@ import { Route as rootRoute } from './../../routes/__root'
 import { Route as BaseDeviceImport } from './../../routes/_base.device'
 import { Route as BasePlatePlateCuttingImport } from './../../routes/_base.plate_.plate-cutting'
 import { Route as BasePlateLineWorkshopImport } from './../../routes/_base.plate_.line-workshop'
+import { Route as BasePlateHangingCuttingImport } from './../../routes/_base.plate_.hanging-cutting'
 import { Route as BasePlateHangingBoardWorkshopImport } from './../../routes/_base.plate_.hanging-board-workshop'
 import { Route as BasePlateDoorFrameWorkshopImport } from './../../routes/_base.plate_.door-frame-workshop'
 import { Route as BaseDoorLeafDoorSkinPanelWorkshopImport } from './../../routes/_base.door-leaf_.door-skin-panel-workshop'
@@ -68,6 +69,15 @@ const BasePlateLineWorkshopRoute = BasePlateLineWorkshopImport.update({
   getParentRoute: () => BaseLazyRoute,
 } as any).lazy(() =>
   import('./../../routes/_base.plate_.line-workshop.lazy').then((d) => d.Route),
+)
+
+const BasePlateHangingCuttingRoute = BasePlateHangingCuttingImport.update({
+  path: '/plate/hanging-cutting',
+  getParentRoute: () => BaseLazyRoute,
+} as any).lazy(() =>
+  import('./../../routes/_base.plate_.hanging-cutting.lazy').then(
+    (d) => d.Route,
+  ),
 )
 
 const BasePlateHangingBoardWorkshopRoute =
@@ -222,6 +232,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof BasePlateHangingBoardWorkshopImport
       parentRoute: typeof BaseLazyImport
     }
+    '/_base/plate/hanging-cutting': {
+      id: '/_base/plate/hanging-cutting'
+      path: '/plate/hanging-cutting'
+      fullPath: '/plate/hanging-cutting'
+      preLoaderRoute: typeof BasePlateHangingCuttingImport
+      parentRoute: typeof BaseLazyImport
+    }
     '/_base/plate/line-workshop': {
       id: '/_base/plate/line-workshop'
       path: '/plate/line-workshop'
@@ -253,6 +270,7 @@ export const routeTree = rootRoute.addChildren({
     BaseDoorLeafDoorSkinPanelWorkshopRoute,
     BasePlateDoorFrameWorkshopRoute,
     BasePlateHangingBoardWorkshopRoute,
+    BasePlateHangingCuttingRoute,
     BasePlateLineWorkshopRoute,
     BasePlatePlateCuttingRoute,
   }),
@@ -285,6 +303,7 @@ export const routeTree = rootRoute.addChildren({
         "/_base/door-leaf/door-skin-panel-workshop",
         "/_base/plate/door-frame-workshop",
         "/_base/plate/hanging-board-workshop",
+        "/_base/plate/hanging-cutting",
         "/_base/plate/line-workshop",
         "/_base/plate/plate-cutting"
       ]
@@ -323,6 +342,10 @@ export const routeTree = rootRoute.addChildren({
     },
     "/_base/plate/hanging-board-workshop": {
       "filePath": "_base.plate_.hanging-board-workshop.tsx",
+      "parent": "/_base"
+    },
+    "/_base/plate/hanging-cutting": {
+      "filePath": "_base.plate_.hanging-cutting.tsx",
       "parent": "/_base"
     },
     "/_base/plate/line-workshop": {
