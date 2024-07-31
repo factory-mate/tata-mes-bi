@@ -1,20 +1,20 @@
 import { createLazyFileRoute } from '@tanstack/react-router'
 
 import {
-  BoardTypePie,
   CheckTable,
+  DoorLeafStationHoursLine,
+  InternalReturnTypePie,
   KnifeTable,
   LateProductionTable,
   LineEfficiencyGauge,
   MaterialBar,
   MaterialTable,
-  PlateUtilizationBar,
+  MultiStationHoursLine,
   ProductionReachedBar,
-  StatisticsRow,
-  UnloadingStationHoursLine
-} from '@/features/plate/hanging-cutting'
+  StatisticsRow
+} from '@/features/plate/plate-wrap'
 
-export const Route = createLazyFileRoute('/_base/plate/hanging-cutting')({
+export const Route = createLazyFileRoute('/_base/plate/plate-wrap')({
   component: Page
 })
 
@@ -30,7 +30,7 @@ function Page() {
       </BlockContainer>
 
       <BlockContainer className="col-span-2 row-span-3">
-        <BoardTypePie />
+        <InternalReturnTypePie />
       </BlockContainer>
       <BlockContainer className="col-span-2 row-span-3">
         <LineEfficiencyGauge />
@@ -43,20 +43,20 @@ function Page() {
       </BlockContainer>
 
       <BlockContainer className="col-span-4 row-span-4">
-        <UnloadingStationHoursLine />
+        <DoorLeafStationHoursLine />
       </BlockContainer>
       <BlockContainer className="col-span-4 row-span-4">
         <ProductionReachedBar />
       </BlockContainer>
       <BlockContainer className="col-span-4 row-span-4">
-        <LateProductionTable />
+        <MultiStationHoursLine />
       </BlockContainer>
 
       <BlockContainer className="col-span-4 row-span-4">
         <CheckTable />
       </BlockContainer>
       <BlockContainer className="col-span-4 row-span-4">
-        <PlateUtilizationBar />
+        <LateProductionTable />
       </BlockContainer>
       <BlockContainer className="col-span-4 row-span-4">
         <MaterialBar />
