@@ -15,6 +15,7 @@ import { createFileRoute } from '@tanstack/react-router'
 import { Route as rootRoute } from './../../routes/__root'
 import { Route as BaseDeviceImport } from './../../routes/_base.device'
 import { Route as BasePlatePlateWrapImport } from './../../routes/_base.plate_.plate-wrap'
+import { Route as BasePlatePlateNailingImport } from './../../routes/_base.plate_.plate-nailing'
 import { Route as BasePlatePlateCuttingImport } from './../../routes/_base.plate_.plate-cutting'
 import { Route as BasePlateLineWorkshopImport } from './../../routes/_base.plate_.line-workshop'
 import { Route as BasePlateHangingCuttingImport } from './../../routes/_base.plate_.hanging-cutting'
@@ -63,6 +64,13 @@ const BasePlatePlateWrapRoute = BasePlatePlateWrapImport.update({
   getParentRoute: () => BaseLazyRoute,
 } as any).lazy(() =>
   import('./../../routes/_base.plate_.plate-wrap.lazy').then((d) => d.Route),
+)
+
+const BasePlatePlateNailingRoute = BasePlatePlateNailingImport.update({
+  path: '/plate/plate-nailing',
+  getParentRoute: () => BaseLazyRoute,
+} as any).lazy(() =>
+  import('./../../routes/_base.plate_.plate-nailing.lazy').then((d) => d.Route),
 )
 
 const BasePlatePlateCuttingRoute = BasePlatePlateCuttingImport.update({
@@ -261,6 +269,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof BasePlatePlateCuttingImport
       parentRoute: typeof BaseLazyImport
     }
+    '/_base/plate/plate-nailing': {
+      id: '/_base/plate/plate-nailing'
+      path: '/plate/plate-nailing'
+      fullPath: '/plate/plate-nailing'
+      preLoaderRoute: typeof BasePlatePlateNailingImport
+      parentRoute: typeof BaseLazyImport
+    }
     '/_base/plate/plate-wrap': {
       id: '/_base/plate/plate-wrap'
       path: '/plate/plate-wrap'
@@ -288,6 +303,7 @@ export const routeTree = rootRoute.addChildren({
     BasePlateHangingCuttingRoute,
     BasePlateLineWorkshopRoute,
     BasePlatePlateCuttingRoute,
+    BasePlatePlateNailingRoute,
     BasePlatePlateWrapRoute,
   }),
 })
@@ -322,6 +338,7 @@ export const routeTree = rootRoute.addChildren({
         "/_base/plate/hanging-cutting",
         "/_base/plate/line-workshop",
         "/_base/plate/plate-cutting",
+        "/_base/plate/plate-nailing",
         "/_base/plate/plate-wrap"
       ]
     },
@@ -371,6 +388,10 @@ export const routeTree = rootRoute.addChildren({
     },
     "/_base/plate/plate-cutting": {
       "filePath": "_base.plate_.plate-cutting.tsx",
+      "parent": "/_base"
+    },
+    "/_base/plate/plate-nailing": {
+      "filePath": "_base.plate_.plate-nailing.tsx",
       "parent": "/_base"
     },
     "/_base/plate/plate-wrap": {
