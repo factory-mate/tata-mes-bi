@@ -15,9 +15,12 @@ import { createFileRoute } from '@tanstack/react-router'
 import { Route as rootRoute } from './../../routes/__root'
 import { Route as BaseDeviceImport } from './../../routes/_base.device'
 import { Route as BasePlatePlateWrapImport } from './../../routes/_base.plate_.plate-wrap'
+import { Route as BasePlatePlatePackageImport } from './../../routes/_base.plate_.plate-package'
 import { Route as BasePlatePlateNailingImport } from './../../routes/_base.plate_.plate-nailing'
 import { Route as BasePlatePlateCuttingImport } from './../../routes/_base.plate_.plate-cutting'
 import { Route as BasePlateLineWorkshopImport } from './../../routes/_base.plate_.line-workshop'
+import { Route as BasePlateLLinePackageImport } from './../../routes/_base.plate_.l-line-package'
+import { Route as BasePlateHangingPackageImport } from './../../routes/_base.plate_.hanging-package'
 import { Route as BasePlateHangingCuttingImport } from './../../routes/_base.plate_.hanging-cutting'
 import { Route as BasePlateHangingBoardWorkshopImport } from './../../routes/_base.plate_.hanging-board-workshop'
 import { Route as BasePlateDoorFrameWorkshopImport } from './../../routes/_base.plate_.door-frame-workshop'
@@ -66,6 +69,13 @@ const BasePlatePlateWrapRoute = BasePlatePlateWrapImport.update({
   import('./../../routes/_base.plate_.plate-wrap.lazy').then((d) => d.Route),
 )
 
+const BasePlatePlatePackageRoute = BasePlatePlatePackageImport.update({
+  path: '/plate/plate-package',
+  getParentRoute: () => BaseLazyRoute,
+} as any).lazy(() =>
+  import('./../../routes/_base.plate_.plate-package.lazy').then((d) => d.Route),
+)
+
 const BasePlatePlateNailingRoute = BasePlatePlateNailingImport.update({
   path: '/plate/plate-nailing',
   getParentRoute: () => BaseLazyRoute,
@@ -85,6 +95,24 @@ const BasePlateLineWorkshopRoute = BasePlateLineWorkshopImport.update({
   getParentRoute: () => BaseLazyRoute,
 } as any).lazy(() =>
   import('./../../routes/_base.plate_.line-workshop.lazy').then((d) => d.Route),
+)
+
+const BasePlateLLinePackageRoute = BasePlateLLinePackageImport.update({
+  path: '/plate/l-line-package',
+  getParentRoute: () => BaseLazyRoute,
+} as any).lazy(() =>
+  import('./../../routes/_base.plate_.l-line-package.lazy').then(
+    (d) => d.Route,
+  ),
+)
+
+const BasePlateHangingPackageRoute = BasePlateHangingPackageImport.update({
+  path: '/plate/hanging-package',
+  getParentRoute: () => BaseLazyRoute,
+} as any).lazy(() =>
+  import('./../../routes/_base.plate_.hanging-package.lazy').then(
+    (d) => d.Route,
+  ),
 )
 
 const BasePlateHangingCuttingRoute = BasePlateHangingCuttingImport.update({
@@ -255,6 +283,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof BasePlateHangingCuttingImport
       parentRoute: typeof BaseLazyImport
     }
+    '/_base/plate/hanging-package': {
+      id: '/_base/plate/hanging-package'
+      path: '/plate/hanging-package'
+      fullPath: '/plate/hanging-package'
+      preLoaderRoute: typeof BasePlateHangingPackageImport
+      parentRoute: typeof BaseLazyImport
+    }
+    '/_base/plate/l-line-package': {
+      id: '/_base/plate/l-line-package'
+      path: '/plate/l-line-package'
+      fullPath: '/plate/l-line-package'
+      preLoaderRoute: typeof BasePlateLLinePackageImport
+      parentRoute: typeof BaseLazyImport
+    }
     '/_base/plate/line-workshop': {
       id: '/_base/plate/line-workshop'
       path: '/plate/line-workshop'
@@ -274,6 +316,13 @@ declare module '@tanstack/react-router' {
       path: '/plate/plate-nailing'
       fullPath: '/plate/plate-nailing'
       preLoaderRoute: typeof BasePlatePlateNailingImport
+      parentRoute: typeof BaseLazyImport
+    }
+    '/_base/plate/plate-package': {
+      id: '/_base/plate/plate-package'
+      path: '/plate/plate-package'
+      fullPath: '/plate/plate-package'
+      preLoaderRoute: typeof BasePlatePlatePackageImport
       parentRoute: typeof BaseLazyImport
     }
     '/_base/plate/plate-wrap': {
@@ -301,9 +350,12 @@ export const routeTree = rootRoute.addChildren({
     BasePlateDoorFrameWorkshopRoute,
     BasePlateHangingBoardWorkshopRoute,
     BasePlateHangingCuttingRoute,
+    BasePlateHangingPackageRoute,
+    BasePlateLLinePackageRoute,
     BasePlateLineWorkshopRoute,
     BasePlatePlateCuttingRoute,
     BasePlatePlateNailingRoute,
+    BasePlatePlatePackageRoute,
     BasePlatePlateWrapRoute,
   }),
 })
@@ -336,9 +388,12 @@ export const routeTree = rootRoute.addChildren({
         "/_base/plate/door-frame-workshop",
         "/_base/plate/hanging-board-workshop",
         "/_base/plate/hanging-cutting",
+        "/_base/plate/hanging-package",
+        "/_base/plate/l-line-package",
         "/_base/plate/line-workshop",
         "/_base/plate/plate-cutting",
         "/_base/plate/plate-nailing",
+        "/_base/plate/plate-package",
         "/_base/plate/plate-wrap"
       ]
     },
@@ -382,6 +437,14 @@ export const routeTree = rootRoute.addChildren({
       "filePath": "_base.plate_.hanging-cutting.tsx",
       "parent": "/_base"
     },
+    "/_base/plate/hanging-package": {
+      "filePath": "_base.plate_.hanging-package.tsx",
+      "parent": "/_base"
+    },
+    "/_base/plate/l-line-package": {
+      "filePath": "_base.plate_.l-line-package.tsx",
+      "parent": "/_base"
+    },
     "/_base/plate/line-workshop": {
       "filePath": "_base.plate_.line-workshop.tsx",
       "parent": "/_base"
@@ -392,6 +455,10 @@ export const routeTree = rootRoute.addChildren({
     },
     "/_base/plate/plate-nailing": {
       "filePath": "_base.plate_.plate-nailing.tsx",
+      "parent": "/_base"
+    },
+    "/_base/plate/plate-package": {
+      "filePath": "_base.plate_.plate-package.tsx",
       "parent": "/_base"
     },
     "/_base/plate/plate-wrap": {
