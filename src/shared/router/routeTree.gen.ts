@@ -14,16 +14,23 @@ import { createFileRoute } from '@tanstack/react-router'
 
 import { Route as rootRoute } from './../../routes/__root'
 import { Route as BaseDeviceImport } from './../../routes/_base.device'
+import { Route as BaseWarehouseWarehouseImport } from './../../routes/_base.warehouse_.warehouse'
+import { Route as BaseWarehouseCargoManagementImport } from './../../routes/_base.warehouse_.cargo-management'
+import { Route as BaseQualityQualityImport } from './../../routes/_base.quality_.quality'
+import { Route as BasePlateWireframeImport } from './../../routes/_base.plate_.wireframe'
 import { Route as BasePlatePlateWrapImport } from './../../routes/_base.plate_.plate-wrap'
 import { Route as BasePlatePlatePackageImport } from './../../routes/_base.plate_.plate-package'
 import { Route as BasePlatePlateNailingImport } from './../../routes/_base.plate_.plate-nailing'
 import { Route as BasePlatePlateCuttingImport } from './../../routes/_base.plate_.plate-cutting'
 import { Route as BasePlateLineWorkshopImport } from './../../routes/_base.plate_.line-workshop'
+import { Route as BasePlateLLineWrapImport } from './../../routes/_base.plate_.l-line-wrap'
 import { Route as BasePlateLLinePackageImport } from './../../routes/_base.plate_.l-line-package'
+import { Route as BasePlateLLineFineCutImport } from './../../routes/_base.plate_.l-line-fine-cut'
 import { Route as BasePlateHangingPackageImport } from './../../routes/_base.plate_.hanging-package'
 import { Route as BasePlateHangingCuttingImport } from './../../routes/_base.plate_.hanging-cutting'
 import { Route as BasePlateHangingBoardWorkshopImport } from './../../routes/_base.plate_.hanging-board-workshop'
 import { Route as BasePlateDoorFrameWorkshopImport } from './../../routes/_base.plate_.door-frame-workshop'
+import { Route as BasePlanPlanImport } from './../../routes/_base.plan_.plan'
 import { Route as BaseDoorLeafDoorSkinPanelWorkshopImport } from './../../routes/_base.door-leaf_.door-skin-panel-workshop'
 import { Route as BaseDoorLeafDoorSkinPanelProductionLineImport } from './../../routes/_base.door-leaf_.door-skin-panel-production-line'
 import { Route as BaseDoorLeafDoorLeafWorkshopImport } from './../../routes/_base.door-leaf_.door-leaf-workshop'
@@ -62,6 +69,37 @@ const BaseDeviceRoute = BaseDeviceImport.update({
   import('./../../routes/_base.device.lazy').then((d) => d.Route),
 )
 
+const BaseWarehouseWarehouseRoute = BaseWarehouseWarehouseImport.update({
+  path: '/warehouse/warehouse',
+  getParentRoute: () => BaseLazyRoute,
+} as any).lazy(() =>
+  import('./../../routes/_base.warehouse_.warehouse.lazy').then((d) => d.Route),
+)
+
+const BaseWarehouseCargoManagementRoute =
+  BaseWarehouseCargoManagementImport.update({
+    path: '/warehouse/cargo-management',
+    getParentRoute: () => BaseLazyRoute,
+  } as any).lazy(() =>
+    import('./../../routes/_base.warehouse_.cargo-management.lazy').then(
+      (d) => d.Route,
+    ),
+  )
+
+const BaseQualityQualityRoute = BaseQualityQualityImport.update({
+  path: '/quality/quality',
+  getParentRoute: () => BaseLazyRoute,
+} as any).lazy(() =>
+  import('./../../routes/_base.quality_.quality.lazy').then((d) => d.Route),
+)
+
+const BasePlateWireframeRoute = BasePlateWireframeImport.update({
+  path: '/plate/wireframe',
+  getParentRoute: () => BaseLazyRoute,
+} as any).lazy(() =>
+  import('./../../routes/_base.plate_.wireframe.lazy').then((d) => d.Route),
+)
+
 const BasePlatePlateWrapRoute = BasePlatePlateWrapImport.update({
   path: '/plate/plate-wrap',
   getParentRoute: () => BaseLazyRoute,
@@ -97,11 +135,27 @@ const BasePlateLineWorkshopRoute = BasePlateLineWorkshopImport.update({
   import('./../../routes/_base.plate_.line-workshop.lazy').then((d) => d.Route),
 )
 
+const BasePlateLLineWrapRoute = BasePlateLLineWrapImport.update({
+  path: '/plate/l-line-wrap',
+  getParentRoute: () => BaseLazyRoute,
+} as any).lazy(() =>
+  import('./../../routes/_base.plate_.l-line-wrap.lazy').then((d) => d.Route),
+)
+
 const BasePlateLLinePackageRoute = BasePlateLLinePackageImport.update({
   path: '/plate/l-line-package',
   getParentRoute: () => BaseLazyRoute,
 } as any).lazy(() =>
   import('./../../routes/_base.plate_.l-line-package.lazy').then(
+    (d) => d.Route,
+  ),
+)
+
+const BasePlateLLineFineCutRoute = BasePlateLLineFineCutImport.update({
+  path: '/plate/l-line-fine-cut',
+  getParentRoute: () => BaseLazyRoute,
+} as any).lazy(() =>
+  import('./../../routes/_base.plate_.l-line-fine-cut.lazy').then(
     (d) => d.Route,
   ),
 )
@@ -143,6 +197,13 @@ const BasePlateDoorFrameWorkshopRoute = BasePlateDoorFrameWorkshopImport.update(
   import('./../../routes/_base.plate_.door-frame-workshop.lazy').then(
     (d) => d.Route,
   ),
+)
+
+const BasePlanPlanRoute = BasePlanPlanImport.update({
+  path: '/plan/plan',
+  getParentRoute: () => BaseLazyRoute,
+} as any).lazy(() =>
+  import('./../../routes/_base.plan_.plan.lazy').then((d) => d.Route),
 )
 
 const BaseDoorLeafDoorSkinPanelWorkshopRoute =
@@ -262,6 +323,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof BaseDoorLeafDoorSkinPanelWorkshopImport
       parentRoute: typeof BaseLazyImport
     }
+    '/_base/plan/plan': {
+      id: '/_base/plan/plan'
+      path: '/plan/plan'
+      fullPath: '/plan/plan'
+      preLoaderRoute: typeof BasePlanPlanImport
+      parentRoute: typeof BaseLazyImport
+    }
     '/_base/plate/door-frame-workshop': {
       id: '/_base/plate/door-frame-workshop'
       path: '/plate/door-frame-workshop'
@@ -290,11 +358,25 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof BasePlateHangingPackageImport
       parentRoute: typeof BaseLazyImport
     }
+    '/_base/plate/l-line-fine-cut': {
+      id: '/_base/plate/l-line-fine-cut'
+      path: '/plate/l-line-fine-cut'
+      fullPath: '/plate/l-line-fine-cut'
+      preLoaderRoute: typeof BasePlateLLineFineCutImport
+      parentRoute: typeof BaseLazyImport
+    }
     '/_base/plate/l-line-package': {
       id: '/_base/plate/l-line-package'
       path: '/plate/l-line-package'
       fullPath: '/plate/l-line-package'
       preLoaderRoute: typeof BasePlateLLinePackageImport
+      parentRoute: typeof BaseLazyImport
+    }
+    '/_base/plate/l-line-wrap': {
+      id: '/_base/plate/l-line-wrap'
+      path: '/plate/l-line-wrap'
+      fullPath: '/plate/l-line-wrap'
+      preLoaderRoute: typeof BasePlateLLineWrapImport
       parentRoute: typeof BaseLazyImport
     }
     '/_base/plate/line-workshop': {
@@ -332,6 +414,34 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof BasePlatePlateWrapImport
       parentRoute: typeof BaseLazyImport
     }
+    '/_base/plate/wireframe': {
+      id: '/_base/plate/wireframe'
+      path: '/plate/wireframe'
+      fullPath: '/plate/wireframe'
+      preLoaderRoute: typeof BasePlateWireframeImport
+      parentRoute: typeof BaseLazyImport
+    }
+    '/_base/quality/quality': {
+      id: '/_base/quality/quality'
+      path: '/quality/quality'
+      fullPath: '/quality/quality'
+      preLoaderRoute: typeof BaseQualityQualityImport
+      parentRoute: typeof BaseLazyImport
+    }
+    '/_base/warehouse/cargo-management': {
+      id: '/_base/warehouse/cargo-management'
+      path: '/warehouse/cargo-management'
+      fullPath: '/warehouse/cargo-management'
+      preLoaderRoute: typeof BaseWarehouseCargoManagementImport
+      parentRoute: typeof BaseLazyImport
+    }
+    '/_base/warehouse/warehouse': {
+      id: '/_base/warehouse/warehouse'
+      path: '/warehouse/warehouse'
+      fullPath: '/warehouse/warehouse'
+      preLoaderRoute: typeof BaseWarehouseWarehouseImport
+      parentRoute: typeof BaseLazyImport
+    }
   }
 }
 
@@ -347,16 +457,23 @@ export const routeTree = rootRoute.addChildren({
     BaseDoorLeafDoorLeafWorkshopRoute,
     BaseDoorLeafDoorSkinPanelProductionLineRoute,
     BaseDoorLeafDoorSkinPanelWorkshopRoute,
+    BasePlanPlanRoute,
     BasePlateDoorFrameWorkshopRoute,
     BasePlateHangingBoardWorkshopRoute,
     BasePlateHangingCuttingRoute,
     BasePlateHangingPackageRoute,
+    BasePlateLLineFineCutRoute,
     BasePlateLLinePackageRoute,
+    BasePlateLLineWrapRoute,
     BasePlateLineWorkshopRoute,
     BasePlatePlateCuttingRoute,
     BasePlatePlateNailingRoute,
     BasePlatePlatePackageRoute,
     BasePlatePlateWrapRoute,
+    BasePlateWireframeRoute,
+    BaseQualityQualityRoute,
+    BaseWarehouseCargoManagementRoute,
+    BaseWarehouseWarehouseRoute,
   }),
 })
 
@@ -385,16 +502,23 @@ export const routeTree = rootRoute.addChildren({
         "/_base/door-leaf/door-leaf-workshop",
         "/_base/door-leaf/door-skin-panel-production-line",
         "/_base/door-leaf/door-skin-panel-workshop",
+        "/_base/plan/plan",
         "/_base/plate/door-frame-workshop",
         "/_base/plate/hanging-board-workshop",
         "/_base/plate/hanging-cutting",
         "/_base/plate/hanging-package",
+        "/_base/plate/l-line-fine-cut",
         "/_base/plate/l-line-package",
+        "/_base/plate/l-line-wrap",
         "/_base/plate/line-workshop",
         "/_base/plate/plate-cutting",
         "/_base/plate/plate-nailing",
         "/_base/plate/plate-package",
-        "/_base/plate/plate-wrap"
+        "/_base/plate/plate-wrap",
+        "/_base/plate/wireframe",
+        "/_base/quality/quality",
+        "/_base/warehouse/cargo-management",
+        "/_base/warehouse/warehouse"
       ]
     },
     "/_base/device": {
@@ -425,6 +549,10 @@ export const routeTree = rootRoute.addChildren({
       "filePath": "_base.door-leaf_.door-skin-panel-workshop.tsx",
       "parent": "/_base"
     },
+    "/_base/plan/plan": {
+      "filePath": "_base.plan_.plan.tsx",
+      "parent": "/_base"
+    },
     "/_base/plate/door-frame-workshop": {
       "filePath": "_base.plate_.door-frame-workshop.tsx",
       "parent": "/_base"
@@ -441,8 +569,16 @@ export const routeTree = rootRoute.addChildren({
       "filePath": "_base.plate_.hanging-package.tsx",
       "parent": "/_base"
     },
+    "/_base/plate/l-line-fine-cut": {
+      "filePath": "_base.plate_.l-line-fine-cut.tsx",
+      "parent": "/_base"
+    },
     "/_base/plate/l-line-package": {
       "filePath": "_base.plate_.l-line-package.tsx",
+      "parent": "/_base"
+    },
+    "/_base/plate/l-line-wrap": {
+      "filePath": "_base.plate_.l-line-wrap.tsx",
       "parent": "/_base"
     },
     "/_base/plate/line-workshop": {
@@ -463,6 +599,22 @@ export const routeTree = rootRoute.addChildren({
     },
     "/_base/plate/plate-wrap": {
       "filePath": "_base.plate_.plate-wrap.tsx",
+      "parent": "/_base"
+    },
+    "/_base/plate/wireframe": {
+      "filePath": "_base.plate_.wireframe.tsx",
+      "parent": "/_base"
+    },
+    "/_base/quality/quality": {
+      "filePath": "_base.quality_.quality.tsx",
+      "parent": "/_base"
+    },
+    "/_base/warehouse/cargo-management": {
+      "filePath": "_base.warehouse_.cargo-management.tsx",
+      "parent": "/_base"
+    },
+    "/_base/warehouse/warehouse": {
+      "filePath": "_base.warehouse_.warehouse.tsx",
       "parent": "/_base"
     }
   }
