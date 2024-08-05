@@ -2,17 +2,17 @@ import type { EChartsOption } from 'echarts'
 
 import { getRandomValues } from '@/features/random'
 
-export function LLineHourCompletionLine() {
+export function ProductionReachedBar() {
   const chartStore = useChartStore()
 
   const [data, setData] = useState([
-    [88, 90, 92, 89, 99, 87, 90, 91, 95],
-    [95, 95, 95, 95, 95, 95, 95, 95, 95]
+    [400, 440, 415, 500, 420, 440],
+    [220, 230, 340, 325, 316, 200]
   ])
 
   useEffect(() => {
     const timer = setInterval(() => {
-      setData([getRandomValues(9, 100, 80), getRandomValues(9, 100, 80)])
+      setData([getRandomValues(6, 500), getRandomValues(6, 500)])
     }, 5000)
 
     return () => clearInterval(timer)
@@ -25,7 +25,7 @@ export function LLineHourCompletionLine() {
       },
       backgroundColor: '',
       title: {
-        text: 'L线工位小时完工统计',
+        text: '生产达成统计',
         left: 'center'
       },
       tooltip: {
@@ -36,13 +36,13 @@ export function LLineHourCompletionLine() {
       },
       grid: {
         left: 0,
-        right: 40,
+        right: 0,
         bottom: 10,
         tooltip: true,
         containLabel: true
       },
       legend: {
-        data: ['标准量', '实际量'],
+        data: ['计划数量', '完成数量'],
         align: 'left',
         top: 0,
         right: 0,
@@ -50,30 +50,30 @@ export function LLineHourCompletionLine() {
       },
       xAxis: {
         type: 'category',
-        name: '小时',
-        data: ['1小时', '2小时', '3小时', '4小时', '5小时', '6小时', '7小时', '8小时', '加班'],
+        name: '工位',
+        data: ['工位A', '工位B', '工位C', '工位D', '工位E', '工位F'],
         axisTick: {
           alignWithLabel: true
         }
       },
       yAxis: {
         type: 'value',
-        name: '数量',
-        min: 80,
-        max: 100
+        name: '门数',
+        min: 0,
+        max: 500
       },
       series: [
         {
-          type: 'line',
-          name: '标准量',
+          type: 'bar',
+          name: '计划数量',
           data: data[0],
-          label: { show: true }
+          label: { show: true, position: 'top' }
         },
         {
-          type: 'line',
-          name: '实际量',
+          type: 'bar',
+          name: '完成数量',
           data: data[1],
-          label: { show: true }
+          label: { show: true, position: 'top' }
         }
       ]
     }),

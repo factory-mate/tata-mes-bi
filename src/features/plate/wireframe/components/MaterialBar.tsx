@@ -2,17 +2,17 @@ import type { EChartsOption } from 'echarts'
 
 import { getRandomValues } from '@/features/random'
 
-export function LLineHourCompletionLine() {
+export function MaterialBar() {
   const chartStore = useChartStore()
 
   const [data, setData] = useState([
-    [88, 90, 92, 89, 99, 87, 90, 91, 95],
-    [95, 95, 95, 95, 95, 95, 95, 95, 95]
+    [120, 140, 115, 100, 120, 100],
+    [50, 60, 70, 80, 90, 100]
   ])
 
   useEffect(() => {
     const timer = setInterval(() => {
-      setData([getRandomValues(9, 100, 80), getRandomValues(9, 100, 80)])
+      setData([getRandomValues(12, 150), getRandomValues(12, 150)])
     }, 5000)
 
     return () => clearInterval(timer)
@@ -25,7 +25,7 @@ export function LLineHourCompletionLine() {
       },
       backgroundColor: '',
       title: {
-        text: 'L线工位小时完工统计',
+        text: '物料计划量 - 配送量对比',
         left: 'center'
       },
       tooltip: {
@@ -36,44 +36,39 @@ export function LLineHourCompletionLine() {
       },
       grid: {
         left: 0,
-        right: 40,
+        right: 10,
         bottom: 10,
         tooltip: true,
         containLabel: true
       },
       legend: {
-        data: ['标准量', '实际量'],
+        data: ['计划数量', '配送数量'],
         align: 'left',
         top: 0,
         right: 0,
         orient: 'horizontal'
       },
-      xAxis: {
+      xAxis: { type: 'value', name: '数量', min: 0, max: 150 },
+      yAxis: {
         type: 'category',
-        name: '小时',
-        data: ['1小时', '2小时', '3小时', '4小时', '5小时', '6小时', '7小时', '8小时', '加班'],
+        name: '物料',
+        data: ['物料 A', '物料 B', '物料 C', '物料 D', '物料 E', '物料 F'],
         axisTick: {
           alignWithLabel: true
         }
       },
-      yAxis: {
-        type: 'value',
-        name: '数量',
-        min: 80,
-        max: 100
-      },
       series: [
         {
-          type: 'line',
-          name: '标准量',
+          type: 'bar',
+          name: '计划数量',
           data: data[0],
-          label: { show: true }
+          label: { show: true, position: 'right' }
         },
         {
-          type: 'line',
-          name: '实际量',
+          type: 'bar',
+          name: '配送数量',
           data: data[1],
-          label: { show: true }
+          label: { show: true, position: 'right' }
         }
       ]
     }),

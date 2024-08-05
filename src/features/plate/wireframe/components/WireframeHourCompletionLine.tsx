@@ -2,7 +2,7 @@ import type { EChartsOption } from 'echarts'
 
 import { getRandomValues } from '@/features/random'
 
-export function LLineHourCompletionLine() {
+export function WireframeHourCompletionLine() {
   const chartStore = useChartStore()
 
   const [data, setData] = useState([
@@ -25,7 +25,7 @@ export function LLineHourCompletionLine() {
       },
       backgroundColor: '',
       title: {
-        text: 'L线工位小时完工统计',
+        text: '线框工位小时完工统计',
         left: 'center'
       },
       tooltip: {
