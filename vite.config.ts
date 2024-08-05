@@ -6,7 +6,7 @@ import ReactSWC from '@vitejs/plugin-react-swc'
 import AutoImport from 'unplugin-auto-import/vite'
 import iconsResolver from 'unplugin-icons/resolver'
 import Icons from 'unplugin-icons/vite'
-import TurboConsole from 'unplugin-turbo-console/vite'
+// import TurboConsole from 'unplugin-turbo-console/vite'
 import { defineConfig } from 'vite'
 import WebfontDownload from 'vite-plugin-webfont-dl'
 
@@ -47,7 +47,7 @@ export default defineConfig(({ mode }) => ({
       compiler: 'jsx',
       jsx: 'react'
     }),
-    TurboConsole(),
+    // TurboConsole(),
     WebfontDownload(),
     LegacyPlugin({
       targets: ['> 0%', 'Chrome > 4', 'Android >= 4', 'IOS >= 7', 'not ie <= 6', 'Firefox ESR'],
