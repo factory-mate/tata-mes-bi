@@ -12,7 +12,7 @@ import {
   StatisticsRow
 } from '@/features/plate/l-line-wrap'
 
-export const Route = createLazyFileRoute('/_base/plate/l-line-wrap')({
+export const Route = createLazyFileRoute('/_base/plate_/l-line-wrap')({
   component: Page
 })
 

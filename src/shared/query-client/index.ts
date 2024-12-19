@@ -1,4 +1,4 @@
-import { MutationCache, QueryClient } from '@tanstack/react-query'
+import { MutationCache, type Query, QueryClient } from '@tanstack/react-query'
 
 export const STALE = Object.freeze({
   MINUTES: {
@@ -31,8 +31,19 @@ export const queryClient = new QueryClient({
    */
   mutationCache: new MutationCache({
     onSuccess: (_data, _variables, _context, mutation) => {
+      const nonStaticQueries = (query: Query) => {
+        const defaultStaleTime = queryClient.getQueryDefaults(query.queryKey).staleTime ?? 0
+        const staleTimes = query.observers
+          .map((observer) => observer.options.staleTime)
+          .filter((staleTime) => staleTime !== undefined)
+        const staleTime =
+          query.getObserversCount() > 0 ? Math.min(...(staleTimes as number[])) : defaultStaleTime
+        return staleTime !== Number.POSITIVE_INFINITY
+      }
+
       queryClient.invalidateQueries({
-        queryKey: mutation.options.mutationKey
+        queryKey: mutation.options.mutationKey,
+        predicate: nonStaticQueries
       })
     }
   })

@@ -12,7 +12,7 @@ import {
   StatisticsRow
 } from '@/features/door-leaf/door-skin-panel-workshop'
 
-export const Route = createLazyFileRoute('/_base/door-leaf/door-skin-panel-workshop')({
+export const Route = createLazyFileRoute('/_base/door-leaf_/door-skin-panel-workshop')({
   component: Page
 })
 

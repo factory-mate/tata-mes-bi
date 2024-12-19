@@ -14,7 +14,7 @@ import {
   WireframeHourCompletionLine
 } from '@/features/plate/wireframe'
 
-export const Route = createLazyFileRoute('/_base/plate/wireframe')({
+export const Route = createLazyFileRoute('/_base/plate_/wireframe')({
   component: Page
 })
 

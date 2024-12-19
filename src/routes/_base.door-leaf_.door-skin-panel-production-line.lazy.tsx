@@ -16,7 +16,7 @@ import {
   UnfinishedTasksTable
 } from '@/features/door-leaf/door-skin-panel-production-line'
 
-export const Route = createLazyFileRoute('/_base/door-leaf/door-skin-panel-production-line')({
+export const Route = createLazyFileRoute('/_base/door-leaf_/door-skin-panel-production-line')({
   component: Page
 })
 function Page() {

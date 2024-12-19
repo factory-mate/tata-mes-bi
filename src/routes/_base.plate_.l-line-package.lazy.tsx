@@ -13,7 +13,7 @@ import {
   StatisticsRow
 } from '@/features/plate/l-line-package'
 
-export const Route = createLazyFileRoute('/_base/plate/l-line-package')({
+export const Route = createLazyFileRoute('/_base/plate_/l-line-package')({
   component: Page
 })
 

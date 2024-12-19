@@ -11,7 +11,7 @@ import {
   WeekPackageCheckResultTable
 } from '@/features/quality'
 
-export const Route = createLazyFileRoute('/_base/quality/quality')({
+export const Route = createLazyFileRoute('/_base/quality_/quality')({
   component: Page
 })
 

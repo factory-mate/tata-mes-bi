@@ -14,7 +14,7 @@ import {
   StatisticsRow
 } from '@/features/plate/line-workshop'
 
-export const Route = createLazyFileRoute('/_base/plate/line-workshop')({
+export const Route = createLazyFileRoute('/_base/plate_/line-workshop')({
   component: Page
 })
 

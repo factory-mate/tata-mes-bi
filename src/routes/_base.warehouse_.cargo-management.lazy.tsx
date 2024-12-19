@@ -2,7 +2,7 @@ import { createLazyFileRoute } from '@tanstack/react-router'
 
 import { ListArea, StatisticsRow } from '@/features/warehouse/cargo-management'
 
-export const Route = createLazyFileRoute('/_base/warehouse/cargo-management')({
+export const Route = createLazyFileRoute('/_base/warehouse_/cargo-management')({
   component: Page
 })
 

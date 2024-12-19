@@ -14,7 +14,7 @@ import {
   WindowDoorStationHoursLine
 } from '@/features/plate/plate-nailing'
 
-export const Route = createLazyFileRoute('/_base/plate/plate-nailing')({
+export const Route = createLazyFileRoute('/_base/plate_/plate-nailing')({
   component: Page
 })
 

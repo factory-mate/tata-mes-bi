@@ -17,7 +17,7 @@ import {
   TotalOrderCountPie
 } from '@/features/plan'
 
-export const Route = createLazyFileRoute('/_base/plan/plan')({
+export const Route = createLazyFileRoute('/_base/plan_/plan')({
   component: Page
 })
 

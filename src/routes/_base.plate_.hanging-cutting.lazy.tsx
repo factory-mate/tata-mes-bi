@@ -14,7 +14,7 @@ import {
   UnloadingStationHoursLine
 } from '@/features/plate/hanging-cutting'
 
-export const Route = createLazyFileRoute('/_base/plate/hanging-cutting')({
+export const Route = createLazyFileRoute('/_base/plate_/hanging-cutting')({
   component: Page
 })
 

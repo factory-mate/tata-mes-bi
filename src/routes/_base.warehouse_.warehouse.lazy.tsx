@@ -11,7 +11,7 @@ import {
   UnEnterPackageBar
 } from '@/features/warehouse/warehouse'
 
-export const Route = createLazyFileRoute('/_base/warehouse/warehouse')({
+export const Route = createLazyFileRoute('/_base/warehouse_/warehouse')({
   component: Page
 })
 
