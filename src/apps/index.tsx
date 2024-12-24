@@ -3,5 +3,11 @@ import '@/shared/echarts'
 import { RouterProvider } from '@tanstack/react-router'
 
 export default function App() {
-  return <RouterProvider router={router} />
+  return (
+    <QueryProvider>
+      <AxiosProvider>
+        <RouterProvider router={router} />
+      </AxiosProvider>
+    </QueryProvider>
+  )
 }

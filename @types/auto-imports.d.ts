@@ -6,9 +6,11 @@
 // biome-ignore lint: disable
 export {}
 declare global {
+  const AxiosProvider: typeof import('../src/shared/providers/AxiosProvider/index')['default']
   const BlockContainer: typeof import('../src/shared/components/BlockContainer/index')['default']
   const ClockPanel: typeof import('../src/shared/components/ClockPanel/index')['default']
   const KB_SERVICE_API_PREFIX: typeof import('../src/shared/api/index')['KB_SERVICE_API_PREFIX']
+  const QueryProvider: typeof import('../src/shared/providers/QueryProvider/index')['default']
   const ReactChart: typeof import('@bit-ocean/echarts')['ReactChart']
   const ScrollTable: typeof import('../src/shared/components/ScrollTable/index')['default']
   const TitleRow: typeof import('../src/shared/components/TitleRow/index')['default']
