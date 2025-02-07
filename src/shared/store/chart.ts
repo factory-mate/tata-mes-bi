@@ -13,7 +13,7 @@ const initialState: State = {
 
 export const useChartStore = create<State & Actions>()(
   subscribeWithSelector(
-    devtools((set, get) => ({
+    devtools((_set, _get) => ({
       ...initialState
     }))
   )
