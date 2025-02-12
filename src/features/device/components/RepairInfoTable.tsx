@@ -1,7 +1,7 @@
 import { repairInfoQO } from '../queries'
 import type { RepairInfoVo } from '../types'
 
-export function RepairInfo() {
+export function RepairInfoTable() {
   const { data: { data = [] } = {} } = useQuery(repairInfoQO())
 
   return (

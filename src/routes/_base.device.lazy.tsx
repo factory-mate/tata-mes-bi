@@ -1,14 +1,14 @@
 import { createLazyFileRoute } from '@tanstack/react-router'
 
 import {
-  Check,
-  CumulativeDownTime,
-  FaultClassify,
-  Maintain,
-  MTTR,
-  Repair,
-  RepairInfo,
-  RepairTime
+  CheckBlock,
+  CumulativeDownTimeLine,
+  FaultClassifyPie,
+  MaintainBlock,
+  MTTRBar,
+  RepairBlock,
+  RepairInfoTable,
+  RepairTimeBar
 } from '@/features/device'
 
 export const Route = createLazyFileRoute('/_base/device')({
@@ -23,32 +23,32 @@ function Page() {
       </div>
 
       <BlockContainer className="col-span-4 row-span-2">
-        <Repair />
+        <RepairBlock />
       </BlockContainer>
       <BlockContainer className="col-span-4 row-span-2">
-        <Maintain />
+        <MaintainBlock />
       </BlockContainer>
       <BlockContainer className="col-span-4 row-span-2">
-        <Check />
+        <CheckBlock />
       </BlockContainer>
 
       <BlockContainer className="col-span-6 row-span-5">
-        <RepairInfo />
+        <RepairInfoTable />
       </BlockContainer>
 
       <BlockContainer className="col-span-6 row-span-5">
-        <RepairTime />
+        <RepairTimeBar />
       </BlockContainer>
 
       <BlockContainer className="col-span-4 row-span-4">
-        <CumulativeDownTime />
+        <CumulativeDownTimeLine />
       </BlockContainer>
 
       <BlockContainer className="col-span-4 row-span-4">
-        <FaultClassify />
+        <FaultClassifyPie />
       </BlockContainer>
       <BlockContainer className="col-span-4 row-span-4">
-        <MTTR />
+        <MTTRBar />
       </BlockContainer>
     </>
   )

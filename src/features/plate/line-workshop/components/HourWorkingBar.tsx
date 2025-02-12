@@ -1,20 +1,16 @@
 import type { EChartsOption } from 'echarts'
 
+import { hourWorkingQO } from '../queries'
+
 export function HourWorkingBar() {
   const chartStore = useChartStore()
 
-  const generateRandomData = () => {
-    const hours = ['1小时', '2小时', '3小时', '4小时', '5小时', '6小时', '7小时', '8小时', '加班']
-    return hours.map((hour) => ({
-      hour,
-      a: Math.floor(Math.random() * 150),
-      b: Math.floor(Math.random() * 150),
-      c: Math.floor(Math.random() * 150),
-      d: Math.floor(Math.random() * 150)
-    }))
-  }
-
-  const [source, setSource] = useState(generateRandomData())
+  const { data = [] } = useQuery(
+    hourWorkingQO({
+      orderByFileds: 'GDCode',
+      conditions: 'GDCode in (FM010502,FM010506,FM010507,FM010508,FM010511)'
+    })
+  )
 
   const option: EChartsOption = useMemo(
     () => ({
@@ -59,23 +55,44 @@ export function HourWorkingBar() {
         max: 150
       },
       series: [
-        { type: 'bar', label: { show: true, position: 'top' } },
-        { type: 'bar', label: { show: true, position: 'top' } },
-        { type: 'bar', label: { show: true, position: 'top' } },
-        { type: 'bar', label: { show: true, position: 'top' } }
+        {
+          type: 'bar',
+          label: { show: true, position: 'top' },
+          encode: {
+            x: '',
+            y: ''
+          }
+        },
+        {
+          type: 'bar',
+          label: { show: true, position: 'top' },
+          encode: {
+            x: '',
+            y: ''
+          }
+        },
+        {
+          type: 'bar',
+          label: { show: true, position: 'top' },
+          encode: {
+            x: '',
+            y: ''
+          }
+        },
+        {
+          type: 'bar',
+          label: { show: true, position: 'top' },
+          encode: {
+            x: '',
+            y: ''
+          }
+        }
       ],
       dataset: {
-        dimensions: [
-          { name: 'hour', displayName: '小时' },
-          { name: 'a', displayName: '工段 A' },
-          { name: 'b', displayName: '工段 B' },
-          { name: 'c', displayName: '工段 C' },
-          { name: 'd', displayName: '工段 D' }
-        ],
-        source
+        source: data
       }
     }),
-    [source]
+    [data]
   )
 
   return (

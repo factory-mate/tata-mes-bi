@@ -3,7 +3,7 @@ import type { EChartsOption } from 'echarts'
 import { faultClassifyQO } from '../queries'
 import type { FaultClassifyVo } from '../types'
 
-export function FaultClassify() {
+export function FaultClassifyPie() {
   const chartStore = useChartStore()
 
   const { data = [] } = useQuery(faultClassifyQO())

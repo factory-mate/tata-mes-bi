@@ -3,7 +3,7 @@ import type { Templates } from '@/shared/types'
 import { repairQO } from '../queries'
 import type { RepairVo } from '../types'
 
-export function Repair() {
+export function RepairBlock() {
   const title = '维修统计'
 
   const templates: Templates<RepairVo> = [

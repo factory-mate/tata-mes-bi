@@ -1,19 +1,19 @@
 import type { Templates } from '@/shared/types'
 
-import { maintainQO } from '../queries'
-import type { MaintainVo } from '../types'
+import { checkQO } from '../queries'
+import type { CheckVo } from '../types'
 
-export function Maintain() {
-  const title = '保养统计'
+export function CheckBlock() {
+  const title = '点检统计'
 
-  const templates: Templates<MaintainVo> = [
-    { label: '保养单', key: 'AllCount' },
+  const templates: Templates<CheckVo> = [
+    { label: '点检单', key: 'AllCount' },
     { label: '已完成', key: 'WCCount' },
     { label: '进行中', key: 'JXZCount' },
-    { label: '待保养', key: 'DBYCount' }
+    { label: '待点检', key: 'DDJCount' }
   ]
 
-  const { data } = useQuery(maintainQO())
+  const { data } = useQuery(checkQO())
 
   return (
     <div className="flex size-full flex-col items-center justify-center space-y-2">

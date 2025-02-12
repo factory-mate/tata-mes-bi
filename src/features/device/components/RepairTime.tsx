@@ -2,7 +2,7 @@ import type { EChartsOption } from 'echarts'
 
 import { repairTimeQO } from '../queries'
 
-export function RepairTime() {
+export function RepairTimeBar() {
   const chartStore = useChartStore()
 
   const { data = [] } = useQuery(repairTimeQO())

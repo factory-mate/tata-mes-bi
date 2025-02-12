@@ -1,18 +1,16 @@
 import type { EChartsOption } from 'echarts'
 
+import { productionReachQO } from '../queries'
+
 export function ProductionReachBar() {
   const chartStore = useChartStore()
 
-  const generateRandomData = () => {
-    const lines = ['工段 A', '工段 B', '工段 C', '工段 D']
-    return lines.map((line) => ({
-      line,
-      planNum: Math.floor(Math.random() * 150),
-      finishNum: Math.floor(Math.random() * 150)
-    }))
-  }
-
-  const [source, setSource] = useState(generateRandomData())
+  const { data = [] } = useQuery(
+    productionReachQO({
+      orderByFileds: 'cProcessCode',
+      conditions: 'cProcessCode in (GX0102,GX0105,GX0106,GX0108)'
+    })
+  )
 
   const option: EChartsOption = useMemo(
     () => ({
@@ -57,19 +55,22 @@ export function ProductionReachBar() {
         max: 150
       },
       series: [
-        { type: 'bar', label: { show: true, position: 'top' } },
-        { type: 'bar', label: { show: true, position: 'top' } }
+        {
+          type: 'bar',
+          label: { show: true, position: 'top' },
+          encode: { x: 'cProcessName', y: 'EndCount' }
+        },
+        {
+          type: 'bar',
+          label: { show: true, position: 'top' },
+          encode: { x: 'cProcessName', y: 'EndCount' }
+        }
       ],
       dataset: {
-        dimensions: [
-          { name: 'line', displayName: '工段' },
-          { name: 'planNum', displayName: '计划数量' },
-          { name: 'finishNum', displayName: '完成数量' }
-        ],
-        source
+        source: data
       }
     }),
-    [source]
+    [data]
   )
 
   return (

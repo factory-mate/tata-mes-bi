@@ -30,10 +30,11 @@ export class DeviceAPI {
     return httpClient.get<CheckVo>(`${this.apiPrefix}/DEVICE_TOURVOUCH/Get_DJTJ`, {}, { signal })
   }
 
-  static async getRepairInfo() {
+  static async getRepairInfo(signal?: AbortSignal) {
     return httpClient.post<Page<RepairInfoVo>>(
       `${this.apiPrefix}/DEVICE_FALUTVOUCH/Get_SBWXF_ALLForPage`,
-      {}
+      {},
+      { signal }
     )
   }
 

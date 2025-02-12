@@ -1,20 +1,20 @@
 import type { EChartsOption } from 'echarts'
 
-import { cumulativeDownTimeQO } from '../queries'
+import { mttrQO } from '../queries'
 
-export function CumulativeDownTime() {
+export function MTTRBar() {
   const chartStore = useChartStore()
 
-  const { data = [] } = useQuery(cumulativeDownTimeQO())
+  const { data = [] } = useQuery(mttrQO())
 
-  const option = useMemo<EChartsOption>(
+  const option: EChartsOption = useMemo(
     () => ({
       textStyle: {
         fontFamily: 'inherit'
       },
       backgroundColor: '',
       title: {
-        text: '累计停机时间',
+        text: '设备平均修复时间（MTTR）',
         left: 'center'
       },
       tooltip: {
@@ -25,14 +25,14 @@ export function CumulativeDownTime() {
       },
       grid: {
         left: 0,
-        right: 50,
+        right: 70,
         bottom: 10,
         tooltip: true,
         containLabel: true
       },
       xAxis: {
         type: 'category',
-        name: '月份',
+        name: '设备名称',
         axisTick: {
           alignWithLabel: true
         },
@@ -42,15 +42,15 @@ export function CumulativeDownTime() {
       },
       yAxis: {
         type: 'value',
-        name: '小时',
+        name: '分钟',
         min: 0,
-        max: 250
+        max: 10_000
       },
       series: [
         {
-          type: 'line',
-          name: '数量',
-          encode: { x: 'cMonth', y: 'iHour' },
+          type: 'bar',
+          name: '分钟',
+          encode: { x: 'cDeviceName', y: 'iMinute' },
           label: { show: true, position: 'top' }
         }
       ],

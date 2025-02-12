@@ -1,17 +1,17 @@
 import type { EChartsOption } from 'echarts'
 
+import { packageNumQO } from '../queries'
+import type { PackageNumVo } from '../types'
+
 export function PackageNumPie() {
   const chartStore = useChartStore()
 
-  const generateRandomData = () => {
-    const lines = ['工位 A', '工位 B', '工位 C', '工位 D', '工位 E']
-    return lines.map((line) => ({
-      line,
-      value: Math.floor(Math.random() * 60)
-    }))
-  }
-
-  const [source, setSource] = useState(generateRandomData())
+  const { data = [] } = useQuery(
+    packageNumQO({
+      orderByFileds: 'cFactoryUnitCode',
+      conditions: 'cProcessCode = GX0108'
+    })
+  )
 
   const option: EChartsOption = useMemo(
     () => ({
@@ -24,14 +24,13 @@ export function PackageNumPie() {
         left: 'center'
       },
       tooltip: {
-        trigger: 'item',
-        formatter: '{b}: {d}%'
+        trigger: 'item'
       },
       legend: {
         orient: 'vertical',
         right: 0,
         top: 0,
-        data: source.map((i) => i.line)
+        data: data.map((i) => i.cFactoryUnitName)
       },
       grid: {
         left: 0,
@@ -44,20 +43,28 @@ export function PackageNumPie() {
         {
           type: 'pie',
           name: '百分比',
-          label: { show: true, position: 'inner', formatter: '{b}: {d}%' },
+          label: {
+            show: true,
+            position: 'inner',
+            formatter: (params) => {
+              const d = params.data as PackageNumVo
+              return `${d.cFactoryUnitName}: ${d.AllCount} (${d.iRate}%)`
+            }
+          },
           top: 10,
-          right: 0
+          right: 0,
+          encode: {
+            itemName: 'cFactoryUnitName',
+            value: 'iRate',
+            tooltip: 'AllCount'
+          }
         }
       ],
       dataset: {
-        dimensions: [
-          { name: 'line', displayName: '工位' },
-          { name: 'value', displayName: '百分比' }
-        ],
-        source
+        source: data
       }
     }),
-    [source]
+    [data]
   )
 
   return (

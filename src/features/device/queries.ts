@@ -33,7 +33,7 @@ export const checkQO = () =>
 export const repairInfoQO = () =>
   queryOptions({
     queryKey: repairInfoQK(),
-    queryFn: () => DeviceAPI.getRepairInfo()
+    queryFn: ({ signal }) => DeviceAPI.getRepairInfo(signal)
   })
 
 export const repairTimeQO = () =>

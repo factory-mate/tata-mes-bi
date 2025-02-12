@@ -1,7 +1,16 @@
 import type { EChartsOption } from 'echarts'
 
+import { internalReturnReasonQO } from '../queries'
+
 export function InternalReturnReasonBar() {
   const chartStore = useChartStore()
+
+  const { data = [] } = useQuery(
+    internalReturnReasonQO({
+      orderByFileds: 'cFactoryUnitCode',
+      conditions: 'cFactoryUnitCode like FM0105'
+    })
+  )
 
   const generateRandomData = () => {
     const lines = ['工段 A', '工段 B', '工段 C', '工段 D', '工段 E']
