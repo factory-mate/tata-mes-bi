@@ -1,15 +1,31 @@
-export const WXTJ_QK = 'device:WXTJ'
+export const REPAIR_QK = 'device:repair'
 
-export const BYTJ_QK = 'device:BYTJ'
+export const MAINTAIN_QK = 'device:maintain'
 
-export const DJTJ_QK = 'device:DJTJ'
+export const CHECK_QK = 'device:check'
 
-export const WXCSTJ_QK = 'device:WXCSTJ'
+export const REPAIR_INFO_QK = 'device:repair-info'
 
-export const wxtjQK = () => [WXTJ_QK] as const
+export const REPAIR_TIME_QK = 'device:repair-time'
 
-export const bytjQK = () => [BYTJ_QK] as const
+export const CUMULATIVE_DOWN_TIME_QK = 'device:cumulative-down-time'
 
-export const djtjQK = () => [DJTJ_QK] as const
+export const FAULT_CLASSIFY_QK = 'device:fault-classify'
 
-export const wxcstjQK = () => [WXCSTJ_QK] as const
+export const MTTR_QK = 'device:mttr'
+
+export const repairQK = () => [REPAIR_QK] as const
+
+export const maintainQK = () => [MAINTAIN_QK] as const
+
+export const checkQK = () => [CHECK_QK] as const
+
+export const repairInfoQK = () => [REPAIR_INFO_QK] as const
+
+export const repairTimeQK = () => [REPAIR_TIME_QK] as const
+
+export const cumulativeDownTimeQK = () => [CUMULATIVE_DOWN_TIME_QK] as const
+
+export const faultClassifyQK = () => [FAULT_CLASSIFY_QK] as const
+
+export const mttrQK = () => [MTTR_QK] as const

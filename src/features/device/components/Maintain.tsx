@@ -1,21 +1,19 @@
-import { useSuspenseQuery } from '@tanstack/react-query'
-
 import type { Templates } from '@/shared/types'
 
-import { wxtjQO } from '../queries'
-import type { WXTJVo } from '../types'
+import { maintainQO } from '../queries'
+import type { MaintainVo } from '../types'
 
-export function RepairStatistics() {
-  const title = '维修统计'
+export function Maintain() {
+  const title = '保养统计'
 
-  const templates: Templates<WXTJVo> = [
-    { label: '报修数', key: 'AllCount' },
-    { label: '完成数', key: 'WCCount' },
+  const templates: Templates<MaintainVo> = [
+    { label: '保养单', key: 'AllCount' },
+    { label: '已完成', key: 'WCCount' },
     { label: '进行中', key: 'JXZCount' },
-    { label: '待维修', key: 'DWXCount' }
+    { label: '待保养', key: 'DBYCount' }
   ]
 
-  const { data } = useSuspenseQuery(wxtjQO())
+  const { data } = useQuery(maintainQO())
 
   return (
     <div className="flex size-full flex-col items-center justify-center space-y-2">
@@ -27,7 +25,7 @@ export function RepairStatistics() {
             className="col-span-1 row-span-1 space-x-4 text-center text-xl"
           >
             <span>{i.label}:</span>
-            <span className="text-xl font-bold">{data[i.key]}</span>
+            <span className="text-xl font-bold">{data?.[i.key]}</span>
           </div>
         ))}
       </div>

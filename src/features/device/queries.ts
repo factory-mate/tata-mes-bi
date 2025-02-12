@@ -1,28 +1,61 @@
 import { queryOptions } from '@tanstack/react-query'
 
 import { DeviceAPI } from './api'
-import { bytjQK, wxtjQK } from './query-keys'
+import {
+  checkQK,
+  cumulativeDownTimeQK,
+  faultClassifyQK,
+  maintainQK,
+  mttrQK,
+  repairInfoQK,
+  repairQK,
+  repairTimeQK
+} from './query-keys'
 
-export const wxtjQO = () =>
+export const repairQO = () =>
   queryOptions({
-    queryKey: wxtjQK(),
-    queryFn: ({ signal }) => DeviceAPI.getWXTJ(signal)
+    queryKey: repairQK(),
+    queryFn: ({ signal }) => DeviceAPI.getRepair(signal)
   })
 
-export const bytjQO = () =>
+export const maintainQO = () =>
   queryOptions({
-    queryKey: bytjQK(),
-    queryFn: ({ signal }) => DeviceAPI.getBYTJ(signal)
+    queryKey: maintainQK(),
+    queryFn: ({ signal }) => DeviceAPI.getMaintain(signal)
   })
 
-export const djtjQO = () =>
+export const checkQO = () =>
   queryOptions({
-    queryKey: wxtjQK(),
-    queryFn: ({ signal }) => DeviceAPI.getDJTJ(signal)
+    queryKey: checkQK(),
+    queryFn: ({ signal }) => DeviceAPI.getCheck(signal)
   })
 
-export const wxcstjQO = () =>
+export const repairInfoQO = () =>
   queryOptions({
-    queryKey: wxtjQK(),
-    queryFn: ({ signal }) => DeviceAPI.getWXCSTJ(signal)
+    queryKey: repairInfoQK(),
+    queryFn: () => DeviceAPI.getRepairInfo()
+  })
+
+export const repairTimeQO = () =>
+  queryOptions({
+    queryKey: repairTimeQK(),
+    queryFn: ({ signal }) => DeviceAPI.getRepairTime(signal)
+  })
+
+export const cumulativeDownTimeQO = () =>
+  queryOptions({
+    queryKey: cumulativeDownTimeQK(),
+    queryFn: ({ signal }) => DeviceAPI.getCumulativeDownTime(signal)
+  })
+
+export const faultClassifyQO = () =>
+  queryOptions({
+    queryKey: faultClassifyQK(),
+    queryFn: ({ signal }) => DeviceAPI.getFaultClassify(signal)
+  })
+
+export const mttrQO = () =>
+  queryOptions({
+    queryKey: mttrQK(),
+    queryFn: ({ signal }) => DeviceAPI.getMMTR(signal)
   })

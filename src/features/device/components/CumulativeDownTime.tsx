@@ -1,32 +1,13 @@
 import type { EChartsOption } from 'echarts'
 
-export function CumulativeDownTimeStatistics() {
+import { cumulativeDownTimeQO } from '../queries'
+
+export function CumulativeDownTime() {
   const chartStore = useChartStore()
 
-  const generateRandomData = () => {
-    const months = [
-      '一月',
-      '二月',
-      '三月',
-      '四月',
-      '五月',
-      '六月',
-      '七月',
-      '八月',
-      '九月',
-      '十月',
-      '十一月',
-      '十二月'
-    ]
-    return months.map((m) => ({
-      month: m,
-      value: Math.floor(Math.random() * 60)
-    }))
-  }
+  const { data = [] } = useQuery(cumulativeDownTimeQO())
 
-  const [source, setSource] = useState(generateRandomData())
-
-  const option: EChartsOption = useMemo(
+  const option = useMemo<EChartsOption>(
     () => ({
       textStyle: {
         fontFamily: 'inherit'
@@ -44,7 +25,7 @@ export function CumulativeDownTimeStatistics() {
       },
       grid: {
         left: 0,
-        right: 0,
+        right: 50,
         bottom: 10,
         tooltip: true,
         containLabel: true
@@ -63,18 +44,21 @@ export function CumulativeDownTimeStatistics() {
         type: 'value',
         name: '小时',
         min: 0,
-        max: 60
+        max: 250
       },
-      series: [{ type: 'line', name: '数量', label: { show: true, position: 'top' } }],
+      series: [
+        {
+          type: 'line',
+          name: '数量',
+          encode: { x: 'cMonth', y: 'iHour' },
+          label: { show: true, position: 'top' }
+        }
+      ],
       dataset: {
-        dimensions: [
-          { name: 'month', displayName: '月份' },
-          { name: 'value', displayName: '小时' }
-        ],
-        source
+        source: data
       }
     }),
-    [source]
+    [data]
   )
 
   return (

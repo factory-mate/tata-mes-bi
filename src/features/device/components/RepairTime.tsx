@@ -1,27 +1,11 @@
 import type { EChartsOption } from 'echarts'
 
-export function RepairTimeRankStatistics() {
+import { repairTimeQO } from '../queries'
+
+export function RepairTime() {
   const chartStore = useChartStore()
 
-  const generateRandomData = () => {
-    const devices = [
-      '雕刻机',
-      '开锁机',
-      '空压机',
-      '门套包裹机',
-      '线条包裹机',
-      '四面锯',
-      '封边机',
-      '磁吸机',
-      '传送台'
-    ]
-    return devices.map((w) => ({
-      device: w,
-      value: Math.floor(Math.random() * 150)
-    }))
-  }
-
-  const [source, setSource] = useState(generateRandomData())
+  const { data = [] } = useQuery(repairTimeQO())
 
   const option: EChartsOption = useMemo(
     () => ({
@@ -41,7 +25,7 @@ export function RepairTimeRankStatistics() {
       },
       grid: {
         left: 0,
-        right: 0,
+        right: 80,
         bottom: 10,
         tooltip: true,
         containLabel: true
@@ -57,18 +41,21 @@ export function RepairTimeRankStatistics() {
         type: 'value',
         name: '数量',
         min: 0,
-        max: 150
+        max: 10
       },
-      series: [{ type: 'bar', name: '数量', label: { show: true, position: 'top' } }],
+      series: [
+        {
+          type: 'bar',
+          name: '数量',
+          encode: { x: 'cDeviceName', y: 'nQuantity' },
+          label: { show: true, position: 'top' }
+        }
+      ],
       dataset: {
-        dimensions: [
-          { name: 'device', displayName: '设备名称' },
-          { name: 'value', displayName: '数量' }
-        ],
-        source
+        source: data
       }
     }),
-    [source]
+    [data]
   )
 
   return (

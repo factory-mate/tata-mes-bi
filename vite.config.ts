@@ -1,6 +1,7 @@
 import path from 'node:path'
 import { fileURLToPath, URL } from 'node:url'
 
+import { reactPresets } from '@bit-ocean/auto-import'
 import { TanStackRouterVite } from '@tanstack/router-plugin/vite'
 import LegacyPlugin from '@vitejs/plugin-legacy'
 import ReactSWC from '@vitejs/plugin-react-swc'
@@ -33,12 +34,9 @@ export default defineConfig(({ mode }) => {
       TanStackRouterVite(),
       AutoImport({
         imports: [
-          'react',
-          { from: 'clsx', imports: [['default', 'clsx']] },
-          { from: 'use-immer', imports: ['useImmer'] },
+          ...reactPresets,
           { from: '@/shared/router', imports: ['router'] },
-          { from: '@/shared/query-client', imports: ['queryClient'] },
-          { from: '@bit-ocean/echarts', imports: ['ReactChart'] }
+          { from: '@/shared/query-client', imports: ['queryClient'] }
         ],
         dirs: [
           'src/shared/api/*',
@@ -46,7 +44,8 @@ export default defineConfig(({ mode }) => {
           'src/shared/echarts/*',
           'src/shared/hooks/*',
           'src/shared/providers/*',
-          'src/shared/store/*'
+          'src/shared/store/*',
+          'src/shared/utils/*'
         ],
         dts: '@types/auto-imports.d.ts',
         include: [

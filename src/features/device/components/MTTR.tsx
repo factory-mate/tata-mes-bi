@@ -1,27 +1,11 @@
 import type { EChartsOption } from 'echarts'
 
-export function MTTRStatistics() {
+import { mttrQO } from '../queries'
+
+export function MTTR() {
   const chartStore = useChartStore()
 
-  const generateRandomData = () => {
-    const devices = [
-      '雕刻机',
-      '开锁机',
-      '空压机',
-      '门套包裹机',
-      '线条包裹机',
-      '四面锯',
-      '封边机',
-      '磁吸机',
-      '传送台'
-    ]
-    return devices.map((w) => ({
-      device: w,
-      value: Math.floor(Math.random() * 150)
-    }))
-  }
-
-  const [source, setSource] = useState(generateRandomData())
+  const { data = [] } = useQuery(mttrQO())
 
   const option: EChartsOption = useMemo(
     () => ({
@@ -41,7 +25,7 @@ export function MTTRStatistics() {
       },
       grid: {
         left: 0,
-        right: 0,
+        right: 70,
         bottom: 10,
         tooltip: true,
         containLabel: true
@@ -58,20 +42,23 @@ export function MTTRStatistics() {
       },
       yAxis: {
         type: 'value',
-        name: '数量',
+        name: '分钟',
         min: 0,
-        max: 150
+        max: 10_000
       },
-      series: [{ type: 'bar', name: '数量', label: { show: true, position: 'top' } }],
+      series: [
+        {
+          type: 'bar',
+          name: '分钟',
+          encode: { x: 'cDeviceName', y: 'iMinute' },
+          label: { show: true, position: 'top' }
+        }
+      ],
       dataset: {
-        dimensions: [
-          { name: 'device', displayName: '设备名称' },
-          { name: 'value', displayName: '数量' }
-        ],
-        source
+        source: data
       }
     }),
-    [source]
+    [data]
   )
 
   return (
