@@ -7,11 +7,11 @@ import {
   InternalReturnBar,
   InternalReturnReasonBar,
   MaterialBar,
-  MaterialTable,
+  MaterialCallTable,
   PackageNumPie,
   PrimaryYieldLine,
   ProductionReachBar,
-  StatisticsRow
+  StatisticsBlock
 } from '@/features/plate/door-frame-workshop'
 
 export const Route = createLazyFileRoute('/_base/plate_/door-frame-workshop')({
@@ -25,7 +25,7 @@ function Page() {
         <TitleRow right={<ClockPanel />} />
       </div>
       <BlockContainer className="col-span-12 row-span-1">
-        <StatisticsRow />
+        <StatisticsBlock />
       </BlockContainer>
 
       <BlockContainer className="col-span-4 row-span-3">
@@ -58,7 +58,7 @@ function Page() {
         <DeviceRepairTable />
       </BlockContainer>
       <BlockContainer className="col-span-4 row-span-4">
-        <MaterialTable />
+        <MaterialCallTable />
       </BlockContainer>
     </>
   )

@@ -1,7 +1,16 @@
 import type { EChartsOption } from 'echarts'
 
+import { productionReachQO } from '../queries'
+
 export function ProductionReachBar() {
   const chartStore = useChartStore()
+
+  const { data = [] } = useQuery(
+    productionReachQO({
+      orderByFileds: 'cProcessCode',
+      conditions: 'cProcessCode in (GX0065,GX0066,GX0067,GX0068,GX0072,GX0113,GX0075)'
+    })
+  )
 
   const generateRandomData = () => {
     const lines = ['工段 A', '工段 B', '工段 C', '工段 D']

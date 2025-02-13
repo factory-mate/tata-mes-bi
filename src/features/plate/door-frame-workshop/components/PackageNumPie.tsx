@@ -1,7 +1,16 @@
 import type { EChartsOption } from 'echarts'
 
+import { packageNumQO } from '../queries'
+
 export function PackageNumPie() {
   const chartStore = useChartStore()
+
+  const { data = [] } = useQuery(
+    packageNumQO({
+      orderByFileds: 'cFactoryUnitCode',
+      conditions: 'cProcessCode = GX0075'
+    })
+  )
 
   const generateRandomData = () => {
     const lines = ['工位 A', '工位 B', '工位 C', '工位 D', '工位 E']

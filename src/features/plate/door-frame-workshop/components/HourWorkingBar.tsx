@@ -1,7 +1,16 @@
 import type { EChartsOption } from 'echarts'
 
+import { hourWorkingQO } from '../queries'
+
 export function HourWorkingBar() {
   const chartStore = useChartStore()
+
+  const { data = [] } = useQuery(
+    hourWorkingQO({
+      orderByFileds: 'GDCode',
+      conditions: 'GDCode in (FM010401,FM010404,FM010405,FM010406,FM010407,FM010409)'
+    })
+  )
 
   const generateRandomData = () => {
     const hours = ['1小时', '2小时', '3小时', '4小时', '5小时', '6小时', '7小时', '8小时', '加班']

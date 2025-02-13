@@ -16,7 +16,7 @@ export function StatisticsBlock() {
   const { data } = useQuery(
     basicInfoQO({
       orderByFileds: 'cFactoryUnitCode',
-      conditions: 'cFactoryUnitCode like FM0105'
+      conditions: 'cFactoryUnitCode like FM0104'
     })
   )
 
