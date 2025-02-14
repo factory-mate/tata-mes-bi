@@ -2,8 +2,17 @@ import type { EChartsOption } from 'echarts'
 
 import { getRandomValues } from '@/features/random'
 
+import { hourCompletionQO } from '../queries'
+
 export function HourCompletionLine() {
   const chartStore = useChartStore()
+
+  const { data: tempData = [] } = useQuery(
+    hourCompletionQO({
+      orderByFileds: 'cFactoryUnitCode',
+      conditions: 'cFactoryUnitCode = FM01010101'
+    })
+  )
 
   const [data, setData] = useState([
     [88, 90, 92, 89, 99, 87, 90, 91, 95],

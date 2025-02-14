@@ -1,7 +1,16 @@
 import type { EChartsOption } from 'echarts'
 
+import { internalReturnReasonQO } from '../queries'
+
 export function InternalReturnReasonBar() {
   const chartStore = useChartStore()
+
+  const { data = [] } = useQuery(
+    internalReturnReasonQO({
+      orderByFileds: 'nQuantity',
+      conditions: 'cFactoryUnitCode = FM01010101'
+    })
+  )
 
   const generateRandomData = () => {
     const types = ['鼓包', '划痕', '断裂', '尺寸', '颗粒']

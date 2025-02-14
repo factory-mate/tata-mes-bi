@@ -1,7 +1,16 @@
 import type { EChartsOption } from 'echarts'
 
+import { internalReturnTypeQO } from '../queries'
+
 export function InternalReturnTypePie() {
   const chartStore = useChartStore()
+
+  const { data = [] } = useQuery(
+    internalReturnTypeQO({
+      orderByFileds: 'cFactoryUnitCode',
+      conditions: 'cFactoryUnitCode = FM01010101'
+    })
+  )
 
   const generateRandomData = () => {
     const types = ['重做', '返工', '维修']
@@ -13,7 +22,7 @@ export function InternalReturnTypePie() {
 
   const [source, setSource] = useState(generateRandomData())
 
-  const option: EChartsOption = useMemo(
+  const option = useMemo<EChartsOption>(
     () => ({
       textStyle: {
         fontFamily: 'inherit'

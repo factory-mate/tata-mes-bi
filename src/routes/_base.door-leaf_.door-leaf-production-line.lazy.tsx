@@ -9,11 +9,11 @@ import {
   InternalReturnReasonBar,
   InternalReturnTypePie,
   KnifeTable,
-  LineCompeleteRateStatistics,
-  LinePersonStatistics,
-  MaterialPie,
-  MaterialTable,
-  UnfinishedTasksTable
+  LineCompleteRateBlock,
+  LinePersonBlock,
+  MaterialCallTable,
+  MaterialTypePie,
+  UnfinishedTaskTable
 } from '@/features/door-leaf/door-leaf-production-line'
 
 export const Route = createLazyFileRoute('/_base/door-leaf_/door-leaf-production-line')({
@@ -27,21 +27,21 @@ function Page() {
       </div>
 
       <BlockContainer className="col-span-6 row-span-1">
-        <LineCompeleteRateStatistics />
+        <LineCompleteRateBlock />
       </BlockContainer>
 
       <BlockContainer className="col-span-6 row-span-1">
-        <LinePersonStatistics />
+        <LinePersonBlock />
       </BlockContainer>
 
       <BlockContainer className="col-span-4 row-span-4">
-        <MaterialTable />
+        <MaterialCallTable />
       </BlockContainer>
       <BlockContainer className="col-span-2 row-span-4">
         <InternalReturnTypePie />
       </BlockContainer>
       <BlockContainer className="col-span-2 row-span-4">
-        <MaterialPie />
+        <MaterialTypePie />
       </BlockContainer>
       <BlockContainer className="col-span-1 row-span-4">
         <Gauge />
@@ -54,7 +54,7 @@ function Page() {
         <DeviceRepairTable />
       </BlockContainer>
       <BlockContainer className="col-span-4 row-span-3">
-        <UnfinishedTasksTable />
+        <UnfinishedTaskTable />
       </BlockContainer>
       <BlockContainer className="col-span-4 row-span-3">
         <CheckTable />

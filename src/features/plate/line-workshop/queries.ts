@@ -40,10 +40,10 @@ export const internalReturnReasonQO = (data: FullPageDto) =>
     queryFn: ({ signal }) => LineWorkshopAPI.getInternalReturnReason(data, signal)
   })
 
-export const deviceRepairQO = (data: DeviceRepairDto) =>
+export const deviceRepairQO = (params: DeviceRepairDto) =>
   queryOptions({
-    queryKey: deviceRepairQK(data),
-    queryFn: ({ signal }) => LineWorkshopAPI.getDeviceRepair(data, signal)
+    queryKey: deviceRepairQK(params),
+    queryFn: ({ signal }) => LineWorkshopAPI.getDeviceRepair(params, signal)
   })
 
 export const materialCallQO = (data: PageDto) =>

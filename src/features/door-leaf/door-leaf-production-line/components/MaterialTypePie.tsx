@@ -1,7 +1,16 @@
 import type { EChartsOption } from 'echarts'
 
-export function MaterialPie() {
+import { materialTypeQO } from '../queries'
+
+export function MaterialTypePie() {
   const chartStore = useChartStore()
+
+  const { data = [] } = useQuery(
+    materialTypeQO({
+      orderByFileds: 'cFactoryUnitCode',
+      conditions: 'cFactoryUnitCode = FM01010101'
+    })
+  )
 
   const generateRandomData = () => {
     const materials = ['花梨色', '银灰色', '白色', '其他', '电气']

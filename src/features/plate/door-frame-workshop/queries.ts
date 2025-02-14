@@ -40,10 +40,10 @@ export const internalReturnReasonQO = (data: FullPageDto) =>
     queryFn: ({ signal }) => DoorFrameWorkshopAPI.getInternalReturnReason(data, signal)
   })
 
-export const deviceRepairQO = (data: DeviceRepairDto) =>
+export const deviceRepairQO = (params: DeviceRepairDto) =>
   queryOptions({
-    queryKey: deviceRepairQK(data),
-    queryFn: ({ signal }) => DoorFrameWorkshopAPI.getDeviceRepair(data, signal)
+    queryKey: deviceRepairQK(params),
+    queryFn: ({ signal }) => DoorFrameWorkshopAPI.getDeviceRepair(params, signal)
   })
 
 export const materialCallQO = (data: PageDto) =>

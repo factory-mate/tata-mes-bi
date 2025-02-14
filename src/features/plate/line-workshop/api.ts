@@ -59,11 +59,11 @@ export class LineWorkshopAPI {
     )
   }
 
-  static async getDeviceRepair(data: DeviceRepairDto, signal?: AbortSignal) {
+  static async getDeviceRepair(params: DeviceRepairDto, signal?: AbortSignal) {
     return httpClient.post<Page<DeviceRepairVo>>(
       `${this.apiPrefix}/DEVICE_FALUTVOUCH/Get_SBWXForPage`,
-      data,
-      { signal }
+      {},
+      { signal, params }
     )
   }
 
