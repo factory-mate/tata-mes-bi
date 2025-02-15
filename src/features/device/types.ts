@@ -1,3 +1,5 @@
+import type { ChartRawData } from '@/shared/types'
+
 export interface RepairVo {
   DWXCount: number
   JXZCount: number
@@ -30,28 +32,24 @@ export interface RepairInfoVo {
   iStatusName: string
 }
 
-export interface RepairTimeVo {
+export interface RepairTimeVo extends ChartRawData {
   cDeviceCode: string
   cDeviceName: string
   nQuantity: number
-  [key: string]: string | number
 }
 
-export interface CumulativeDownTimeVo {
+export interface CumulativeDownTimeVo extends ChartRawData {
   cMonth: string
   iHour: number
-  [key: string]: string | number
 }
 
-export interface FaultClassifyVo {
+export interface FaultClassifyVo extends ChartRawData {
   cFaultClassName: string
   nQuantity: number
   iRate: string
-  [key: string]: string | number
 }
 
-export interface MTTRVo {
+export interface MTTRVo extends ChartRawData {
   cDeviceName: string
   iMinute: number
-  [key: string]: string | number
 }

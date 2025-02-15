@@ -1,25 +1,25 @@
 import type { EChartsOption } from 'echarts'
 
-import { productionReachQO } from '../queries'
+import { internalReturnQO } from '../queries'
 
-export function ProductionReachBar() {
+export function InternalReturnBar() {
   const chartStore = useChartStore()
 
-  const { data = [] } = useQuery(
-    productionReachQO({
-      orderByFileds: 'cProcessCode',
-      conditions: 'cProcessCode in (GX0102,GX0105,GX0106,GX0108)'
+  const { data } = useQuery(
+    internalReturnQO({
+      orderByFileds: 'cFactoryUnitCode',
+      conditions: 'cFactoryUnitCode in (FM01030101,FM01030102,FM01030103,FM01030104)'
     })
   )
 
-  const option: EChartsOption = useMemo(
+  const option = useMemo<EChartsOption>(
     () => ({
       textStyle: {
         fontFamily: 'inherit'
       },
       backgroundColor: '',
       title: {
-        text: '工段生产达成统计',
+        text: '内返统计',
         left: 'center'
       },
       tooltip: {
@@ -28,22 +28,24 @@ export function ProductionReachBar() {
           type: 'cross'
         }
       },
-      legend: {
-        align: 'left',
-        top: 0,
-        right: 0,
-        orient: 'vertical'
-      },
       grid: {
         left: 0,
-        right: 70,
+        right: 0,
         bottom: 10,
         tooltip: true,
         containLabel: true
       },
+      legend: {
+        data: ['返工', '维修', '重做'],
+        align: 'left',
+        top: 0,
+        right: 0,
+        orient: 'horizontal'
+      },
       xAxis: {
         type: 'category',
-        name: '工段',
+        name: '产线',
+        data: ['产线A', '产线B', '产线C', '产线D', '产线E', '产线F'],
         axisTick: {
           alignWithLabel: true
         }
@@ -52,22 +54,27 @@ export function ProductionReachBar() {
         type: 'value',
         name: '数量',
         min: 0,
-        max: 150
+        max: 20
       },
       series: [
         {
           type: 'bar',
-          label: { show: true, position: 'top' },
-          encode: { x: 'cProcessName', y: 'EndCount' }
+          name: '返工',
+          label: { show: true, position: 'top' }
         },
         {
           type: 'bar',
-          label: { show: true, position: 'top' },
-          encode: { x: 'cProcessName', y: 'EndCount' }
+          name: '维修',
+          label: { show: true, position: 'top' }
+        },
+        {
+          type: 'bar',
+          name: '重做',
+          label: { show: true, position: 'top' }
         }
       ],
       dataset: {
-        source: data
+        source: data ?? []
       }
     }),
     [data]

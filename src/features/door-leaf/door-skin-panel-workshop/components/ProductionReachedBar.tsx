@@ -1,24 +1,19 @@
 import type { EChartsOption } from 'echarts'
 
-import { getRandomValues } from '@/features/random'
+import { productionReachedQO } from '../queries'
 
-export function ProductionReachedStatistics() {
+export function ProductionReachedBar() {
   const chartStore = useChartStore()
 
-  const [data, setData] = useState([
-    [400, 440, 415, 500, 420, 440],
-    [220, 230, 340, 325, 316, 200]
-  ])
+  const { data = [] } = useQuery(
+    productionReachedQO({
+      orderByFileds: 'cFactoryUnitCode',
+      conditions:
+        'cFactoryUnitCode in (FM01030101,FM01030102,FM01030103,FM01030104) && cProcessCode = GX0017'
+    })
+  )
 
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setData([getRandomValues(6, 500), getRandomValues(6, 500)])
-    }, 5000)
-
-    return () => clearInterval(timer)
-  }, [])
-
-  const option: EChartsOption = useMemo(
+  const option = useMemo<EChartsOption>(
     () => ({
       textStyle: {
         fontFamily: 'inherit'
@@ -66,16 +61,17 @@ export function ProductionReachedStatistics() {
         {
           type: 'bar',
           name: '计划数量',
-          data: data[0],
           label: { show: true, position: 'top' }
         },
         {
           type: 'bar',
           name: '完成数量',
-          data: data[1],
           label: { show: true, position: 'top' }
         }
-      ]
+      ],
+      dataset: {
+        source: data ?? []
+      }
     }),
     [data]
   )

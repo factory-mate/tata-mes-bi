@@ -1,20 +1,25 @@
 import type { EChartsOption } from 'echarts'
 
-import { mttrQO } from '../queries'
+import { productionReachedQO } from '../queries'
 
-export function MTTRBar() {
+export function ProductionReachedBar() {
   const chartStore = useChartStore()
 
-  const { data = [] } = useQuery(mttrQO())
+  const { data = [] } = useQuery(
+    productionReachedQO({
+      orderByFileds: 'cProcessCode',
+      conditions: 'cProcessCode in (GX0102,GX0105,GX0106,GX0108)'
+    })
+  )
 
-  const option = useMemo<EChartsOption>(
+  const option: EChartsOption = useMemo(
     () => ({
       textStyle: {
         fontFamily: 'inherit'
       },
       backgroundColor: '',
       title: {
-        text: '设备平均修复时间（MTTR）',
+        text: '工段生产达成统计',
         left: 'center'
       },
       tooltip: {
@@ -22,6 +27,12 @@ export function MTTRBar() {
         axisPointer: {
           type: 'cross'
         }
+      },
+      legend: {
+        align: 'left',
+        top: 0,
+        right: 0,
+        orient: 'vertical'
       },
       grid: {
         left: 0,
@@ -32,26 +43,27 @@ export function MTTRBar() {
       },
       xAxis: {
         type: 'category',
-        name: '设备名称',
+        name: '工段',
         axisTick: {
           alignWithLabel: true
-        },
-        axisLabel: {
-          interval: 0
         }
       },
       yAxis: {
         type: 'value',
-        name: '分钟',
+        name: '数量',
         min: 0,
-        max: 10_000
+        max: 150
       },
       series: [
         {
           type: 'bar',
-          name: '分钟',
-          encode: { x: 'cDeviceName', y: 'iMinute' },
-          label: { show: true, position: 'top' }
+          label: { show: true, position: 'top' },
+          encode: { x: 'cProcessName', y: 'EndCount' }
+        },
+        {
+          type: 'bar',
+          label: { show: true, position: 'top' },
+          encode: { x: 'cProcessName', y: 'EndCount' }
         }
       ],
       dataset: {

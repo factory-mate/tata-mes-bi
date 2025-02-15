@@ -1,3 +1,5 @@
+import type { ChartRawData } from '@/shared/types'
+
 export interface BasicInfoVo {
   cFactoryUnitCode: string
   iStandartWokerCount: number
@@ -8,26 +10,24 @@ export interface BasicInfoVo {
   cDefindParm03: string
 }
 
-export interface ProductionReachVo {
+export interface ProductionReachVo extends ChartRawData {
   cProcessCode: string
   cProcessName: string
   EndCount: number
   AllCount: number
   iRate: number
-  [key: string]: string | number
 }
 
-export interface PackageNumVo {
+export interface PackageNumVo extends ChartRawData {
   cFactoryUnitCode: string
   cFactoryUnitName: string
   cProcessCode: string
   cProcessName: string
   AllCount: number
   iRate: string
-  [key: string]: string | number
 }
 
-export interface HourWorkingVo {
+export interface HourWorkingVo extends ChartRawData {
   GDCode: string
   iPackageCount01: number
   iPackageCount02: number
@@ -39,10 +39,9 @@ export interface HourWorkingVo {
   iPackageCount08: number
   iPackageCount09: number
   iPackageCount10: number
-  [key: string]: string | number
 }
 
-export interface InternalReturnVo {
+export interface InternalReturnVo extends ChartRawData {
   cFactoryUnitCode: string
   WXCount: number
   WXRate: number
@@ -50,14 +49,12 @@ export interface InternalReturnVo {
   FXRate: number
   CZCount: number
   CZRate: number
-  [key: string]: string | number
 }
 
-export interface InternalReturnReasonVo {
+export interface InternalReturnReasonVo extends ChartRawData {
   cFactoryUnitCode: string
   cRepairReasonTypeName: string
   nQuantity: number
-  [key: string]: string | number
 }
 
 export interface DeviceRepairVo {

@@ -10,7 +10,7 @@ import {
   MaterialCallTable,
   PackageNumPie,
   PrimaryYieldLine,
-  ProductionReachBar,
+  ProductionReachedBar,
   StatisticsBlock
 } from '@/features/plate/line-workshop'
 
@@ -29,7 +29,7 @@ function Page() {
       </BlockContainer>
 
       <BlockContainer className="col-span-4 row-span-3">
-        <ProductionReachBar />
+        <ProductionReachedBar />
       </BlockContainer>
       <BlockContainer className="col-span-2 row-span-3">
         <Gauge />

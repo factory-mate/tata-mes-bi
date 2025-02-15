@@ -7,14 +7,14 @@ export function MaterialCallTable() {
       pageIndex: 1,
       pageSize: 10,
       orderByFileds: 'dCreateTime',
-      conditions: 'cDefindParm05 like FM01010101'
+      conditions: 'cDefindParm05 like FM0104'
     })
   )
-
   return (
     <ScrollTable<MaterialCallVo>
       title="工位物料呼叫信息"
       columns={[
+        { key: 'cInWareHouseName', label: '产线' },
         { key: 'cDefindParm04', label: '工位' },
         { key: 'cInvName', label: '物料' },
         { key: 'dCreateTime', label: '时间' }

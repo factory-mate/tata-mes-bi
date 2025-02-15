@@ -9,7 +9,7 @@ import type {
   InternalReturnVo,
   MaterialCallVo,
   PackageNumVo,
-  ProductionReachVo
+  ProductionReachedVo
 } from './types'
 
 export class LineWorkshopAPI {
@@ -21,8 +21,8 @@ export class LineWorkshopAPI {
     })
   }
 
-  static async getProductionReach(data: FullPageDto, signal?: AbortSignal) {
-    return httpClient.post<ProductionReachVo[]>(`${this.apiPrefix}/MES_TASK/Get_GXTJ`, data, {
+  static async getProductionReached(data: FullPageDto, signal?: AbortSignal) {
+    return httpClient.post<ProductionReachedVo[]>(`${this.apiPrefix}/MES_TASK/Get_GXTJ`, data, {
       signal
     })
   }

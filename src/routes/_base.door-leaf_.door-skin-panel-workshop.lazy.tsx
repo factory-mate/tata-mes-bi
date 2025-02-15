@@ -3,13 +3,13 @@ import { createLazyFileRoute } from '@tanstack/react-router'
 import {
   DeviceRepairTable,
   GaugeStatistics,
-  InternalReturnStatistics,
+  InternalReturnBar,
+  LateProductionTable,
+  MaterialCallTable,
   MaterialStatistics,
-  MaterialTable,
   PrimaryYieldStatistics,
-  ProductionReachedStatistics,
-  ProductionTable,
-  StatisticsRow
+  ProductionReachedBar,
+  StatisticsBlock
 } from '@/features/door-leaf/door-skin-panel-workshop'
 
 export const Route = createLazyFileRoute('/_base/door-leaf_/door-skin-panel-workshop')({
@@ -24,15 +24,15 @@ function Page() {
       </div>
 
       <BlockContainer className="col-span-12 row-span-1">
-        <StatisticsRow />
+        <StatisticsBlock />
       </BlockContainer>
 
       <BlockContainer className="col-span-4 row-span-4">
-        <ProductionTable />
+        <LateProductionTable />
       </BlockContainer>
 
       <BlockContainer className="col-span-4 row-span-4">
-        <ProductionReachedStatistics />
+        <ProductionReachedBar />
       </BlockContainer>
 
       <BlockContainer className="col-span-4 row-span-4">
@@ -47,14 +47,14 @@ function Page() {
         <PrimaryYieldStatistics />
       </BlockContainer>
       <BlockContainer className="col-span-4 row-span-3">
-        <InternalReturnStatistics />
+        <InternalReturnBar />
       </BlockContainer>
 
       <BlockContainer className="col-span-4 row-span-4">
         <DeviceRepairTable />
       </BlockContainer>
       <BlockContainer className="col-span-4 row-span-4">
-        <MaterialTable />
+        <MaterialCallTable />
       </BlockContainer>
     </>
   )

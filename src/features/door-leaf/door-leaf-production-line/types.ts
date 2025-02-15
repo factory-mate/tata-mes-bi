@@ -1,3 +1,5 @@
+import type { ChartRawData } from '@/shared/types'
+
 export interface LineCompleteRateVo {
   cFactoryUnitCode: string
   cFactoryUnitName: string
@@ -49,7 +51,7 @@ export interface MaterialCallVo {
   dCreateTime: string
 }
 
-export interface InternalReturnType {
+export interface InternalReturnType extends ChartRawData {
   cFactoryUnitCode: string
   WXCount: number
   WXRate: number
@@ -57,10 +59,9 @@ export interface InternalReturnType {
   FXRate: number
   CZCount: number
   CZRate: number
-  [key: string]: string | number
 }
 
-export interface MaterialType {
+export interface MaterialType extends ChartRawData {
   cFactoryUnitCode: string
   cFactoryUnitName: string
   cProcessCode: string
@@ -68,14 +69,12 @@ export interface MaterialType {
   cDynamicsParm06: string
   nQuantity: number
   iRate: string
-  [key: string]: string | number
 }
 
-export interface InternalReturnReasonVo {
+export interface InternalReturnReasonVo extends ChartRawData {
   cFactoryUnitCode: string
   cRepairReasonTypeName: string
   nQuantity: number
-  [key: string]: string | number
 }
 
 export interface DeviceRepairVo {

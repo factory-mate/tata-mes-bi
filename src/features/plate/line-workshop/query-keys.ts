@@ -4,7 +4,7 @@ import type { DeviceRepairDto } from './types'
 
 export const BASIC_INFO_QK = 'line-workshop:basic-info'
 
-export const PRODUCTION_REACH_QK = 'line-workshop:production-reach'
+export const PRODUCTION_REACHED_QK = 'line-workshop:production-reached'
 
 export const PACKAGE_NUM_QK = 'line-workshop:package-num'
 
@@ -20,7 +20,7 @@ export const MATERIAL_CALL_QK = 'line-workshop:material-call'
 
 export const basicInfoQK = (params: FullPageDto) => [BASIC_INFO_QK, params] as const
 
-export const productionReachQK = (params: FullPageDto) => [PRODUCTION_REACH_QK, params] as const
+export const productionReachedQK = (params: FullPageDto) => [PRODUCTION_REACHED_QK, params] as const
 
 export const packageNumQK = (params: FullPageDto) => [PACKAGE_NUM_QK, params] as const
 
