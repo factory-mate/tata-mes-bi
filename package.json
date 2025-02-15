@@ -4,6 +4,8 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
+    "build:staging": "cross-env NODE_ENV=staging vite build --mode staging",
+    "build:prod": "cross-env NODE_ENV=production vite build --mode production",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
     "type:check": "tsc --pretty --noEmit",
@@ -61,6 +63,7 @@
     "@vitejs/plugin-react-swc": "^3.7.2",
     "autoprefixer": "^10.4.20",
     "commitizen": "^4.3.1",
+    "cross-env": "^7.0.3",
     "cspell": "^8.17.3",
     "cz-git": "^1.11.0",
     "eslint": "^8.57.1",
