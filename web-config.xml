@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+  <system.webServer>
+    <directoryBrowse enabled="false" />
+    <rewrite>
+      <rules>
+        <rule name="KBAPIReverseProxy" stopProcessing="true">
+          <match url="^kb-service/(.*)" />
+          <conditions logicalGrouping="MatchAll" trackAllCaptures="false" />
+          <action type="Rewrite" url="http://localhost:12100/api/{R:1}" appendQueryString="true"  />
+        </rule>
+        <rule name="Vite SVG Rule" stopProcessing="true">
+          <match url="vite.svg" />
+          <action type="Rewrite" url="{R:0}" />
+        </rule>
+        <rule name="SPA" stopProcessing="true">
+          <match url=".*" />
+          <conditions>
+            <add input="{REQUEST_FILENAME}" matchType="IsFile" negate="true" />
+            <add input="{REQUEST_FILENAME}" matchType="IsDirectory" negate="true" />
+          </conditions>
+          <action type="Rewrite" url="/" />
+        </rule>
+      </rules>
+    </rewrite>
+  </system.webServer>
+</configuration>
