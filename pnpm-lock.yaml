@@ -11,6 +11,9 @@ importers:
       '@bit-ocean/echarts':
         specifier: ^0.0.50
         version: 0.0.50(echarts@5.5.1)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      '@bit-ocean/hooks':
+        specifier: ^0.0.50
+        version: 0.0.50(@tanstack/react-router@1.91.3(@tanstack/router-generator@1.87.7)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))
       '@bit-ocean/utils':
         specifier: ^0.0.50
         version: 0.0.50(dayjs@1.11.13)
@@ -852,6 +855,14 @@ packages:
     resolution: {integrity: sha512-yI4okCgM2xXO4sgea5nixJujOd5S7bap/7PGUZcYW3A1ouFGTZFFlw+U1OkizxsggysFdXwWhpSShlezmHYjEA==}
     peerDependencies:
       eslint: ^8.0.0
+
+  '@bit-ocean/hooks@0.0.50':
+    resolution: {integrity: sha512-AQFl/M7WNzqxhUucOxtFn3E/o/89YlcJk1vMQ227kiHbGPegtZ0Sp4/XH0EisD1C+IqT6L5spB+Y85fV8gKeoA==}
+    peerDependencies:
+      '@tanstack/react-router': ^1.46.8
+    peerDependenciesMeta:
+      '@tanstack/react-router':
+        optional: true
 
   '@bit-ocean/prettier-config@0.0.50':
     resolution: {integrity: sha512-Ozc4LPybzVj1DhpmhXFegL6ux4n20DFzSYIN3UxVFUBktUdIn7EjqDwiHWdVpjB+33g0GGcZ5P7Yh7O1hkZKkQ==}
@@ -6091,6 +6102,10 @@ snapshots:
       - supports-color
       - tailwindcss
       - typescript
+
+  '@bit-ocean/hooks@0.0.50(@tanstack/react-router@1.91.3(@tanstack/router-generator@1.87.7)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))':
+    optionalDependencies:
+      '@tanstack/react-router': 1.91.3(@tanstack/router-generator@1.87.7)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
 
   '@bit-ocean/prettier-config@0.0.50(prettier@3.4.2)':
     dependencies:

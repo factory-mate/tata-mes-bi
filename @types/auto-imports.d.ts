@@ -96,7 +96,7 @@ declare global {
   const useReducer: typeof import('react')['useReducer']
   const useRef: typeof import('react')['useRef']
   const useRouteContext: typeof import('@tanstack/react-router')['useRouteContext']
-  const useRouteStaticData: typeof import('../src/shared/hooks/useRouteStaticData')['useRouteStaticData']
+  const useRouteStaticData: typeof import('@bit-ocean/hooks')['useRouteStaticData']
   const useRouter: typeof import('@tanstack/react-router')['useRouter']
   const useRouterState: typeof import('@tanstack/react-router')['useRouterState']
   const useRoutesStaticData: typeof import('@bit-ocean/hooks')['useRoutesStaticData']
