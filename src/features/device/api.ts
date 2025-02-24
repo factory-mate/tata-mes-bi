@@ -1,5 +1,3 @@
-import type { Page } from '@/shared/types'
-
 import type {
   CheckVo,
   CumulativeDownTimeVo,

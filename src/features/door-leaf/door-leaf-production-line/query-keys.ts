@@ -1,5 +1,3 @@
-import type { FullPageDto } from '@/shared/types'
-
 import type { DeviceRepairDto } from './types'
 
 export const LINE_COMPLETE_RATE_QK = 'door-leaf-production-line:line-complete-rate'

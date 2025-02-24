@@ -1,5 +1,3 @@
-import type { Templates } from '@/shared/types'
-
 import { repairQO } from '../queries'
 import type { RepairVo } from '../types'
 

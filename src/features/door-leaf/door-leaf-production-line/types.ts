@@ -1,5 +1,3 @@
-import type { ChartRawData } from '@/shared/types'
-
 export interface LineCompleteRateVo {
   cFactoryUnitCode: string
   cFactoryUnitName: string

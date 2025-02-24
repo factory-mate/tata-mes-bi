@@ -1,5 +1,3 @@
-import type { FullPageDto, PageDto } from '@/shared/types'
-
 import { DoorFrameWorkshopAPI } from './api'
 import { basicInfoQK, deviceRepairQK } from './query-keys'
 import type { DeviceRepairDto } from './types'

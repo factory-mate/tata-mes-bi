@@ -39,13 +39,14 @@ export default defineConfig(({ mode }) => {
           { from: '@/shared/query-client', imports: ['queryClient'] }
         ],
         dirs: [
-          'src/shared/api/*',
-          'src/shared/components/*',
-          'src/shared/echarts/*',
-          'src/shared/hooks/*',
-          'src/shared/providers/*',
-          'src/shared/store/*',
-          'src/shared/utils/*'
+          'src/shared/api',
+          'src/shared/components/**',
+          'src/shared/echarts',
+          'src/shared/hooks/**',
+          'src/shared/providers/**',
+          'src/shared/store',
+          'src/shared/utils',
+          { glob: 'src/shared/types', types: true }
         ],
         dts: '@types/auto-imports.d.ts',
         include: [

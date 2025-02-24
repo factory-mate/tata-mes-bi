@@ -1,5 +1,3 @@
-import type { FullPageDto } from '@/shared/types'
-
 import type { DeviceRepairDto } from '../door-leaf-production-line'
 
 export const BASIC_INFO_QK = 'door-skin-panel-workshop:basic-info'

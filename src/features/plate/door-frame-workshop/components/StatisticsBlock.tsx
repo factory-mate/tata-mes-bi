@@ -1,5 +1,3 @@
-import type { Templates } from '@/shared/types'
-
 import { basicInfoQO } from '../queries'
 import type { BasicInfoVo } from '../types'
 

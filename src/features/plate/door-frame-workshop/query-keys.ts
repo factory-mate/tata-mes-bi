@@ -1,5 +1,3 @@
-import type { FullPageDto, PageDto } from '@/shared/types'
-
 import type { DeviceRepairDto } from './types'
 
 export const BASIC_INFO_QK = 'door-frame-workshop:basic-info'

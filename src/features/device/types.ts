@@ -1,5 +1,3 @@
-import type { ChartRawData } from '@/shared/types'
-
 export interface RepairVo {
   DWXCount: number
   JXZCount: number

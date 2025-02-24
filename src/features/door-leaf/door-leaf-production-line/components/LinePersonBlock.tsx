@@ -1,5 +1,3 @@
-import type { Templates } from '@/shared/types'
-
 import { linePersonQO } from '../queries'
 import type { LinePersonVo } from '../types'
 

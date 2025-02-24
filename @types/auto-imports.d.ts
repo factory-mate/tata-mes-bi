@@ -110,3 +110,12 @@ declare global {
   const useTranslation: typeof import('react-i18next')['useTranslation']
   const z: typeof import('zod')['z']
 }
+// for type re-export
+declare global {
+  // @ts-ignore
+  export type { Templates, ChartRawData } from '../src/shared/types/charts'
+  import('../src/shared/types/charts')
+  // @ts-ignore
+  export type { Page, PageDto, FullPageDto } from '../src/shared/types/pagination'
+  import('../src/shared/types/pagination')
+}

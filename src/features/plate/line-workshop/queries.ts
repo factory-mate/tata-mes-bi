@@ -1,5 +1,3 @@
-import type { FullPageDto, PageDto } from '@/shared/types'
-
 import { LineWorkshopAPI } from './api'
 import {
   basicInfoQK,

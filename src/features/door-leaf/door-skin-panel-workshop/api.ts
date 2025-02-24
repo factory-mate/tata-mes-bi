@@ -1,5 +1,3 @@
-import type { FullPageDto, Page, PageDto } from '@/shared/types'
-
 import type {
   BasicInfoVo,
   DeviceRepairDto,

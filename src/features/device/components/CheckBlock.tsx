@@ -1,5 +1,3 @@
-import type { Templates } from '@/shared/types'
-
 import { checkQO } from '../queries'
 import type { CheckVo } from '../types'
 

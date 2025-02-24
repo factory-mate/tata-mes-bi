@@ -1,5 +1,3 @@
-import type { ChartRawData } from '@/shared/types'
-
 export interface BasicInfoVo {
   cFactoryUnitCode: string
   iStandartWokerCount: number

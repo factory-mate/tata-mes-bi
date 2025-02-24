@@ -1,5 +1,3 @@
-import type { FullPageDto, PageDto } from '@/shared/types'
-
 import { DoorSkinPanelWorkshop } from './api'
 import {
   basicInfoQK,

@@ -1,5 +1,3 @@
-import type { Templates } from '@/shared/types'
-
 import { maintainQO } from '../queries'
 import type { MaintainVo } from '../types'
 

@@ -1,5 +1,3 @@
-import type { Templates } from '@/shared/types'
-
 import { lineCompleteRateQO } from '../queries'
 import type { LineCompleteRateVo } from '../types'
 
