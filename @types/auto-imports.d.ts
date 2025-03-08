@@ -7,6 +7,7 @@
 export {}
 declare global {
   const AnimatePresence: typeof import('framer-motion')['AnimatePresence']
+  const AnimatedNumber: typeof import('../src/shared/components/AnimatedNumber/index')['default']
   const AuthUtils: typeof import('@bit-ocean/utils')['AuthUtils']
   const Await: typeof import('@tanstack/react-router')['Await']
   const AxiosProvider: typeof import('../src/shared/providers/AxiosProvider/index')['default']
@@ -101,6 +102,7 @@ declare global {
   const useRouterState: typeof import('@tanstack/react-router')['useRouterState']
   const useRoutesStaticData: typeof import('@bit-ocean/hooks')['useRoutesStaticData']
   const useSearch: typeof import('@tanstack/react-router')['useSearch']
+  const useSlicedData: typeof import('../src/shared/hooks/useSlicedData')['useSlicedData']
   const useState: typeof import('react')['useState']
   const useSuspenseInfiniteQuery: typeof import('@tanstack/react-query')['useSuspenseInfiniteQuery']
   const useSuspenseQueries: typeof import('@tanstack/react-query')['useSuspenseQueries']

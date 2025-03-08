@@ -4,8 +4,12 @@ import { mttrQO } from '../queries'
 
 export function MTTRBar() {
   const chartStore = useChartStore()
-
   const { data = [] } = useQuery(mttrQO())
+  const { maxValue, currentSlicedData } = useSlicedData({
+    data,
+    size: 5,
+    maxValueKey: 'iMinute'
+  })
 
   const option = useMemo<EChartsOption>(
     () => ({
@@ -44,21 +48,24 @@ export function MTTRBar() {
         type: 'value',
         name: '分钟',
         min: 0,
-        max: 10_000
+        max: maxValue
       },
       series: [
         {
           type: 'bar',
           name: '分钟',
           encode: { x: 'cDeviceName', y: 'iMinute' },
-          label: { show: true, position: 'top' }
+          label: {
+            show: true,
+            position: 'top'
+          }
         }
       ],
       dataset: {
-        source: data
+        source: currentSlicedData
       }
     }),
-    [data]
+    [maxValue, currentSlicedData]
   )
 
   return (

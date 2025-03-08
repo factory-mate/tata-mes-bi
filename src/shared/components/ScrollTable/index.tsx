@@ -17,10 +17,70 @@ export default function ScrollTable<T extends Record<string, any> = object>(
 ) {
   const { title, columns, data } = props
 
+  const scrollRef = useRef<HTMLDivElement>(null)
+  const currentScrollRef = useRef(0)
+  const [isPaused, setIsPaused] = useState(false)
+  const [isDelaying, setIsDelaying] = useState(false)
+
+  useEffect(() => {
+    if (!scrollRef.current || !data?.length) {
+      return () => {}
+    }
+
+    const scrollElement = scrollRef.current
+    const { scrollHeight } = scrollElement
+    const { clientHeight } = scrollElement
+
+    const scroll = () => {
+      if (isPaused || isDelaying) {
+        return
+      }
+      currentScrollRef.current = scrollElement.scrollTop + 1
+      if (currentScrollRef.current >= scrollHeight - clientHeight) {
+        setIsDelaying(true)
+
+        const startTime = Date.now()
+        const startPosition = currentScrollRef.current
+
+        const smoothScroll = () => {
+          const elapsed = Date.now() - startTime
+          const progress = Math.min(elapsed / 1000, 1)
+
+          const easeOut = (t: number) => 1 - (1 - t) ** 3
+          const currentPosition = startPosition * (1 - easeOut(progress))
+
+          scrollElement.scrollTop = currentPosition
+          currentScrollRef.current = currentPosition
+
+          if (progress < 1) {
+            requestAnimationFrame(smoothScroll)
+          } else {
+            setTimeout(() => {
+              setIsDelaying(false)
+            }, 1000)
+          }
+        }
+
+        requestAnimationFrame(smoothScroll)
+        return
+      }
+      scrollElement.scrollTop = currentScrollRef.current
+    }
+
+    const timer = setInterval(scroll, 50)
+
+    return () => clearInterval(timer)
+  }, [data, isPaused, isDelaying])
+
   return (
     <div className="flex size-full flex-col overflow-hidden">
       <span className="mb-2 text-center text-lg font-semibold">{title}</span>
-      <div className={clsx('grow overflow-y-scroll', styles.hideScrollbar)}>
+      <div
+        ref={scrollRef}
+        className={clsx('grow overflow-y-scroll', styles.hideScrollbar)}
+        onMouseEnter={() => setIsPaused(true)}
+        onMouseLeave={() => setIsPaused(false)}
+      >
         <table className="w-full table-auto">
           <thead>
             <tr>

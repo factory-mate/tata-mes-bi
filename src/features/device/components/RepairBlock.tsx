@@ -2,7 +2,7 @@ import { repairQO } from '../queries'
 import type { RepairVo } from '../types'
 
 export function RepairBlock() {
-  const title = '维修统计'
+  const title = '今日维修统计'
 
   const templates: Templates<RepairVo> = [
     { label: '报修数', key: 'AllCount' },
@@ -23,7 +23,9 @@ export function RepairBlock() {
             className="col-span-1 row-span-1 space-x-4 text-center text-xl"
           >
             <span>{i.label}:</span>
-            <span className="text-xl font-bold">{data?.[i.key]}</span>
+            <span className="text-xl font-bold">
+              <AnimatedNumber value={data?.[i.key]} />
+            </span>
           </div>
         ))}
       </div>

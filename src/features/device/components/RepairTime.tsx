@@ -35,6 +35,9 @@ export function RepairTimeBar() {
         name: '设备名称',
         axisTick: {
           alignWithLabel: true
+        },
+        axisLabel: {
+          interval: 0
         }
       },
       yAxis: {

@@ -2,7 +2,7 @@ import { maintainQO } from '../queries'
 import type { MaintainVo } from '../types'
 
 export function MaintainBlock() {
-  const title = '保养统计'
+  const title = '今日保养统计'
 
   const templates: Templates<MaintainVo> = [
     { label: '保养单', key: 'AllCount' },
@@ -23,7 +23,9 @@ export function MaintainBlock() {
             className="col-span-1 row-span-1 space-x-4 text-center text-xl"
           >
             <span>{i.label}:</span>
-            <span className="text-xl font-bold">{data?.[i.key]}</span>
+            <span className="text-xl font-bold">
+              <AnimatedNumber value={data?.[i.key]} />
+            </span>
           </div>
         ))}
       </div>

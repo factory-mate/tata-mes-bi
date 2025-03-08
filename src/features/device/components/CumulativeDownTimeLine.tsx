@@ -44,7 +44,7 @@ export function CumulativeDownTimeLine() {
         type: 'value',
         name: '小时',
         min: 0,
-        max: 250
+        max: 120
       },
       series: [
         {

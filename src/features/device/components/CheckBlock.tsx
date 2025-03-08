@@ -2,7 +2,7 @@ import { checkQO } from '../queries'
 import type { CheckVo } from '../types'
 
 export function CheckBlock() {
-  const title = '点检统计'
+  const title = '今日点检统计'
 
   const templates: Templates<CheckVo> = [
     { label: '点检单', key: 'AllCount' },
@@ -23,7 +23,9 @@ export function CheckBlock() {
             className="col-span-1 row-span-1 space-x-4 text-center text-xl"
           >
             <span>{i.label}:</span>
-            <span className="text-xl font-bold">{data?.[i.key]}</span>
+            <span className="text-xl font-bold">
+              <AnimatedNumber value={data?.[i.key]} />
+            </span>
           </div>
         ))}
       </div>

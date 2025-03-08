@@ -11,7 +11,7 @@ export function RepairInfoTable() {
         { key: 'cLineName', label: '生产产线' },
         { key: 'cDeviceName', label: '设备名称' },
         { key: 'cFaultName', label: '故障' },
-        { key: 'dCreateTime', label: '保修时间' },
+        { key: 'dCreateTime', label: '报修时间' },
         { key: 'iStatusName', label: '状态' },
         { key: 'cPersonName', label: '责任人' }
       ]}
