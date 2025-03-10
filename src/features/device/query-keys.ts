@@ -1,3 +1,5 @@
+import type { PageDto } from '@/shared/types'
+
 export const REPAIR_QK = 'device:repair'
 
 export const MAINTAIN_QK = 'device:maintain'
@@ -20,7 +22,7 @@ export const maintainQK = () => [MAINTAIN_QK] as const
 
 export const checkQK = () => [CHECK_QK] as const
 
-export const repairInfoQK = () => [REPAIR_INFO_QK] as const
+export const repairInfoQK = (params: PageDto) => [REPAIR_INFO_QK, params] as const
 
 export const repairTimeQK = () => [REPAIR_TIME_QK] as const
 

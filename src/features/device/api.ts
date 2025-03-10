@@ -1,3 +1,5 @@
+import type { PageDto } from '@/shared/types'
+
 import type {
   CheckVo,
   CumulativeDownTimeVo,
@@ -28,10 +30,10 @@ export class DeviceAPI {
     return httpClient.get<CheckVo>(`${this.apiPrefix}/DEVICE_TOURVOUCH/Get_DJTJ`, {}, { signal })
   }
 
-  static async getRepairInfo(signal?: AbortSignal) {
+  static async getRepairInfo(data: PageDto, signal?: AbortSignal) {
     return httpClient.post<Page<RepairInfoVo>>(
       `${this.apiPrefix}/DEVICE_FALUTVOUCH/Get_SBWXF_ALLForPage`,
-      {},
+      data,
       { signal }
     )
   }

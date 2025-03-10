@@ -2,7 +2,12 @@ import { repairInfoQO } from '../queries'
 import type { RepairInfoVo } from '../types'
 
 export function RepairInfoTable() {
-  const { data: { data = [] } = {} } = useQuery(repairInfoQO())
+  const { data: { data = [] } = {} } = useQuery(
+    repairInfoQO({
+      pageIndex: 0,
+      pageSize: 9999
+    })
+  )
 
   return (
     <ScrollTable<RepairInfoVo>

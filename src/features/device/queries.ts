@@ -1,5 +1,7 @@
 import { queryOptions } from '@tanstack/react-query'
 
+import type { PageDto } from '@/shared/types'
+
 import { DeviceAPI } from './api'
 import {
   checkQK,
@@ -30,10 +32,10 @@ export const checkQO = () =>
     queryFn: ({ signal }) => DeviceAPI.getCheck(signal)
   })
 
-export const repairInfoQO = () =>
+export const repairInfoQO = (params: PageDto) =>
   queryOptions({
-    queryKey: repairInfoQK(),
-    queryFn: ({ signal }) => DeviceAPI.getRepairInfo(signal)
+    queryKey: repairInfoQK(params),
+    queryFn: ({ signal }) => DeviceAPI.getRepairInfo(params, signal)
   })
 
 export const repairTimeQO = () =>
