@@ -8,7 +8,7 @@ export function RepairBlock() {
     { label: '报修数', key: 'AllCount' },
     { label: '完成数', key: 'WCCount' },
     { label: '进行中', key: 'JXZCount' },
-    { label: '待维修', key: 'DWXCount' }
+    { label: '待指派', key: 'DWXCount' }
   ]
 
   const { data } = useQuery(repairQO())
