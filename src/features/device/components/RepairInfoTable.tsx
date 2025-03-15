@@ -4,7 +4,7 @@ import type { RepairInfoVo } from '../types'
 export function RepairInfoTable() {
   const { data: { data = [] } = {} } = useQuery(
     repairInfoQO({
-      pageIndex: 0,
+      pageIndex: 1,
       pageSize: 9999
     })
   )

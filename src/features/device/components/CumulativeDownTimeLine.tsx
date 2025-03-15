@@ -4,18 +4,23 @@ import { cumulativeDownTimeQO } from '../queries'
 
 export function CumulativeDownTimeLine() {
   const chartStore = useChartStore()
-
   const { data = [] } = useQuery(cumulativeDownTimeQO())
+  const { currentSlicedData } = useSlicedData({ data })
 
   const option = useMemo<EChartsOption>(
     () => ({
       textStyle: {
-        fontFamily: 'inherit'
+        fontFamily: 'inherit',
+        fontSize: 16
       },
       backgroundColor: '',
       title: {
         text: '累计停机时间',
-        left: 'center'
+        left: 'center',
+        textStyle: {
+          fontSize: 24
+        },
+        top: 10
       },
       tooltip: {
         trigger: 'axis',
@@ -37,28 +42,39 @@ export function CumulativeDownTimeLine() {
           alignWithLabel: true
         },
         axisLabel: {
+          fontSize: 16,
           interval: 0
         }
       },
       yAxis: {
         type: 'value',
         name: '小时',
+        max: 10,
         min: 0,
-        max: 120
+        interval: 2,
+        axisLabel: {
+          fontSize: 16
+        }
       },
       series: [
         {
           type: 'line',
           name: '数量',
-          encode: { x: 'cMonth', y: 'iHour' },
-          label: { show: true, position: 'top' }
+          encode: {
+            x: 'cMonth',
+            y: 'iHour'
+          },
+          label: {
+            show: true,
+            position: 'top'
+          }
         }
       ],
       dataset: {
-        source: data
+        source: currentSlicedData
       }
     }),
-    [data]
+    [currentSlicedData]
   )
 
   return (

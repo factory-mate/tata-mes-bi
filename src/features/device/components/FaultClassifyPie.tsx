@@ -11,12 +11,17 @@ export function FaultClassifyPie() {
   const option = useMemo<EChartsOption>(
     () => ({
       textStyle: {
-        fontFamily: 'inherit'
+        fontFamily: 'inherit',
+        fontSize: 16
       },
       backgroundColor: '',
       title: {
         text: '设备故障分类占比',
-        left: 'center'
+        left: 'center',
+        textStyle: {
+          fontSize: 24
+        },
+        top: 10
       },
       tooltip: {
         trigger: 'item'
@@ -40,7 +45,9 @@ export function FaultClassifyPie() {
               return `${d.cFaultClassName}: ${d.nQuantity} (${d.iRate}%)`
             }
           },
-          top: 30,
+          top: 40,
+          left: 0,
+          right: 0,
           encode: {
             itemName: 'cFaultClassName',
             value: 'iRate',

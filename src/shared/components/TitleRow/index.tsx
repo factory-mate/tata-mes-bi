@@ -12,7 +12,7 @@ export default function TitleRow(props: TitleRowProps) {
   return (
     <div className="relative size-full">
       <div className="flex size-full flex-col items-center justify-center">
-        <div className="absolute top-0 text-3xl font-semibold">{title ?? defaultTitle}</div>
+        <div className="absolute top-0 text-4xl font-semibold">{title ?? defaultTitle}</div>
 
         <div className="scale-75">
           <svg

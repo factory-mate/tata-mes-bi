@@ -10,5 +10,5 @@ export default function ClockPanel() {
     return () => clearInterval(timer)
   })
 
-  return <div className="text-2xl">{currentTime}</div>
+  return <div className="text-3xl">{currentTime}</div>
 }

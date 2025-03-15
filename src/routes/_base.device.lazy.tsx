@@ -8,7 +8,7 @@ import {
   MTTRBar,
   RepairBlock,
   RepairInfoTable,
-  RepairTimeBar
+  RepairTime
 } from '@/features/device'
 
 export const Route = createLazyFileRoute('/_base/device')({
@@ -20,7 +20,7 @@ function Page() {
     <>
       <div className="col-span-12 row-span-1 p-2">
         <TitleRow
-          left={<div className="text-2xl">TATA木门二十五厂</div>}
+          left={<div className="text-3xl">TATA木门二十五厂</div>}
           right={<ClockPanel />}
         />
       </div>
@@ -40,7 +40,7 @@ function Page() {
       </BlockContainer>
 
       <BlockContainer className="col-span-6 row-span-5">
-        <RepairTimeBar />
+        <RepairTime />
       </BlockContainer>
 
       <BlockContainer className="col-span-4 row-span-4">

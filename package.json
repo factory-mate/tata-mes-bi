@@ -18,9 +18,9 @@
     "prepare": "husky"
   },
   "dependencies": {
-    "@bit-ocean/echarts": "^0.0.50",
-    "@bit-ocean/hooks": "^0.0.50",
-    "@bit-ocean/utils": "^0.0.50",
+    "@bit-ocean/echarts": "^0.0.53",
+    "@bit-ocean/hooks": "^0.0.53",
+    "@bit-ocean/utils": "^0.0.53",
     "@tanstack/react-query": "^5.67.2",
     "@tanstack/react-router": "^1.112.18",
     "abortcontroller-polyfill": "^1.7.8",
@@ -40,13 +40,13 @@
     "zustand": "^5.0.3"
   },
   "devDependencies": {
-    "@bit-ocean/auto-import": "^0.0.50",
-    "@bit-ocean/cli": "^0.0.50",
-    "@bit-ocean/commitlint-config": "^0.0.50",
-    "@bit-ocean/cspell": "^0.0.50",
-    "@bit-ocean/eslint-config": "^0.0.50",
-    "@bit-ocean/prettier-config": "^0.0.50",
-    "@bit-ocean/tsconfig": "^0.0.50",
+    "@bit-ocean/auto-import": "^0.0.53",
+    "@bit-ocean/cli": "^0.0.53",
+    "@bit-ocean/commitlint-config": "^0.0.53",
+    "@bit-ocean/cspell": "^0.0.53",
+    "@bit-ocean/eslint-config": "^0.0.53",
+    "@bit-ocean/prettier-config": "^0.0.53",
+    "@bit-ocean/tsconfig": "^0.0.53",
     "@commitlint/cli": "^19.8.0",
     "@commitlint/config-conventional": "^19.8.0",
     "@iconify/json": "^2.2.314",

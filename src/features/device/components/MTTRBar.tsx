@@ -5,21 +5,22 @@ import { mttrQO } from '../queries'
 export function MTTRBar() {
   const chartStore = useChartStore()
   const { data = [] } = useQuery(mttrQO())
-  const { maxValue, currentSlicedData } = useSlicedData({
-    data,
-    size: 5,
-    maxValueKey: 'iMinute'
-  })
+  const { currentSlicedData } = useSlicedData({ data })
 
   const option = useMemo<EChartsOption>(
     () => ({
       textStyle: {
-        fontFamily: 'inherit'
+        fontFamily: 'inherit',
+        fontSize: 16
       },
       backgroundColor: '',
       title: {
         text: '设备平均修复时间（MTTR）',
-        left: 'center'
+        left: 'center',
+        textStyle: {
+          fontSize: 24
+        },
+        top: 10
       },
       tooltip: {
         trigger: 'axis',
@@ -28,8 +29,8 @@ export function MTTRBar() {
         }
       },
       grid: {
-        left: 0,
-        right: 70,
+        left: 5,
+        right: 80,
         bottom: 10,
         tooltip: true,
         containLabel: true
@@ -41,20 +42,30 @@ export function MTTRBar() {
           alignWithLabel: true
         },
         axisLabel: {
-          interval: 0
+          fontSize: 16,
+          interval: 0,
+          width: 60,
+          overflow: 'break'
         }
       },
       yAxis: {
         type: 'value',
         name: '分钟',
         min: 0,
-        max: maxValue
+        max: 25,
+        interval: 5,
+        axisLabel: {
+          fontSize: 16
+        }
       },
       series: [
         {
           type: 'bar',
           name: '分钟',
-          encode: { x: 'cDeviceName', y: 'iMinute' },
+          encode: {
+            x: 'cDeviceName',
+            y: 'iMinute'
+          },
           label: {
             show: true,
             position: 'top'
@@ -65,7 +76,7 @@ export function MTTRBar() {
         source: currentSlicedData
       }
     }),
-    [maxValue, currentSlicedData]
+    [currentSlicedData]
   )
 
   return (

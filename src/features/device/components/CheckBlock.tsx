@@ -15,15 +15,15 @@ export function CheckBlock() {
 
   return (
     <div className="flex size-full flex-col items-center justify-center space-y-2">
-      <div className="text-2xl">{title}</div>
+      <div className="text-3xl">{title}</div>
       <div className="grid w-full grid-cols-2 grid-rows-2 gap-4">
         {templates.map((i) => (
           <div
             key={i.label}
-            className="col-span-1 row-span-1 space-x-4 text-center text-xl"
+            className="col-span-1 row-span-1 space-x-4 text-center text-2xl"
           >
             <span>{i.label}:</span>
-            <span className="text-xl font-bold">
+            <span className="text-2xl font-bold">
               <AnimatedNumber value={data?.[i.key]} />
             </span>
           </div>

@@ -9,14 +9,14 @@ importers:
   .:
     dependencies:
       '@bit-ocean/echarts':
-        specifier: ^0.0.50
-        version: 0.0.50(echarts@5.6.0)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+        specifier: ^0.0.53
+        version: 0.0.53(echarts@5.6.0)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@bit-ocean/hooks':
-        specifier: ^0.0.50
-        version: 0.0.50(@tanstack/react-router@1.112.18(react-dom@18.3.1(react@18.3.1))(react@18.3.1))
+        specifier: ^0.0.53
+        version: 0.0.53(@tanstack/react-router@1.112.18(react-dom@18.3.1(react@18.3.1))(react@18.3.1))
       '@bit-ocean/utils':
-        specifier: ^0.0.50
-        version: 0.0.50(dayjs@1.11.13)
+        specifier: ^0.0.53
+        version: 0.0.53(dayjs@1.11.13)
       '@tanstack/react-query':
         specifier: ^5.67.2
         version: 5.67.2(react@18.3.1)
@@ -70,26 +70,26 @@ importers:
         version: 5.0.3(@types/react@18.3.18)(immer@10.1.1)(react@18.3.1)(use-sync-external-store@1.4.0(react@18.3.1))
     devDependencies:
       '@bit-ocean/auto-import':
-        specifier: ^0.0.50
-        version: 0.0.50(unplugin-auto-import@19.1.1)
+        specifier: ^0.0.53
+        version: 0.0.53(unplugin-auto-import@19.1.1)
       '@bit-ocean/cli':
-        specifier: ^0.0.50
-        version: 0.0.50
+        specifier: ^0.0.53
+        version: 0.0.53
       '@bit-ocean/commitlint-config':
-        specifier: ^0.0.50
-        version: 0.0.50(@commitlint/cli@19.8.0(@types/node@22.13.10)(typescript@5.6.3))(@commitlint/config-conventional@19.8.0)(commitizen@4.3.1(@types/node@22.13.10)(typescript@5.6.3))(cz-git@1.11.1)
+        specifier: ^0.0.53
+        version: 0.0.53(@commitlint/cli@19.8.0(@types/node@22.13.10)(typescript@5.6.3))(@commitlint/config-conventional@19.8.0)(commitizen@4.3.1(@types/node@22.13.10)(typescript@5.6.3))(cz-git@1.11.1)
       '@bit-ocean/cspell':
-        specifier: ^0.0.50
-        version: 0.0.50(cspell@8.17.5)
+        specifier: ^0.0.53
+        version: 0.0.53(cspell@8.17.5)
       '@bit-ocean/eslint-config':
-        specifier: ^0.0.50
-        version: 0.0.50(eslint@8.57.1)(tailwindcss@3.4.17)(typescript@5.6.3)
+        specifier: ^0.0.53
+        version: 0.0.53(eslint@8.57.1)(tailwindcss@3.4.17)(typescript@5.6.3)
       '@bit-ocean/prettier-config':
-        specifier: ^0.0.50
-        version: 0.0.50(prettier@3.5.3)
+        specifier: ^0.0.53
+        version: 0.0.53(prettier@3.5.3)
       '@bit-ocean/tsconfig':
-        specifier: ^0.0.50
-        version: 0.0.50(typescript@5.6.3)
+        specifier: ^0.0.53
+        version: 0.0.53(typescript@5.6.3)
       '@commitlint/cli':
         specifier: ^19.8.0
         version: 19.8.0(@types/node@22.13.10)(typescript@5.6.3)
@@ -709,71 +709,71 @@ packages:
     resolution: {integrity: sha512-Y3IR1cRnOxOCDvMmNiym7XpXQ93iGDDPHx+Zj+NM+rg0fBaShfQLkg+hKPaZCEvg5N/LeCo4+Rj/i3FuJsIQaw==}
     engines: {node: '>=6.9.0'}
 
-  '@bit-ocean/auto-import@0.0.50':
-    resolution: {integrity: sha512-jb4w1FjLZZrYDqoRYvOTR0jM6bpG1AJYiBGYdcYzLb1wNo9G80cMm1vSRF9FP8gyBh+/5DNS1dGKvN+R9kRKFg==}
+  '@bit-ocean/auto-import@0.0.53':
+    resolution: {integrity: sha512-DgTatGGHdztZeTZE5j9uv4FdjH/xeGvdm0DpEOj4409Txn2MwPBcl/O4MAnXDnrJkoZklnavAtoW66CjBAB/yw==}
     peerDependencies:
-      unplugin-auto-import: ^0.18.2
+      unplugin-auto-import: ^19.1.1
     peerDependenciesMeta:
       unplugin-auto-import:
         optional: true
 
-  '@bit-ocean/cli@0.0.50':
-    resolution: {integrity: sha512-y7OsqtC08liiyzg/r/DH8apg0l2Vs8aLlUAWj7ysvhbHRIqVItoc07Lgz8Y2Ldjr6tW3nScVSjXDeLiV/wsT4g==}
+  '@bit-ocean/cli@0.0.53':
+    resolution: {integrity: sha512-bRWpXHP4zSNMGEpvCE91pgNxtge7ta4BchCdnkRvVcW9EI+AVEZCuky2q/DyQX1x/vMovYqoLQXl+ev9r0ARRQ==}
     hasBin: true
 
-  '@bit-ocean/commitlint-config@0.0.50':
-    resolution: {integrity: sha512-iAl5AQ1cDAjkinafT7JjwN4IxBL8bzqdBATlI/cPbnZws5pas6jpSFrvkMD7TLWrxhwxX8+UP2F3OLq5fYbN3g==}
+  '@bit-ocean/commitlint-config@0.0.53':
+    resolution: {integrity: sha512-E+NpUGzzQtjs5xm54VqRBwifStOLea18Rt+FlfAXWHs9FDmaTsQTO7STZuuTXdPdr3JZkRZEgTOgjboevbtFHg==}
     peerDependencies:
-      '@commitlint/cli': ^19.4.0
-      '@commitlint/config-conventional': ^19.2.2
-      commitizen: ^4.3.0
-      cz-git: ^1.9.4
+      '@commitlint/cli': ^19.8.0
+      '@commitlint/config-conventional': ^19.8.0
+      commitizen: ^4.3.1
+      cz-git: ^1.11.1
     peerDependenciesMeta:
       cz-git:
         optional: true
 
-  '@bit-ocean/config@0.0.50':
-    resolution: {integrity: sha512-VmhDTMz521Zarc9OP/GComNjdBSU0k35GDkn5Zumr1+FfFLUP2W25xfW3Pb2e1+2ANeT2pbE9RYw8romPTSi/A==}
+  '@bit-ocean/config@0.0.53':
+    resolution: {integrity: sha512-DdyQkzpzjqUtj7/lqpsae07lBYuU4nF/zIEGJj9frhb+CW0IrZZaQWZStBATRmAbklQL+728oSNwoZ9BsL/0zA==}
 
-  '@bit-ocean/cspell@0.0.50':
-    resolution: {integrity: sha512-rxWNNtcXmNaBpBCmqkUnMlvcdaSVxC6yMbme/tAQigwhhLaXPyIqh9Gm7Tu6XXW2T0dbefPs7ql1CaoDV/A2ow==}
+  '@bit-ocean/cspell@0.0.53':
+    resolution: {integrity: sha512-C9hbTtT+d634l3+uoi8EAOVO+kddUq8pgEDzXEhWQsX5DBiSEhSxdLrSewrWw3PIlI3LoUQKBQAF8jKIQPuk8w==}
     peerDependencies:
       cspell: ^8.0.0
 
-  '@bit-ocean/echarts@0.0.50':
-    resolution: {integrity: sha512-pxcRRg1+lkUr71D1IoP1kRsnT8QTa/kwtJhEn3Za1PM1npBf4Byg06b/yo1FcBgaOhGcyUeiK9C76TNChv99VQ==}
+  '@bit-ocean/echarts@0.0.53':
+    resolution: {integrity: sha512-przw7LkTOjGnbo/2iRFuZ0HvpdeRNqJN43odbX/0Nv58PPg+9RRdKaERLidQkjXdYATq3t0B3q1AzDydUDsQvg==}
     peerDependencies:
       echarts: '>=5'
       react: '>=18'
       react-dom: '>=18'
 
-  '@bit-ocean/eslint-config@0.0.50':
-    resolution: {integrity: sha512-yI4okCgM2xXO4sgea5nixJujOd5S7bap/7PGUZcYW3A1ouFGTZFFlw+U1OkizxsggysFdXwWhpSShlezmHYjEA==}
+  '@bit-ocean/eslint-config@0.0.53':
+    resolution: {integrity: sha512-Gmnbj2h6hb70h3M5RgNGB0EDkllvDtQIIRH5B5IbeUl809Yrjnl3TjSHvuFnq44gL/WhJT29taWZVJ06wcgbyg==}
     peerDependencies:
       eslint: ^8.0.0
 
-  '@bit-ocean/hooks@0.0.50':
-    resolution: {integrity: sha512-AQFl/M7WNzqxhUucOxtFn3E/o/89YlcJk1vMQ227kiHbGPegtZ0Sp4/XH0EisD1C+IqT6L5spB+Y85fV8gKeoA==}
+  '@bit-ocean/hooks@0.0.53':
+    resolution: {integrity: sha512-emo6ZFGHofvFqnSiZT+xW8AGLOajjw5PGPMK3xPiNkcZ+GRXChdY6l5GB3CfkqU9TNZlQNOBs6rusR+YKpPcDw==}
     peerDependencies:
-      '@tanstack/react-router': ^1.46.8
+      '@tanstack/react-router': ^1.114.17
     peerDependenciesMeta:
       '@tanstack/react-router':
         optional: true
 
-  '@bit-ocean/prettier-config@0.0.50':
-    resolution: {integrity: sha512-Ozc4LPybzVj1DhpmhXFegL6ux4n20DFzSYIN3UxVFUBktUdIn7EjqDwiHWdVpjB+33g0GGcZ5P7Yh7O1hkZKkQ==}
+  '@bit-ocean/prettier-config@0.0.53':
+    resolution: {integrity: sha512-jIjwaLmSbSiZTLKPk5yKYl1nk1O93pmPMAUp55nyUWnvyMQKHhHFR/G5XgvUwcqz7FJIpseextwl8saIPIb05A==}
     peerDependencies:
-      prettier: ^3.3.3
+      prettier: ^3.5.3
 
-  '@bit-ocean/tsconfig@0.0.50':
-    resolution: {integrity: sha512-SKVo0EzjzFZC2GKcICZN9YITkK3te2sck6puc131kjQbYlECN+bXBLQ6g9xY99SpWubMFmHTaadE6Q4Bru2swg==}
+  '@bit-ocean/tsconfig@0.0.53':
+    resolution: {integrity: sha512-wlCwDAqYdemdtRQEkHne0y23HD5xJKRXSy1Nx0IO/ah3fhSgrRT/ZV9gXICb/JUbPBI7VAFzgtFlKjRRMUyJ1Q==}
     peerDependencies:
       typescript: ^4.0.0 || ^5.0.0
 
-  '@bit-ocean/utils@0.0.50':
-    resolution: {integrity: sha512-K+nyHOshgr5bszN3/p0RxCQW5I4QoxyfkuHiyXyIci0Sfu5GQWbxnjuSiPW37AKDE1lEcYjR9RtWS7Fqdw04Wg==}
+  '@bit-ocean/utils@0.0.53':
+    resolution: {integrity: sha512-tel1aiNrVJMCOErKgHCbV0iYoXIX047nZ4eQzNrg1cpzDGrT0CS8fL7LAwCkLEq7XDcLio+ky7gc+zFYTpB1zw==}
     peerDependencies:
-      dayjs: ^1.11.12
+      dayjs: ^1.11.13
     peerDependenciesMeta:
       dayjs:
         optional: true
@@ -2308,10 +2308,6 @@ packages:
   combined-stream@1.0.8:
     resolution: {integrity: sha512-FQN4MRfuJeHf7cBbBMJFXhKSDq+2kAArBlmRBvcvFE5BB1HZKXtSFASDhdlz9zOYwxh8lDdnvmMOe/+5cdoEdg==}
     engines: {node: '>= 0.8'}
-
-  commander@12.1.0:
-    resolution: {integrity: sha512-Vw8qHK3bZM9y/P10u3Vib8o/DdkvA2OtPtZvD871QKjy74Wj1WSKFILMPRPSdUSx5RFK1arlJzEtA4PkFgnbuA==}
-    engines: {node: '>=18'}
 
   commander@13.1.0:
     resolution: {integrity: sha512-/rFeCpNJQbhSZjGVwO9RFV3xPqbnERS8MmIQzCtD/zl6gpJuV/bMLuN92oG3F7d8oDEHHRrujSXNUr8fpjntKw==}
@@ -5590,14 +5586,14 @@ snapshots:
       '@babel/helper-string-parser': 7.25.9
       '@babel/helper-validator-identifier': 7.25.9
 
-  '@bit-ocean/auto-import@0.0.50(unplugin-auto-import@19.1.1)':
+  '@bit-ocean/auto-import@0.0.53(unplugin-auto-import@19.1.1)':
     optionalDependencies:
       unplugin-auto-import: 19.1.1
 
-  '@bit-ocean/cli@0.0.50':
+  '@bit-ocean/cli@0.0.53':
     dependencies:
-      '@bit-ocean/config': 0.0.50
-      commander: 12.1.0
+      '@bit-ocean/config': 0.0.53
+      commander: 13.1.0
       cross-fetch: 4.1.0
       cross-spawn: 7.0.6
       handlebars: 4.7.8
@@ -5606,7 +5602,7 @@ snapshots:
     transitivePeerDependencies:
       - encoding
 
-  '@bit-ocean/commitlint-config@0.0.50(@commitlint/cli@19.8.0(@types/node@22.13.10)(typescript@5.6.3))(@commitlint/config-conventional@19.8.0)(commitizen@4.3.1(@types/node@22.13.10)(typescript@5.6.3))(cz-git@1.11.1)':
+  '@bit-ocean/commitlint-config@0.0.53(@commitlint/cli@19.8.0(@types/node@22.13.10)(typescript@5.6.3))(@commitlint/config-conventional@19.8.0)(commitizen@4.3.1(@types/node@22.13.10)(typescript@5.6.3))(cz-git@1.11.1)':
     dependencies:
       '@commitlint/cli': 19.8.0(@types/node@22.13.10)(typescript@5.6.3)
       '@commitlint/config-conventional': 19.8.0
@@ -5614,19 +5610,19 @@ snapshots:
     optionalDependencies:
       cz-git: 1.11.1
 
-  '@bit-ocean/config@0.0.50': {}
+  '@bit-ocean/config@0.0.53': {}
 
-  '@bit-ocean/cspell@0.0.50(cspell@8.17.5)':
+  '@bit-ocean/cspell@0.0.53(cspell@8.17.5)':
     dependencies:
       cspell: 8.17.5
 
-  '@bit-ocean/echarts@0.0.50(echarts@5.6.0)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
+  '@bit-ocean/echarts@0.0.53(echarts@5.6.0)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
     dependencies:
       echarts: 5.6.0
       react: 18.3.1
       react-dom: 18.3.1(react@18.3.1)
 
-  '@bit-ocean/eslint-config@0.0.50(eslint@8.57.1)(tailwindcss@3.4.17)(typescript@5.6.3)':
+  '@bit-ocean/eslint-config@0.0.53(eslint@8.57.1)(tailwindcss@3.4.17)(typescript@5.6.3)':
     dependencies:
       '@tanstack/eslint-plugin-query': 5.67.2(eslint@8.57.1)(typescript@5.6.3)
       '@typescript-eslint/eslint-plugin': 7.18.0(@typescript-eslint/parser@7.18.0(eslint@8.57.1)(typescript@5.6.3))(eslint@8.57.1)(typescript@5.6.3)
@@ -5657,11 +5653,11 @@ snapshots:
       - tailwindcss
       - typescript
 
-  '@bit-ocean/hooks@0.0.50(@tanstack/react-router@1.112.18(react-dom@18.3.1(react@18.3.1))(react@18.3.1))':
+  '@bit-ocean/hooks@0.0.53(@tanstack/react-router@1.112.18(react-dom@18.3.1(react@18.3.1))(react@18.3.1))':
     optionalDependencies:
       '@tanstack/react-router': 1.112.18(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
 
-  '@bit-ocean/prettier-config@0.0.50(prettier@3.5.3)':
+  '@bit-ocean/prettier-config@0.0.53(prettier@3.5.3)':
     dependencies:
       prettier: 3.5.3
       prettier-plugin-astro: 0.14.1
@@ -5683,11 +5679,11 @@ snapshots:
       - prettier-plugin-style-order
       - prettier-plugin-svelte
 
-  '@bit-ocean/tsconfig@0.0.50(typescript@5.6.3)':
+  '@bit-ocean/tsconfig@0.0.53(typescript@5.6.3)':
     dependencies:
       typescript: 5.6.3
 
-  '@bit-ocean/utils@0.0.50(dayjs@1.11.13)':
+  '@bit-ocean/utils@0.0.53(dayjs@1.11.13)':
     optionalDependencies:
       dayjs: 1.11.13
 
@@ -7218,8 +7214,6 @@ snapshots:
   combined-stream@1.0.8:
     dependencies:
       delayed-stream: 1.0.0
-
-  commander@12.1.0: {}
 
   commander@13.1.0: {}
 

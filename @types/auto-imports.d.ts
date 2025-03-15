@@ -64,6 +64,7 @@ declare global {
   const router: typeof import('@/shared/router')['router']
   const startTransition: typeof import('react')['startTransition']
   const teamConfig: typeof import('@bit-ocean/config')['teamConfig']
+  const titleStyle: typeof import('../src/shared/echarts/constants')['titleStyle']
   const useBlocker: typeof import('@tanstack/react-router')['useBlocker']
   const useCallback: typeof import('react')['useCallback']
   const useChartStore: typeof import('../src/shared/store/chart')['useChartStore']
@@ -110,10 +111,16 @@ declare global {
   const useSyncExternalStore: typeof import('react')['useSyncExternalStore']
   const useTransition: typeof import('react')['useTransition']
   const useTranslation: typeof import('react-i18next')['useTranslation']
+  const xAxisLabelOverflowStyle: typeof import('../src/shared/echarts/constants')['xAxisLabelOverflowStyle']
+  const xAxisLabelStyle: typeof import('../src/shared/echarts/constants')['xAxisLabelStyle']
+  const yAxisLabelStyle: typeof import('../src/shared/echarts/constants')['yAxisLabelStyle']
   const z: typeof import('zod')['z']
 }
 // for type re-export
 declare global {
+  // @ts-ignore
+  export type { UseSlicedDataProps, UseSlicedData } from '../src/shared/hooks/useSlicedData'
+  import('../src/shared/hooks/useSlicedData')
   // @ts-ignore
   export type { Templates, ChartRawData } from '../src/shared/types/charts'
   import('../src/shared/types/charts')

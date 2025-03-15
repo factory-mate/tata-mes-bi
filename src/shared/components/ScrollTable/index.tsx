@@ -74,10 +74,10 @@ export default function ScrollTable<T extends Record<string, any> = object>(
 
   return (
     <div className="flex size-full flex-col overflow-hidden">
-      <span className="mb-2 text-center text-lg font-semibold">{title}</span>
+      <span className="mb-2 text-center text-2xl font-semibold">{title}</span>
       <div
         ref={scrollRef}
-        className={clsx('grow overflow-y-scroll', styles.hideScrollbar)}
+        className={clsx('grow overflow-y-scroll text-lg', styles.hideScrollbar)}
         onMouseEnter={() => setIsPaused(true)}
         onMouseLeave={() => setIsPaused(false)}
       >
