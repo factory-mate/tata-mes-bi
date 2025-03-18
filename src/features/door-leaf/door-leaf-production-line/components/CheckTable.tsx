@@ -24,13 +24,13 @@ export function CheckTable() {
       check: '2',
       am: '3',
       pm: '4'
-    },
-    {
-      name: '雕刻',
-      check: '2',
-      am: '3',
-      pm: '4'
     }
+    // {
+    //   name: '雕刻',
+    //   check: '2',
+    //   am: '3',
+    //   pm: '4'
+    // }
   ]
 
   return (

@@ -1,41 +1,32 @@
 import type { EChartsOption } from 'echarts'
 
-import { getRandomValues } from '@/features/random'
-
 import { hourCompletionQO } from '../queries'
 
 export function HourCompletionLine() {
   const chartStore = useChartStore()
 
-  const { data: tempData = [] } = useQuery(
+  const { data = [] } = useQuery(
     hourCompletionQO({
       orderByFileds: 'cFactoryUnitCode',
       conditions: 'cFactoryUnitCode = FM01010101'
     })
   )
 
-  const [data, setData] = useState([
-    [88, 90, 92, 89, 99, 87, 90, 91, 95],
-    [95, 95, 95, 95, 95, 95, 95, 95, 95]
-  ])
-
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setData([getRandomValues(9, 100, 80), getRandomValues(9, 100, 80)])
-    }, 5000)
-
-    return () => clearInterval(timer)
-  }, [])
-
-  const option: EChartsOption = useMemo(
-    () => ({
+  const option = useMemo<EChartsOption>(() => {
+    const standardData = data.find((i) => i.iType === 1)
+    const actualData = data.find((i) => i.iType === 2)
+    return {
       textStyle: {
-        fontFamily: 'inherit'
+        fontFamily: 'inherit',
+        fontSize: 16
       },
       backgroundColor: '',
       title: {
-        text: 'xxx工位小时完工统计',
-        left: 'center'
+        text: '码架工位小时完工统计',
+        left: 110,
+        textStyle: {
+          fontSize: 24
+        }
       },
       tooltip: {
         trigger: 'axis',
@@ -45,7 +36,7 @@ export function HourCompletionLine() {
       },
       grid: {
         left: 0,
-        right: 40,
+        right: 50,
         bottom: 10,
         tooltip: true,
         containLabel: true
@@ -63,31 +54,65 @@ export function HourCompletionLine() {
         data: ['1小时', '2小时', '3小时', '4小时', '5小时', '6小时', '7小时', '8小时', '加班'],
         axisTick: {
           alignWithLabel: true
+        },
+        axisLabel: {
+          fontSize: 16,
+          interval: 0,
+          width: 60
         }
       },
       yAxis: {
         type: 'value',
         name: '数量',
-        min: 80,
-        max: 100
+        min: 0,
+        max: 100,
+        nameTextStyle: {
+          padding: 8
+        },
+        axisLabel: {
+          fontSize: 16
+        }
       },
       series: [
         {
           type: 'line',
           name: '标准量',
-          data: data[0],
-          label: { show: true }
+          data: [
+            standardData?.iFirstHour ?? 0,
+            standardData?.iSecondHour ?? 0,
+            standardData?.iThirdHour ?? 0,
+            standardData?.iFourthHour ?? 0,
+            standardData?.iFifthHour ?? 0,
+            standardData?.iSixthHour ?? 0,
+            standardData?.iSeventhHour ?? 0,
+            standardData?.iEighthHour ?? 0,
+            standardData?.iNinthHour ?? 0
+          ],
+          label: {
+            show: true
+          }
         },
         {
           type: 'line',
           name: '实际量',
-          data: data[1],
-          label: { show: true }
+          data: [
+            actualData?.iFirstHour ?? 0,
+            actualData?.iSecondHour ?? 0,
+            actualData?.iThirdHour ?? 0,
+            actualData?.iFourthHour ?? 0,
+            actualData?.iFifthHour ?? 0,
+            actualData?.iSixthHour ?? 0,
+            actualData?.iSeventhHour ?? 0,
+            actualData?.iEighthHour ?? 0,
+            actualData?.iNinthHour ?? 0
+          ],
+          label: {
+            show: true
+          }
         }
       ]
-    }),
-    [data]
-  )
+    }
+  }, [data])
 
   return (
     <ReactChart

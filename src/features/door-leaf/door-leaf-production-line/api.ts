@@ -69,7 +69,7 @@ export class DoorLeafProductionLineAPI {
   }
 
   static async getUnfinishedTask(data: FullPageDto, signal?: AbortSignal) {
-    return httpClient.post<Page<UnfinishedTaskVo>>(`${this.apiPrefix}/MES_TASK/Get_WWGTJ`, data, {
+    return httpClient.post<UnfinishedTaskVo[]>(`${this.apiPrefix}/MES_TASK/Get_WWGTJ`, data, {
       signal
     })
   }

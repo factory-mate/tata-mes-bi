@@ -2,7 +2,7 @@ import { unfinishedTaskQO } from '../queries'
 import type { UnfinishedTaskVo } from '../types'
 
 export function UnfinishedTaskTable() {
-  const { data: { data = [] } = {} } = useQuery(
+  const { data = [] } = useQuery(
     unfinishedTaskQO({
       orderByFileds: 'dPlanStartDate',
       conditions: 'cFactoryUnitCode = FM01010101 && cProcessCode = GX0026'

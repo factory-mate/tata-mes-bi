@@ -21,10 +21,12 @@ export function LinePersonBlock() {
         {templates.map((i) => (
           <div
             key={i.label}
-            className="col-span-1 flex items-center justify-center space-x-4 text-center text-xl"
+            className="col-span-1 flex items-center justify-center space-x-4 text-center text-2xl"
           >
             <span>{i.label}:</span>
-            <span className="text-xl font-bold">{data?.[i.key]}</span>
+            <span className="text-2xl font-bold">
+              <AnimatedNumber value={data?.[i.key] as number} />
+            </span>
           </div>
         ))}
       </div>
