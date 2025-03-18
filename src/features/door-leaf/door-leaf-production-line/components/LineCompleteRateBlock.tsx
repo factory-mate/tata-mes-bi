@@ -2,8 +2,6 @@ import { lineCompleteRateQO } from '../queries'
 import type { LineCompleteRateVo } from '../types'
 
 export function LineCompleteRateBlock() {
-  const title = '产线达成率'
-
   const templates: Templates<LineCompleteRateVo> = [
     { label: '任务数量', key: 'AllCount' },
     { label: '完成数', key: 'EndCount' },
@@ -19,7 +17,6 @@ export function LineCompleteRateBlock() {
 
   return (
     <div className="flex size-full flex-col items-center justify-between space-y-2">
-      <div className="absolute -top-3 text-xl">{title}</div>
       <div className="grid size-full grid-cols-3 gap-4">
         {templates.map((i) => (
           <div
