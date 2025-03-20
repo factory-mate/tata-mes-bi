@@ -18,7 +18,7 @@ export function DeviceRepairTable() {
         { key: 'cFaultName', label: '故障' },
         { key: 'dCreateTime', label: '维修时间' },
         { key: 'iStatusName', label: '状态' },
-        { key: 'cPersonName', label: '责任人' }
+        { key: 'cPersonName', label: '维修人' }
       ]}
       data={data}
     />

@@ -13,6 +13,11 @@ body {
     Arial,
     sans-serif;
   min-height: 100vh;
+  overflow: hidden;
+}
+
+body::-webkit-scrollbar {
+  display: none;
 }
 
 #app {

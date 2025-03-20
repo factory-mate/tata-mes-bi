@@ -25,7 +25,7 @@ export function KnifeTable() {
 
   return (
     <ScrollTable<KnifeVo>
-      title="刀具预警信息"
+      title="刀具预警信息（测试中）"
       columns={[
         {
           key: 'name',

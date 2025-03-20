@@ -101,7 +101,7 @@ export function MaterialTable() {
         },
         {
           key: 'user',
-          label: '责任人'
+          label: '维修人'
         }
       ]}
       data={data}
