@@ -31,3 +31,8 @@ dist-ssr
 !.env.example
 
 .eslintcache
+
+
+# Zip
+*.zip
+*.rar
