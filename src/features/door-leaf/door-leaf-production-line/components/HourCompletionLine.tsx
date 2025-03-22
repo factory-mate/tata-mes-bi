@@ -2,19 +2,26 @@ import type { EChartsOption } from 'echarts'
 
 import { hourCompletionQO } from '../queries'
 
-export function HourCompletionLine() {
+interface HourCompletionLineProps {
+  conditions: string
+}
+
+export function HourCompletionLine(props: HourCompletionLineProps) {
+  const { conditions } = props
+
   const chartStore = useChartStore()
 
   const { data = [] } = useQuery(
     hourCompletionQO({
       orderByFileds: 'cFactoryUnitCode',
-      conditions: 'cFactoryUnitCode = FM01010101'
+      conditions
     })
   )
 
+  const { currentSlicedData } = useSlicedData({ data, xAxisSize: 1 })
+
   const option = useMemo<EChartsOption>(() => {
-    const standardData = data.find((i) => i.iType === 1)
-    const actualData = data.find((i) => i.iType === 2)
+    const actualData = currentSlicedData.at(0)
     return {
       textStyle: {
         fontFamily: 'inherit',
@@ -22,8 +29,9 @@ export function HourCompletionLine() {
       },
       backgroundColor: '',
       title: {
-        text: '码架工位小时完工统计',
-        left: 110,
+        text: `${currentSlicedData.at(0)?.cFactoryUnitName ?? '工位'}小时完工统计`,
+        top: 10,
+        left: 70,
         textStyle: {
           fontSize: 24
         }
@@ -37,16 +45,17 @@ export function HourCompletionLine() {
       grid: {
         left: 0,
         right: 50,
-        bottom: 10,
+        bottom: 20,
         tooltip: true,
         containLabel: true
       },
       legend: {
         data: ['标准量', '实际量'],
         align: 'left',
-        top: 0,
+        top: 4,
         right: 0,
-        orient: 'horizontal'
+        orient: 'horizontal',
+        width: 10
       },
       xAxis: {
         type: 'category',
@@ -76,24 +85,6 @@ export function HourCompletionLine() {
       series: [
         {
           type: 'line',
-          name: '标准量',
-          data: [
-            standardData?.iFirstHour ?? 0,
-            standardData?.iSecondHour ?? 0,
-            standardData?.iThirdHour ?? 0,
-            standardData?.iFourthHour ?? 0,
-            standardData?.iFifthHour ?? 0,
-            standardData?.iSixthHour ?? 0,
-            standardData?.iSeventhHour ?? 0,
-            standardData?.iEighthHour ?? 0,
-            standardData?.iNinthHour ?? 0
-          ],
-          label: {
-            show: true
-          }
-        },
-        {
-          type: 'line',
           name: '实际量',
           data: [
             actualData?.iFirstHour ?? 0,
@@ -112,7 +103,7 @@ export function HourCompletionLine() {
         }
       ]
     }
-  }, [data])
+  }, [currentSlicedData])
 
   return (
     <ReactChart

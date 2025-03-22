@@ -4,7 +4,9 @@ import { mttrQO } from '../queries'
 
 export function MTTRBar() {
   const chartStore = useChartStore()
+
   const { data = [] } = useQuery(mttrQO())
+
   const { currentSlicedData } = useSlicedData({ data })
 
   const option = useMemo<EChartsOption>(

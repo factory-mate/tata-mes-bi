@@ -1,17 +1,18 @@
 import type { EChartsOption } from 'echarts'
 
-type Status = '运行' | '空闲' | '故障'
+import { deviceRunningStatusQO } from '../queries'
+import { DeviceStatus } from '../types'
 
 interface GaugeItemProps {
   label: string
-  status: Status
+  status: DeviceStatus
   className?: string
 }
 
-const statusColorMap = new Map<Status, string>([
-  ['运行', '#00FF00'],
-  ['空闲', '#FFA500'],
-  ['故障', '#FF0000']
+const statusColorMap = new Map<DeviceStatus, string>([
+  [DeviceStatus.SUCCESS, '#00FF00'],
+  [DeviceStatus.WARNING, '#FFA500'],
+  [DeviceStatus.ERROR, '#FF0000']
 ])
 
 function GaugeItem(props: GaugeItemProps) {
@@ -100,42 +101,33 @@ function GaugeItem(props: GaugeItemProps) {
   )
 }
 
-export function DeviceStatusGauge() {
-  const data: GaugeItemProps[] = [
-    {
-      label: '磁吸机',
-      status: '运行'
-    },
-    {
-      label: '开锁机',
-      status: '运行'
-    },
-    {
-      label: '雕刻机',
-      status: '运行'
-    },
-    {
-      label: '四面据',
-      status: '运行'
-    },
-    {
-      label: '秋林压机',
-      status: '故障'
-    },
-    {
-      label: '封边机',
-      status: '空闲'
-    }
-  ]
+interface DeviceStatusGaugeProps {
+  conditions: string
+}
+
+export function DeviceStatusGauge(props: DeviceStatusGaugeProps) {
+  const { conditions } = props
+
+  const { data: { data = [] } = {} } = useQuery(
+    deviceRunningStatusQO({
+      pageIndex: 1,
+      pageSize: 10000,
+      orderByFileds: 'cResourceCode',
+      conditions
+    })
+  )
+
+  const { currentSlicedData } = useSlicedData({ data })
+
   return (
     <div className="flex size-full flex-col items-center space-y-2">
-      <div className="text-lg font-bold">设备运行状态</div>
+      <div className="text-2xl font-bold">设备运行状态</div>
       <div className="grid w-full grow grid-cols-3 grid-rows-2 gap-4">
-        {data.map((i) => (
+        {currentSlicedData.map((i) => (
           <GaugeItem
-            key={i.label}
-            label={i.label}
-            status={i.status}
+            key={i.cDeviceName}
+            label={i.cDeviceName}
+            status={i.iStatus}
             className="col-span-1 row-span-1"
           />
         ))}

@@ -2,35 +2,38 @@ import type { EChartsOption } from 'echarts'
 
 import { materialTypeQO } from '../queries'
 
-export function MaterialTypePie() {
+interface MaterialTypePieProps {
+  conditions: string
+}
+
+export function MaterialTypePie(props: MaterialTypePieProps) {
+  const { conditions } = props
+
   const chartStore = useChartStore()
 
   const { data = [] } = useQuery(
     materialTypeQO({
       orderByFileds: 'cFactoryUnitCode',
-      conditions: 'cFactoryUnitCode = FM01010101'
+      conditions
     })
   )
 
-  const generateRandomData = () => {
-    const materials = ['花梨色', '银灰色', '白色', '其他', '电气']
-    return materials.map((m) => ({
-      material: m,
-      value: Math.floor(Math.random() * 60)
-    }))
-  }
-
-  const [source, setSource] = useState(generateRandomData())
+  const { currentSlicedData } = useSlicedData({ data, xAxisSize: 5 })
 
   const option: EChartsOption = useMemo(
     () => ({
       textStyle: {
-        fontFamily: 'inherit'
+        fontFamily: 'inherit',
+        fontSize: 16
       },
       backgroundColor: '',
       title: {
         text: '材质统计',
-        left: 'center'
+        left: 'center',
+        textStyle: {
+          fontSize: 24
+        },
+        top: 10
       },
       tooltip: {
         trigger: 'item',
@@ -47,19 +50,26 @@ export function MaterialTypePie() {
         {
           type: 'pie',
           name: '百分比',
-          label: { show: true, position: 'inner', formatter: '{b}: {d}%' },
-          top: 10
+          label: {
+            show: true,
+            position: 'inner',
+            formatter: '{b}: {d}%'
+          },
+          top: 40,
+          left: 0,
+          right: 0,
+          encode: {
+            itemName: 'cDynamicsParm06',
+            value: 'iRate',
+            tooltip: 'nQuantity'
+          }
         }
       ],
       dataset: {
-        dimensions: [
-          { name: 'material', displayName: '材质' },
-          { name: 'value', displayName: '百分比' }
-        ],
-        source
+        source: currentSlicedData
       }
     }),
-    [source]
+    [currentSlicedData]
   )
 
   return (

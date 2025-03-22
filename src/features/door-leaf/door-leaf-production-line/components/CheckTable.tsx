@@ -35,7 +35,7 @@ export function CheckTable() {
 
   return (
     <ScrollTable<CheckVo>
-      title="工位设备点检/首件检"
+      title="工位设备点检/首件检（测试中）"
       columns={[
         {
           key: 'name',

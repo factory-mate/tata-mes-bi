@@ -1,13 +1,19 @@
 import { materialCallQO } from '../queries'
 import type { MaterialCallVo } from '../types'
 
-export function MaterialCallTable() {
+interface MaterialCallTableProps {
+  conditions: string
+}
+
+export function MaterialCallTable(props: MaterialCallTableProps) {
+  const { conditions } = props
+
   const { data: { data = [] } = {} } = useQuery(
     materialCallQO({
       pageIndex: 1,
       pageSize: 10,
       orderByFileds: 'dCreateTime',
-      conditions: 'cDefindParm05 like FM01010101'
+      conditions
     })
   )
 

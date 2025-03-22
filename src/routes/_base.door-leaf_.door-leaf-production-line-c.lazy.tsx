@@ -16,7 +16,7 @@ import {
   UnfinishedTaskTable
 } from '@/features/door-leaf/door-leaf-production-line'
 
-export const Route = createLazyFileRoute('/_base/door-leaf_/door-leaf-production-line')({
+export const Route = createLazyFileRoute('/_base/door-leaf_/door-leaf-production-line-c')({
   component: Page
 })
 function Page() {
@@ -38,39 +38,39 @@ function Page() {
       </BlockContainer>
 
       <BlockContainer className="col-span-4 row-span-4">
-        <MaterialCallTable />
+        <MaterialCallTable conditions="cDefindParm05 like FM01010103" />
       </BlockContainer>
       <BlockContainer className="col-span-2 row-span-4">
-        <InternalReturnTypePie />
+        <InternalReturnTypePie conditions="cFactoryUnitCode = FM01010103" />
       </BlockContainer>
       <BlockContainer className="col-span-2 row-span-4">
-        <MaterialTypePie />
+        <MaterialTypePie conditions="cFactoryUnitCode = FM01010103" />
       </BlockContainer>
       <BlockContainer className="col-span-1 row-span-4">
-        <Gauge />
+        <Gauge conditions="cFactoryUnitCode=FM01010103" />
       </BlockContainer>
       <BlockContainer className="col-span-3 row-span-4">
-        <InternalReturnReasonBar />
+        <InternalReturnReasonBar conditions="cFactoryUnitCode = FM01010103" />
       </BlockContainer>
 
       <BlockContainer className="col-span-4 row-span-3">
-        <DeviceRepairTable />
+        <DeviceRepairTable cFactoryUnitCode="FM01010103" />
       </BlockContainer>
       <BlockContainer className="col-span-4 row-span-3">
-        <UnfinishedTaskTable />
+        <UnfinishedTaskTable conditions="cFactoryUnitCode = FM01010103 && cProcessCode = GX0026" />
       </BlockContainer>
       <BlockContainer className="col-span-4 row-span-3">
         <CheckTable />
       </BlockContainer>
 
       <BlockContainer className="col-span-4 row-span-4">
-        <HourCompletionLine />
+        <HourCompletionLine conditions="cFactoryUnitCode in (FM0101010301,FM0101010302,FM0101010303,FM0101010306)" />
       </BlockContainer>
       <BlockContainer className="col-span-4 row-span-4">
         <KnifeTable />
       </BlockContainer>
       <BlockContainer className="col-span-4 row-span-4">
-        <DeviceStatusGauge />
+        <DeviceStatusGauge conditions="cFactoryUnitCode = FM01010103" />
       </BlockContainer>
     </>
   )

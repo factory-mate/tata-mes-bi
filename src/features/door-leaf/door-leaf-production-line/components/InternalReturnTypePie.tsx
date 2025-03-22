@@ -2,35 +2,36 @@ import type { EChartsOption } from 'echarts'
 
 import { internalReturnTypeQO } from '../queries'
 
-export function InternalReturnTypePie() {
+interface InternalReturnTypePieProps {
+  conditions: string
+}
+
+export function InternalReturnTypePie(props: InternalReturnTypePieProps) {
+  const { conditions } = props
+
   const chartStore = useChartStore()
 
-  const { data = [] } = useQuery(
+  const { data } = useQuery(
     internalReturnTypeQO({
       orderByFileds: 'cFactoryUnitCode',
-      conditions: 'cFactoryUnitCode = FM01010101'
+      conditions
     })
   )
-
-  const generateRandomData = () => {
-    const types = ['重做', '返工', '维修']
-    return types.map((t) => ({
-      type: t,
-      value: Math.floor(Math.random() * 60)
-    }))
-  }
-
-  const [source, setSource] = useState(generateRandomData())
 
   const option = useMemo<EChartsOption>(
     () => ({
       textStyle: {
-        fontFamily: 'inherit'
+        fontFamily: 'inherit',
+        fontSize: 16
       },
       backgroundColor: '',
       title: {
         text: '内返类型占比统计',
-        left: 'center'
+        left: 'center',
+        textStyle: {
+          fontSize: 24
+        },
+        top: 10
       },
       tooltip: {
         trigger: 'item',
@@ -47,19 +48,26 @@ export function InternalReturnTypePie() {
         {
           type: 'pie',
           name: '百分比',
-          label: { show: true, position: 'inner', formatter: '{b}: {d}%' },
-          top: 10
+          label: {
+            show: true,
+            position: 'inside',
+            formatter: '{b}: {d}%'
+          },
+          top: 40,
+          left: 0,
+          right: 0
         }
       ],
       dataset: {
-        dimensions: [
-          { name: 'type', displayName: '内返类型' },
-          { name: 'value', displayName: '百分比' }
-        ],
-        source
+        source: [
+          ['type', 'value'],
+          ['维修', data?.WXCount],
+          ['返修', data?.FXCount],
+          ['重做', data?.CZCount]
+        ]
       }
     }),
-    [source]
+    [data]
   )
 
   return (

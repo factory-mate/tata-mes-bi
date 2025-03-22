@@ -1,5 +1,5 @@
-export interface UseSlicedDataProps {
-  data?: any[]
+export interface UseSlicedDataProps<T> {
+  data?: T[]
   interval?: number
   xAxisSize?: number
 }
@@ -9,11 +9,11 @@ export interface UseSlicedData {
   currentSlicedData: any[]
 }
 
-export function useSlicedData({
+export function useSlicedData<T = any>({
   data = [],
   interval = 5000,
   xAxisSize = 5
-}: UseSlicedDataProps = {}) {
+}: UseSlicedDataProps<T> = {}) {
   const [currentIndex, setCurrentIndex] = useState(0)
 
   const totalSize = useMemo(() => Math.ceil(data.length / xAxisSize), [data, xAxisSize])
@@ -23,12 +23,10 @@ export function useSlicedData({
     return () => clearInterval(timer)
   }, [totalSize, interval])
 
-  const currentSlicedData = useMemo(() => {
+  const currentSlicedData = useMemo<T[]>(() => {
     const start = currentIndex * xAxisSize
     return data.slice(start, start + xAxisSize)
   }, [currentIndex, data, xAxisSize])
 
-  return {
-    currentSlicedData
-  }
+  return { currentSlicedData }
 }

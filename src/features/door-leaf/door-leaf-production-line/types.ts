@@ -59,6 +59,17 @@ export interface InternalReturnType extends ChartRawData {
   CZRate: number
 }
 
+export interface GaugeVo extends ChartRawData {
+  cFactoryUnitCode: string
+  cFactoryUnitName: string
+  cProcessCode: string
+  cProcessName: string
+  iRate: string
+  nQuantity: number
+  cDynamicsParm06: string
+}
+// cDynamicsParm06
+
 export interface MaterialType extends ChartRawData {
   cFactoryUnitCode: string
   cFactoryUnitName: string
@@ -137,4 +148,15 @@ export interface HourCompletionVo {
   iType?: number | null
   UID?: string
   utfs?: null | string
+}
+
+export interface DeviceRunningStatusVo {
+  cDeviceName: string
+  iStatus: DeviceStatus
+}
+
+export enum DeviceStatus {
+  SUCCESS = 1,
+  WARNING = 2,
+  ERROR = 3
 }

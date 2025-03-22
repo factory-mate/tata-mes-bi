@@ -1,6 +1,10 @@
+import type { PageDto } from '@/shared/types'
+
 import { DoorLeafProductionLineAPI } from './api'
 import {
   deviceRepairQK,
+  deviceRunningStatusQK,
+  gaugeQK,
   hourCompletionQK,
   internalReturnReasonQK,
   internalReturnTypeQK,
@@ -36,6 +40,12 @@ export const internalReturnTypeQO = (data: FullPageDto) =>
     queryFn: ({ signal }) => DoorLeafProductionLineAPI.getInternalReturnType(data, signal)
   })
 
+export const gaugeQO = (data: FullPageDto) =>
+  queryOptions({
+    queryKey: gaugeQK(data),
+    queryFn: ({ signal }) => DoorLeafProductionLineAPI.getGauge(data, signal)
+  })
+
 export const materialTypeQO = (data: FullPageDto) =>
   queryOptions({
     queryKey: materialTypeQK(data),
@@ -64,4 +74,10 @@ export const hourCompletionQO = (data: FullPageDto) =>
   queryOptions({
     queryKey: hourCompletionQK(data),
     queryFn: ({ signal }) => DoorLeafProductionLineAPI.getHourCompletion(data, signal)
+  })
+
+export const deviceRunningStatusQO = (data: PageDto) =>
+  queryOptions({
+    queryKey: deviceRunningStatusQK(data),
+    queryFn: ({ signal }) => DoorLeafProductionLineAPI.getDeviceRunningStatus(data, signal)
   })

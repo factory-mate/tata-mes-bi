@@ -1,6 +1,10 @@
+import type { Page, PageDto } from '@/shared/types'
+
 import type {
   DeviceRepairDto,
   DeviceRepairVo,
+  DeviceRunningStatusVo,
+  GaugeVo,
   HourCompletionVo,
   InternalReturnReasonVo,
   InternalReturnType,
@@ -44,8 +48,12 @@ export class DoorLeafProductionLineAPI {
     )
   }
 
+  static async getGauge(data: FullPageDto, signal?: AbortSignal) {
+    return httpClient.post<GaugeVo[]>(`${this.apiPrefix}/MES_TASK/Get_YCLY`, data, { signal })
+  }
+
   static async getMaterialType(data: FullPageDto, signal?: AbortSignal) {
-    return httpClient.post<MaterialType>(`${this.apiPrefix}/MES_TASK/Get_CZTJ`, data, {
+    return httpClient.post<MaterialType[]>(`${this.apiPrefix}/MES_TASK/Get_CZTJ`, data, {
       signal
     })
   }
@@ -54,9 +62,7 @@ export class DoorLeafProductionLineAPI {
     return httpClient.post<InternalReturnReasonVo[]>(
       `${this.apiPrefix}/MES_REPAIR_VOUCH/Get_NFYYTJ`,
       data,
-      {
-        signal
-      }
+      { signal }
     )
   }
 
@@ -78,5 +84,15 @@ export class DoorLeafProductionLineAPI {
     return httpClient.post<HourCompletionVo[]>(`${this.apiPrefix}/MES_TASK/Get_WGTJ`, data, {
       signal
     })
+  }
+
+  static async getDeviceRunningStatus(data: PageDto, signal?: AbortSignal) {
+    return httpClient.post<Page<DeviceRunningStatusVo>>(
+      `${this.apiPrefix}/DEVICE_FALUTVOUCH/Get_SDZT`,
+      data,
+      {
+        signal
+      }
+    )
   }
 }

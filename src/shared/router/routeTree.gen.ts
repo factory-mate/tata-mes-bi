@@ -34,7 +34,11 @@ import { Route as BasePlanPlanImport } from './../../routes/_base.plan_.plan'
 import { Route as BaseDoorLeafDoorSkinPanelWorkshopImport } from './../../routes/_base.door-leaf_.door-skin-panel-workshop'
 import { Route as BaseDoorLeafDoorSkinPanelProductionLineImport } from './../../routes/_base.door-leaf_.door-skin-panel-production-line'
 import { Route as BaseDoorLeafDoorLeafWorkshopImport } from './../../routes/_base.door-leaf_.door-leaf-workshop'
-import { Route as BaseDoorLeafDoorLeafProductionLineImport } from './../../routes/_base.door-leaf_.door-leaf-production-line'
+import { Route as BaseDoorLeafDoorLeafProductionLineZImport } from './../../routes/_base.door-leaf_.door-leaf-production-line-z'
+import { Route as BaseDoorLeafDoorLeafProductionLineDImport } from './../../routes/_base.door-leaf_.door-leaf-production-line-d'
+import { Route as BaseDoorLeafDoorLeafProductionLineCImport } from './../../routes/_base.door-leaf_.door-leaf-production-line-c'
+import { Route as BaseDoorLeafDoorLeafProductionLineBImport } from './../../routes/_base.door-leaf_.door-leaf-production-line-b'
+import { Route as BaseDoorLeafDoorLeafProductionLineAImport } from './../../routes/_base.door-leaf_.door-leaf-production-line-a'
 import { Route as BaseDoorLeafDoorLeafPackageImport } from './../../routes/_base.door-leaf_.door-leaf-package'
 
 // Create Virtual Routes
@@ -259,14 +263,58 @@ const BaseDoorLeafDoorLeafWorkshopRoute =
     ),
   )
 
-const BaseDoorLeafDoorLeafProductionLineRoute =
-  BaseDoorLeafDoorLeafProductionLineImport.update({
-    id: '/door-leaf_/door-leaf-production-line',
-    path: '/door-leaf/door-leaf-production-line',
+const BaseDoorLeafDoorLeafProductionLineZRoute =
+  BaseDoorLeafDoorLeafProductionLineZImport.update({
+    id: '/door-leaf_/door-leaf-production-line-z',
+    path: '/door-leaf/door-leaf-production-line-z',
     getParentRoute: () => BaseLazyRoute,
   } as any).lazy(() =>
     import(
-      './../../routes/_base.door-leaf_.door-leaf-production-line.lazy'
+      './../../routes/_base.door-leaf_.door-leaf-production-line-z.lazy'
+    ).then((d) => d.Route),
+  )
+
+const BaseDoorLeafDoorLeafProductionLineDRoute =
+  BaseDoorLeafDoorLeafProductionLineDImport.update({
+    id: '/door-leaf_/door-leaf-production-line-d',
+    path: '/door-leaf/door-leaf-production-line-d',
+    getParentRoute: () => BaseLazyRoute,
+  } as any).lazy(() =>
+    import(
+      './../../routes/_base.door-leaf_.door-leaf-production-line-d.lazy'
+    ).then((d) => d.Route),
+  )
+
+const BaseDoorLeafDoorLeafProductionLineCRoute =
+  BaseDoorLeafDoorLeafProductionLineCImport.update({
+    id: '/door-leaf_/door-leaf-production-line-c',
+    path: '/door-leaf/door-leaf-production-line-c',
+    getParentRoute: () => BaseLazyRoute,
+  } as any).lazy(() =>
+    import(
+      './../../routes/_base.door-leaf_.door-leaf-production-line-c.lazy'
+    ).then((d) => d.Route),
+  )
+
+const BaseDoorLeafDoorLeafProductionLineBRoute =
+  BaseDoorLeafDoorLeafProductionLineBImport.update({
+    id: '/door-leaf_/door-leaf-production-line-b',
+    path: '/door-leaf/door-leaf-production-line-b',
+    getParentRoute: () => BaseLazyRoute,
+  } as any).lazy(() =>
+    import(
+      './../../routes/_base.door-leaf_.door-leaf-production-line-b.lazy'
+    ).then((d) => d.Route),
+  )
+
+const BaseDoorLeafDoorLeafProductionLineARoute =
+  BaseDoorLeafDoorLeafProductionLineAImport.update({
+    id: '/door-leaf_/door-leaf-production-line-a',
+    path: '/door-leaf/door-leaf-production-line-a',
+    getParentRoute: () => BaseLazyRoute,
+  } as any).lazy(() =>
+    import(
+      './../../routes/_base.door-leaf_.door-leaf-production-line-a.lazy'
     ).then((d) => d.Route),
   )
 
@@ -320,11 +368,39 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof BaseDoorLeafDoorLeafPackageImport
       parentRoute: typeof BaseLazyImport
     }
-    '/_base/door-leaf_/door-leaf-production-line': {
-      id: '/_base/door-leaf_/door-leaf-production-line'
-      path: '/door-leaf/door-leaf-production-line'
-      fullPath: '/door-leaf/door-leaf-production-line'
-      preLoaderRoute: typeof BaseDoorLeafDoorLeafProductionLineImport
+    '/_base/door-leaf_/door-leaf-production-line-a': {
+      id: '/_base/door-leaf_/door-leaf-production-line-a'
+      path: '/door-leaf/door-leaf-production-line-a'
+      fullPath: '/door-leaf/door-leaf-production-line-a'
+      preLoaderRoute: typeof BaseDoorLeafDoorLeafProductionLineAImport
+      parentRoute: typeof BaseLazyImport
+    }
+    '/_base/door-leaf_/door-leaf-production-line-b': {
+      id: '/_base/door-leaf_/door-leaf-production-line-b'
+      path: '/door-leaf/door-leaf-production-line-b'
+      fullPath: '/door-leaf/door-leaf-production-line-b'
+      preLoaderRoute: typeof BaseDoorLeafDoorLeafProductionLineBImport
+      parentRoute: typeof BaseLazyImport
+    }
+    '/_base/door-leaf_/door-leaf-production-line-c': {
+      id: '/_base/door-leaf_/door-leaf-production-line-c'
+      path: '/door-leaf/door-leaf-production-line-c'
+      fullPath: '/door-leaf/door-leaf-production-line-c'
+      preLoaderRoute: typeof BaseDoorLeafDoorLeafProductionLineCImport
+      parentRoute: typeof BaseLazyImport
+    }
+    '/_base/door-leaf_/door-leaf-production-line-d': {
+      id: '/_base/door-leaf_/door-leaf-production-line-d'
+      path: '/door-leaf/door-leaf-production-line-d'
+      fullPath: '/door-leaf/door-leaf-production-line-d'
+      preLoaderRoute: typeof BaseDoorLeafDoorLeafProductionLineDImport
+      parentRoute: typeof BaseLazyImport
+    }
+    '/_base/door-leaf_/door-leaf-production-line-z': {
+      id: '/_base/door-leaf_/door-leaf-production-line-z'
+      path: '/door-leaf/door-leaf-production-line-z'
+      fullPath: '/door-leaf/door-leaf-production-line-z'
+      preLoaderRoute: typeof BaseDoorLeafDoorLeafProductionLineZImport
       parentRoute: typeof BaseLazyImport
     }
     '/_base/door-leaf_/door-leaf-workshop': {
@@ -476,7 +552,11 @@ interface BaseLazyRouteChildren {
   BaseDeviceRoute: typeof BaseDeviceRoute
   BaseIndexLazyRoute: typeof BaseIndexLazyRoute
   BaseDoorLeafDoorLeafPackageRoute: typeof BaseDoorLeafDoorLeafPackageRoute
-  BaseDoorLeafDoorLeafProductionLineRoute: typeof BaseDoorLeafDoorLeafProductionLineRoute
+  BaseDoorLeafDoorLeafProductionLineARoute: typeof BaseDoorLeafDoorLeafProductionLineARoute
+  BaseDoorLeafDoorLeafProductionLineBRoute: typeof BaseDoorLeafDoorLeafProductionLineBRoute
+  BaseDoorLeafDoorLeafProductionLineCRoute: typeof BaseDoorLeafDoorLeafProductionLineCRoute
+  BaseDoorLeafDoorLeafProductionLineDRoute: typeof BaseDoorLeafDoorLeafProductionLineDRoute
+  BaseDoorLeafDoorLeafProductionLineZRoute: typeof BaseDoorLeafDoorLeafProductionLineZRoute
   BaseDoorLeafDoorLeafWorkshopRoute: typeof BaseDoorLeafDoorLeafWorkshopRoute
   BaseDoorLeafDoorSkinPanelProductionLineRoute: typeof BaseDoorLeafDoorSkinPanelProductionLineRoute
   BaseDoorLeafDoorSkinPanelWorkshopRoute: typeof BaseDoorLeafDoorSkinPanelWorkshopRoute
@@ -503,8 +583,16 @@ const BaseLazyRouteChildren: BaseLazyRouteChildren = {
   BaseDeviceRoute: BaseDeviceRoute,
   BaseIndexLazyRoute: BaseIndexLazyRoute,
   BaseDoorLeafDoorLeafPackageRoute: BaseDoorLeafDoorLeafPackageRoute,
-  BaseDoorLeafDoorLeafProductionLineRoute:
-    BaseDoorLeafDoorLeafProductionLineRoute,
+  BaseDoorLeafDoorLeafProductionLineARoute:
+    BaseDoorLeafDoorLeafProductionLineARoute,
+  BaseDoorLeafDoorLeafProductionLineBRoute:
+    BaseDoorLeafDoorLeafProductionLineBRoute,
+  BaseDoorLeafDoorLeafProductionLineCRoute:
+    BaseDoorLeafDoorLeafProductionLineCRoute,
+  BaseDoorLeafDoorLeafProductionLineDRoute:
+    BaseDoorLeafDoorLeafProductionLineDRoute,
+  BaseDoorLeafDoorLeafProductionLineZRoute:
+    BaseDoorLeafDoorLeafProductionLineZRoute,
   BaseDoorLeafDoorLeafWorkshopRoute: BaseDoorLeafDoorLeafWorkshopRoute,
   BaseDoorLeafDoorSkinPanelProductionLineRoute:
     BaseDoorLeafDoorSkinPanelProductionLineRoute,
@@ -539,7 +627,11 @@ export interface FileRoutesByFullPath {
   '/device': typeof BaseDeviceRoute
   '/': typeof BaseIndexLazyRoute
   '/door-leaf/door-leaf-package': typeof BaseDoorLeafDoorLeafPackageRoute
-  '/door-leaf/door-leaf-production-line': typeof BaseDoorLeafDoorLeafProductionLineRoute
+  '/door-leaf/door-leaf-production-line-a': typeof BaseDoorLeafDoorLeafProductionLineARoute
+  '/door-leaf/door-leaf-production-line-b': typeof BaseDoorLeafDoorLeafProductionLineBRoute
+  '/door-leaf/door-leaf-production-line-c': typeof BaseDoorLeafDoorLeafProductionLineCRoute
+  '/door-leaf/door-leaf-production-line-d': typeof BaseDoorLeafDoorLeafProductionLineDRoute
+  '/door-leaf/door-leaf-production-line-z': typeof BaseDoorLeafDoorLeafProductionLineZRoute
   '/door-leaf/door-leaf-workshop': typeof BaseDoorLeafDoorLeafWorkshopRoute
   '/door-leaf/door-skin-panel-production-line': typeof BaseDoorLeafDoorSkinPanelProductionLineRoute
   '/door-leaf/door-skin-panel-workshop': typeof BaseDoorLeafDoorSkinPanelWorkshopRoute
@@ -567,7 +659,11 @@ export interface FileRoutesByTo {
   '/device': typeof BaseDeviceRoute
   '/': typeof BaseIndexLazyRoute
   '/door-leaf/door-leaf-package': typeof BaseDoorLeafDoorLeafPackageRoute
-  '/door-leaf/door-leaf-production-line': typeof BaseDoorLeafDoorLeafProductionLineRoute
+  '/door-leaf/door-leaf-production-line-a': typeof BaseDoorLeafDoorLeafProductionLineARoute
+  '/door-leaf/door-leaf-production-line-b': typeof BaseDoorLeafDoorLeafProductionLineBRoute
+  '/door-leaf/door-leaf-production-line-c': typeof BaseDoorLeafDoorLeafProductionLineCRoute
+  '/door-leaf/door-leaf-production-line-d': typeof BaseDoorLeafDoorLeafProductionLineDRoute
+  '/door-leaf/door-leaf-production-line-z': typeof BaseDoorLeafDoorLeafProductionLineZRoute
   '/door-leaf/door-leaf-workshop': typeof BaseDoorLeafDoorLeafWorkshopRoute
   '/door-leaf/door-skin-panel-production-line': typeof BaseDoorLeafDoorSkinPanelProductionLineRoute
   '/door-leaf/door-skin-panel-workshop': typeof BaseDoorLeafDoorSkinPanelWorkshopRoute
@@ -597,7 +693,11 @@ export interface FileRoutesById {
   '/_base/device': typeof BaseDeviceRoute
   '/_base/': typeof BaseIndexLazyRoute
   '/_base/door-leaf_/door-leaf-package': typeof BaseDoorLeafDoorLeafPackageRoute
-  '/_base/door-leaf_/door-leaf-production-line': typeof BaseDoorLeafDoorLeafProductionLineRoute
+  '/_base/door-leaf_/door-leaf-production-line-a': typeof BaseDoorLeafDoorLeafProductionLineARoute
+  '/_base/door-leaf_/door-leaf-production-line-b': typeof BaseDoorLeafDoorLeafProductionLineBRoute
+  '/_base/door-leaf_/door-leaf-production-line-c': typeof BaseDoorLeafDoorLeafProductionLineCRoute
+  '/_base/door-leaf_/door-leaf-production-line-d': typeof BaseDoorLeafDoorLeafProductionLineDRoute
+  '/_base/door-leaf_/door-leaf-production-line-z': typeof BaseDoorLeafDoorLeafProductionLineZRoute
   '/_base/door-leaf_/door-leaf-workshop': typeof BaseDoorLeafDoorLeafWorkshopRoute
   '/_base/door-leaf_/door-skin-panel-production-line': typeof BaseDoorLeafDoorSkinPanelProductionLineRoute
   '/_base/door-leaf_/door-skin-panel-workshop': typeof BaseDoorLeafDoorSkinPanelWorkshopRoute
@@ -628,7 +728,11 @@ export interface FileRouteTypes {
     | '/device'
     | '/'
     | '/door-leaf/door-leaf-package'
-    | '/door-leaf/door-leaf-production-line'
+    | '/door-leaf/door-leaf-production-line-a'
+    | '/door-leaf/door-leaf-production-line-b'
+    | '/door-leaf/door-leaf-production-line-c'
+    | '/door-leaf/door-leaf-production-line-d'
+    | '/door-leaf/door-leaf-production-line-z'
     | '/door-leaf/door-leaf-workshop'
     | '/door-leaf/door-skin-panel-production-line'
     | '/door-leaf/door-skin-panel-workshop'
@@ -655,7 +759,11 @@ export interface FileRouteTypes {
     | '/device'
     | '/'
     | '/door-leaf/door-leaf-package'
-    | '/door-leaf/door-leaf-production-line'
+    | '/door-leaf/door-leaf-production-line-a'
+    | '/door-leaf/door-leaf-production-line-b'
+    | '/door-leaf/door-leaf-production-line-c'
+    | '/door-leaf/door-leaf-production-line-d'
+    | '/door-leaf/door-leaf-production-line-z'
     | '/door-leaf/door-leaf-workshop'
     | '/door-leaf/door-skin-panel-production-line'
     | '/door-leaf/door-skin-panel-workshop'
@@ -683,7 +791,11 @@ export interface FileRouteTypes {
     | '/_base/device'
     | '/_base/'
     | '/_base/door-leaf_/door-leaf-package'
-    | '/_base/door-leaf_/door-leaf-production-line'
+    | '/_base/door-leaf_/door-leaf-production-line-a'
+    | '/_base/door-leaf_/door-leaf-production-line-b'
+    | '/_base/door-leaf_/door-leaf-production-line-c'
+    | '/_base/door-leaf_/door-leaf-production-line-d'
+    | '/_base/door-leaf_/door-leaf-production-line-z'
     | '/_base/door-leaf_/door-leaf-workshop'
     | '/_base/door-leaf_/door-skin-panel-production-line'
     | '/_base/door-leaf_/door-skin-panel-workshop'
@@ -740,7 +852,11 @@ export const routeTree = rootRoute
         "/_base/device",
         "/_base/",
         "/_base/door-leaf_/door-leaf-package",
-        "/_base/door-leaf_/door-leaf-production-line",
+        "/_base/door-leaf_/door-leaf-production-line-a",
+        "/_base/door-leaf_/door-leaf-production-line-b",
+        "/_base/door-leaf_/door-leaf-production-line-c",
+        "/_base/door-leaf_/door-leaf-production-line-d",
+        "/_base/door-leaf_/door-leaf-production-line-z",
         "/_base/door-leaf_/door-leaf-workshop",
         "/_base/door-leaf_/door-skin-panel-production-line",
         "/_base/door-leaf_/door-skin-panel-workshop",
@@ -775,8 +891,24 @@ export const routeTree = rootRoute
       "filePath": "_base.door-leaf_.door-leaf-package.tsx",
       "parent": "/_base"
     },
-    "/_base/door-leaf_/door-leaf-production-line": {
-      "filePath": "_base.door-leaf_.door-leaf-production-line.tsx",
+    "/_base/door-leaf_/door-leaf-production-line-a": {
+      "filePath": "_base.door-leaf_.door-leaf-production-line-a.tsx",
+      "parent": "/_base"
+    },
+    "/_base/door-leaf_/door-leaf-production-line-b": {
+      "filePath": "_base.door-leaf_.door-leaf-production-line-b.tsx",
+      "parent": "/_base"
+    },
+    "/_base/door-leaf_/door-leaf-production-line-c": {
+      "filePath": "_base.door-leaf_.door-leaf-production-line-c.tsx",
+      "parent": "/_base"
+    },
+    "/_base/door-leaf_/door-leaf-production-line-d": {
+      "filePath": "_base.door-leaf_.door-leaf-production-line-d.tsx",
+      "parent": "/_base"
+    },
+    "/_base/door-leaf_/door-leaf-production-line-z": {
+      "filePath": "_base.door-leaf_.door-leaf-production-line-z.tsx",
       "parent": "/_base"
     },
     "/_base/door-leaf_/door-leaf-workshop": {
