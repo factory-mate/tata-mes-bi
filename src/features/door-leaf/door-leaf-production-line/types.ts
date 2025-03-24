@@ -156,7 +156,7 @@ export interface DeviceRunningStatusVo {
 }
 
 export enum DeviceStatus {
-  SUCCESS = 1,
-  WARNING = 2,
-  ERROR = 3
+  SUCCESS = 0,
+  WARNING = 1,
+  ERROR = 2
 }

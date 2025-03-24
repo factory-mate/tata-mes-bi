@@ -53,7 +53,8 @@ function GaugeItem(props: GaugeItemProps) {
           roundCap: true,
           clip: false,
           itemStyle: {
-            borderWidth: 1
+            borderWidth: 1,
+            opacity: 0.7
           }
         },
         axisLine: {
@@ -83,8 +84,9 @@ function GaugeItem(props: GaugeItemProps) {
           }
         ],
         title: {
-          fontSize: 14,
-          offsetCenter: ['0%', '0%']
+          fontSize: 20,
+          offsetCenter: ['0%', '0%'],
+          show: false
         },
         detail: {
           show: false
@@ -92,6 +94,7 @@ function GaugeItem(props: GaugeItemProps) {
       }
     ]
   }
+
   return (
     <ReactChart
       className={className}
@@ -117,19 +120,24 @@ export function DeviceStatusGauge(props: DeviceStatusGaugeProps) {
     })
   )
 
-  const { currentSlicedData } = useSlicedData({ data })
+  const { currentSlicedData } = useSlicedData({ data, xAxisSize: 6 })
 
   return (
     <div className="flex size-full flex-col items-center space-y-2">
       <div className="text-2xl font-bold">设备运行状态</div>
       <div className="grid w-full grow grid-cols-3 grid-rows-2 gap-4">
         {currentSlicedData.map((i) => (
-          <GaugeItem
+          <div
             key={i.cDeviceName}
-            label={i.cDeviceName}
-            status={i.iStatus}
-            className="col-span-1 row-span-1"
-          />
+            className="relative col-span-1 row-span-1"
+          >
+            <GaugeItem
+              label={i.cDeviceName}
+              status={i.iStatus}
+              className="size-full"
+            />
+            <div className="absolute inset-0 m-auto h-fit text-center text-xl">{i.cDeviceName}</div>
+          </div>
         ))}
       </div>
     </div>
