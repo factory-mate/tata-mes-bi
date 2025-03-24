@@ -31,7 +31,7 @@ export function HourCompletionLine(props: HourCompletionLineProps) {
       title: {
         text: `${currentSlicedData.at(0)?.cFactoryUnitName ?? '工位'}小时完工统计`,
         top: 10,
-        left: 70,
+        left: 'center',
         textStyle: {
           fontSize: 24
         }
@@ -49,14 +49,14 @@ export function HourCompletionLine(props: HourCompletionLineProps) {
         tooltip: true,
         containLabel: true
       },
-      legend: {
-        data: ['标准量', '实际量'],
-        align: 'left',
-        top: 4,
-        right: 0,
-        orient: 'horizontal',
-        width: 10
-      },
+      // legend: {
+      //   data: ['实际量'],
+      //   align: 'left',
+      //   top: 4,
+      //   right: 0,
+      //   orient: 'horizontal',
+      //   width: 10
+      // },
       xAxis: {
         type: 'category',
         name: '小时',

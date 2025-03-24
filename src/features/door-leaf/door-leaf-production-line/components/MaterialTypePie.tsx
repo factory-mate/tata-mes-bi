@@ -67,7 +67,8 @@ export function MaterialTypePie(props: MaterialTypePieProps) {
       ],
       dataset: {
         source: currentSlicedData
-      }
+      },
+      stillShowZeroSum: false
     }),
     [currentSlicedData]
   )
