@@ -24,18 +24,12 @@ export function CheckTable() {
       check: '2',
       am: '3',
       pm: '4'
-    },
-    {
-      name: '雕刻',
-      check: '2',
-      am: '3',
-      pm: '4'
     }
   ]
 
   return (
     <ScrollTable<CheckVo>
-      title="工位设备点检/首件检"
+      title="工位设备点检/首件检（测试中）"
       columns={[
         {
           key: 'name',

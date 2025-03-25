@@ -1,6 +1,4 @@
 export function LinePersonStatistics() {
-  const title = '产线人员'
-
   const data = [
     { label: '线长', value: 4 },
     { label: '标配人数', value: 12 },
@@ -9,7 +7,6 @@ export function LinePersonStatistics() {
 
   return (
     <div className="flex size-full flex-col items-center justify-between space-y-2">
-      <div className="absolute -top-3 text-xl">{title}</div>
       <div className="grid size-full grid-cols-3 gap-4">
         {data.map((i) => (
           <div

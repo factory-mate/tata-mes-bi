@@ -30,6 +30,7 @@ export const materialCallQK = (params: FullPageDto) => [MATERIAL_CALL_QK, params
 
 export const internalReturnTypeQK = (params: FullPageDto) =>
   [INTERNAL_RETURN_TYPE_QK, params] as const
+
 export const gaugeQK = (params: FullPageDto) => [GAUGE_QK, params] as const
 
 export const materialTypeQK = (params: FullPageDto) => [MATERIAL_TYPE_QK, params] as const

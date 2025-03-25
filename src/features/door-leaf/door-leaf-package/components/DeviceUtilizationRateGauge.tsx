@@ -1,19 +1,11 @@
 import type { EChartsOption } from 'echarts'
 
-import { getRandomValue } from '@/features/random'
+import { deviceUtilizationRateQO } from '../queries'
 
 export function DeviceUtilizationRateGauge() {
   const chartStore = useChartStore()
 
-  const [percent, setPercent] = useState([getRandomValue(), getRandomValue()])
-
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setPercent([getRandomValue(), getRandomValue()])
-    }, 5000)
-
-    return () => clearInterval(timer)
-  }, [])
+  const { data } = useQuery(deviceUtilizationRateQO())
 
   const deviceOption = useMemo<EChartsOption>(
     () => ({
@@ -68,12 +60,12 @@ export function DeviceUtilizationRateGauge() {
           },
           data: [
             {
-              value: percent[0],
+              value: data ?? 0,
               name: '设备稼动率'
             }
           ],
           title: {
-            fontSize: 18,
+            fontSize: 20,
             offsetCenter: ['0%', '20%']
           },
           detail: {
@@ -87,7 +79,7 @@ export function DeviceUtilizationRateGauge() {
         }
       ]
     }),
-    [percent]
+    [data]
   )
 
   return (

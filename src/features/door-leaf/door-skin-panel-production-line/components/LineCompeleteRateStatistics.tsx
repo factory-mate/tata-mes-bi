@@ -1,6 +1,4 @@
 export function LineCompeleteRateStatistics() {
-  const title = '产线达成率'
-
   const data = [
     { label: '任务数量', value: 1800 },
     { label: '完成数', value: 1500 },
@@ -9,7 +7,6 @@ export function LineCompeleteRateStatistics() {
 
   return (
     <div className="flex size-full flex-col items-center justify-between space-y-2">
-      <div className="absolute -top-3 text-xl">{title}</div>
       <div className="grid size-full grid-cols-3 gap-4">
         {data.map((i) => (
           <div

@@ -1,23 +1,32 @@
-export function LinePersonStatistics() {
-  const title = '产线人员'
+import { linePersonQO } from '../queries'
+import type { LinePersonVo } from '../types'
 
-  const data = [
-    { label: '线长', value: 4 },
-    { label: '标配人数', value: 12 },
-    { label: '实际人数', value: 20 }
+export function LinePersonStatistics() {
+  const templates: Templates<LinePersonVo> = [
+    { label: '线长', key: 'iManagerCount' },
+    { label: '标配人数', key: 'iStandartWokerCount' },
+    { label: '实际人数', key: 'iActureWokerCount' }
   ]
+
+  const { data } = useQuery(
+    linePersonQO({
+      orderByFileds: 'cFactoryUnitCode',
+      conditions: 'cFactoryUnitCode = FM01010401'
+    })
+  )
 
   return (
     <div className="flex size-full flex-col items-center justify-between space-y-2">
-      <div className="absolute -top-3 text-xl">{title}</div>
       <div className="grid size-full grid-cols-3 gap-4">
-        {data.map((i) => (
+        {templates.map((i) => (
           <div
             key={i.label}
             className="col-span-1 flex items-center justify-center space-x-4 text-center text-2xl"
           >
             <span>{i.label}:</span>
-            <span className="text-xl font-bold">{i.value}</span>
+            <span className="text-2xl font-bold">
+              <AnimatedNumber value={data?.[i.key] as number} />
+            </span>
           </div>
         ))}
       </div>
