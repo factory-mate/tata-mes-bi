@@ -11,7 +11,7 @@ export function LineCompeleteRateStatistics() {
   const { data } = useQuery(
     lineCompleteRateQO({
       orderByFileds: 'cFactoryUnitCode',
-      conditions: 'cFactoryUnitCode = FM01010401'
+      conditions: 'cFactoryUnitCode = FM01010101'
     })
   )
 

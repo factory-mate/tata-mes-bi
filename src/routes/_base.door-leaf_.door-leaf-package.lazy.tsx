@@ -4,14 +4,15 @@ import {
   AutomaticLineHourCompletionLine,
   CheckTable,
   DeviceRepairTable,
-  DeviceUtilizationRateGauge,
+  FinishCountStatistics,
   HandmadeLineHourCompletionLine,
   InternalReturnReasonBar,
   InternalReturnTypePie,
   LateProductionTable,
-  LineCompeleteRateStatistics,
   LinePersonStatistics,
-  MaterialTable
+  MaterialTable,
+  RateStatistics,
+  TaskCountStatistics
 } from '@/features/door-leaf/door-leaf-package'
 
 export const Route = createLazyFileRoute('/_base/door-leaf_/door-leaf-package')({
@@ -28,21 +29,32 @@ function Page() {
         />
       </div>
 
-      <BlockContainer className="col-span-6 row-span-1">
+      {/* <BlockContainer className="col-span-6 row-span-1">
         <LineCompeleteRateStatistics />
-      </BlockContainer>
+      </BlockContainer> */}
 
-      <BlockContainer className="col-span-6 row-span-1">
+      <BlockContainer className="col-span-12 row-span-1">
         <LinePersonStatistics />
       </BlockContainer>
 
       <BlockContainer className="col-span-2 row-span-4">
         <InternalReturnTypePie />
       </BlockContainer>
-      <BlockContainer className="col-span-2 row-span-4">
+
+      {/* <BlockContainer className="col-span-2 row-span-4">
         <DeviceUtilizationRateGauge />
+      </BlockContainer> */}
+
+      <BlockContainer className="col-span-2 row-span-4">
+        <TaskCountStatistics />
       </BlockContainer>
-      <BlockContainer className="col-span-8 row-span-4">
+      <BlockContainer className="col-span-2 row-span-4">
+        <FinishCountStatistics />
+      </BlockContainer>
+      <BlockContainer className="col-span-2 row-span-4">
+        <RateStatistics />
+      </BlockContainer>
+      <BlockContainer className="col-span-4 row-span-4">
         <DeviceRepairTable />
       </BlockContainer>
 

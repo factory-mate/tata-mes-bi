@@ -18,7 +18,7 @@ export function MaterialTypePie(props: MaterialTypePieProps) {
     })
   )
 
-  const { currentSlicedData } = useSlicedData({ data, xAxisSize: 5 })
+  const { currentSlicedData } = useSlicedData({ data, xAxisSize: 11 })
 
   const option: EChartsOption = useMemo(
     () => ({

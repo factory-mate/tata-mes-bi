@@ -15,7 +15,7 @@ export function LateProductionTable() {
       columns={[
         { key: 'dPlanDateStart', label: '生产日期' },
         { key: 'WQCount', label: '缺货包数' },
-        { key: '', label: '晚期天数' }
+        { key: 'WQDayCount', label: '晚期天数' }
       ]}
       data={data}
     />

@@ -110,6 +110,7 @@ export interface LateProductionVo extends ChartRawData {
   cProcessCode: string
   cProcessName: string
   WQCount: number
+  WQDayCount: number
 }
 
 export interface InternalReturnReasonVo extends ChartRawData {

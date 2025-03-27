@@ -13,7 +13,7 @@ export function DeviceRepairTable() {
     <ScrollTable<DeviceRepairVo>
       title="设备维修信息"
       columns={[
-        { key: 'cLineName', label: '产线' },
+        // { key: 'cLineName', label: '产线' },
         { key: 'cDeviceName', label: '设备' },
         { key: 'cFaultName', label: '故障' },
         { key: 'dCreateTime', label: '维修时间' },
