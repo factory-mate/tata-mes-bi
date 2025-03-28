@@ -12,10 +12,9 @@ export function HandmadeLineHourCompletionLine() {
     })
   )
 
-  const { currentSlicedData } = useSlicedData({ data, xAxisSize: 1 })
-
   const option = useMemo<EChartsOption>(() => {
-    const actualData = currentSlicedData.at(0)
+    const standardData = data.find((i) => i.iType === 1)
+    const actualData = data.find((i) => i.iType === 2)
     return {
       textStyle: {
         fontFamily: 'inherit',
@@ -23,7 +22,7 @@ export function HandmadeLineHourCompletionLine() {
       },
       backgroundColor: '',
       title: {
-        text: `${currentSlicedData.at(0)?.cFactoryUnitName ?? '工位'}小时完工统计`,
+        text: `${standardData?.cFactoryUnitName ?? '工位'}小时完工统计`,
         top: 10,
         left: 'center',
         textStyle: {
@@ -44,7 +43,7 @@ export function HandmadeLineHourCompletionLine() {
         containLabel: true
       },
       // legend: {
-      //   data: ['实际量'],
+      //   data: ['标准量', '实际量'],
       //   align: 'left',
       //   top: 4,
       //   right: 0,
@@ -79,6 +78,24 @@ export function HandmadeLineHourCompletionLine() {
       series: [
         {
           type: 'line',
+          name: '标准量',
+          data: [
+            standardData?.iFirstHour ?? 0,
+            standardData?.iSecondHour ?? 0,
+            standardData?.iThirdHour ?? 0,
+            standardData?.iFourthHour ?? 0,
+            standardData?.iFifthHour ?? 0,
+            standardData?.iSixthHour ?? 0,
+            standardData?.iSeventhHour ?? 0,
+            standardData?.iEighthHour ?? 0,
+            standardData?.iNinthHour ?? 0
+          ],
+          label: {
+            show: true
+          }
+        },
+        {
+          type: 'line',
           name: '实际量',
           data: [
             actualData?.iFirstHour ?? 0,
@@ -97,7 +114,7 @@ export function HandmadeLineHourCompletionLine() {
         }
       ]
     }
-  }, [currentSlicedData])
+  }, [data])
 
   return (
     <ReactChart
