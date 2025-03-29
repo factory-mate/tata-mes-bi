@@ -58,10 +58,10 @@ function Page() {
         <MaterialBar />
       </BlockContainer>
       <BlockContainer className="col-span-4 row-span-4">
-        <DeviceRepairTable />
+        <DeviceRepairTable cFactoryUnitCode="FM0104" />
       </BlockContainer>
       <BlockContainer className="col-span-4 row-span-4">
-        <MaterialCallTable />
+        <MaterialCallTable conditions="cDefindParm05 like FM0104" />
       </BlockContainer>
     </>
   )

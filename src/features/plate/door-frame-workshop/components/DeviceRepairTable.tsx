@@ -1,10 +1,16 @@
 import { deviceRepairQO } from '../queries'
 import { CType, type DeviceRepairVo } from '../types'
 
-export function DeviceRepairTable() {
+interface DeviceRepairTableProps {
+  cFactoryUnitCode: string
+}
+
+export function DeviceRepairTable(props: DeviceRepairTableProps) {
+  const { cFactoryUnitCode } = props
+
   const { data: { data = [] } = {} } = useQuery(
     deviceRepairQO({
-      cFactoryUnitCode: 'FM0104',
+      cFactoryUnitCode,
       cType: CType.WORKSHOP
     })
   )
