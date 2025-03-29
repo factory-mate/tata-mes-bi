@@ -2,37 +2,36 @@ import type { EChartsOption } from 'echarts'
 
 import { internalReturnQO } from '../queries'
 
-export function InternalReturnBar() {
+interface InternalReturnBarProps {
+  conditions: string
+}
+
+export function InternalReturnBar(props: InternalReturnBarProps) {
+  const { conditions } = props
+
   const chartStore = useChartStore()
 
   const { data = [] } = useQuery(
     internalReturnQO({
       orderByFileds: 'cFactoryUnitCode',
-      conditions: 'cFactoryUnitCode like FM0104'
+      conditions
     })
   )
 
-  const generateRandomData = () => {
-    const lines = ['工段 A', '工段 B', '工段 C', '工段 D', '工段 E', '工段 F']
-    return lines.map((line) => ({
-      line,
-      fg: Math.floor(Math.random() * 150),
-      wx: Math.floor(Math.random() * 150),
-      cz: Math.floor(Math.random() * 150)
-    }))
-  }
-
-  const [source, setSource] = useState(generateRandomData())
-
-  const option: EChartsOption = useMemo(
+  const option = useMemo<EChartsOption>(
     () => ({
       textStyle: {
-        fontFamily: 'inherit'
+        fontFamily: 'inherit',
+        fontSize: 16
       },
       backgroundColor: '',
       title: {
         text: '内返统计',
-        left: 'center'
+        left: 'center',
+        textStyle: {
+          fontSize: 24
+        },
+        top: 10
       },
       tooltip: {
         trigger: 'axis',
@@ -67,21 +66,45 @@ export function InternalReturnBar() {
         max: 150
       },
       series: [
-        { type: 'bar', label: { show: true, position: 'top' } },
-        { type: 'bar', label: { show: true, position: 'top' } },
-        { type: 'bar', label: { show: true, position: 'top' } }
+        {
+          type: 'bar',
+          label: {
+            show: true,
+            position: 'top'
+          },
+          encode: {
+            x: 'cFactoryUnitCode',
+            y: 'WXCount'
+          }
+        },
+        {
+          type: 'bar',
+          label: {
+            show: true,
+            position: 'top'
+          },
+          encode: {
+            x: 'cFactoryUnitCode',
+            y: 'FXCount'
+          }
+        },
+        {
+          type: 'bar',
+          label: {
+            show: true,
+            position: 'top'
+          },
+          encode: {
+            x: 'cFactoryUnitCode',
+            y: 'CZCount'
+          }
+        }
       ],
       dataset: {
-        dimensions: [
-          { name: 'line', displayName: '工段' },
-          { name: 'fg', displayName: '返工' },
-          { name: 'wx', displayName: '维修' },
-          { name: 'cz', displayName: '重做' }
-        ],
-        source
+        source: data
       }
     }),
-    [source]
+    [data]
   )
 
   return (

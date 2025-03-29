@@ -18,11 +18,13 @@ import { Route as BaseWarehouseWarehouseImport } from './../../routes/_base.ware
 import { Route as BaseWarehouseCargoManagementImport } from './../../routes/_base.warehouse_.cargo-management'
 import { Route as BaseQualityQualityImport } from './../../routes/_base.quality_.quality'
 import { Route as BasePlateWireframeImport } from './../../routes/_base.plate_.wireframe'
+import { Route as BasePlateWindowWorkshopImport } from './../../routes/_base.plate_.window-workshop'
 import { Route as BasePlatePlateWrapImport } from './../../routes/_base.plate_.plate-wrap'
 import { Route as BasePlatePlatePackageImport } from './../../routes/_base.plate_.plate-package'
 import { Route as BasePlatePlateNailingImport } from './../../routes/_base.plate_.plate-nailing'
 import { Route as BasePlatePlateCuttingImport } from './../../routes/_base.plate_.plate-cutting'
 import { Route as BasePlateLineWorkshopImport } from './../../routes/_base.plate_.line-workshop'
+import { Route as BasePlateLineFrameWorkshopImport } from './../../routes/_base.plate_.line-frame-workshop'
 import { Route as BasePlateLLineWrapImport } from './../../routes/_base.plate_.l-line-wrap'
 import { Route as BasePlateLLinePackageImport } from './../../routes/_base.plate_.l-line-package'
 import { Route as BasePlateLLineFineCutImport } from './../../routes/_base.plate_.l-line-fine-cut'
@@ -111,6 +113,16 @@ const BasePlateWireframeRoute = BasePlateWireframeImport.update({
   import('./../../routes/_base.plate_.wireframe.lazy').then((d) => d.Route),
 )
 
+const BasePlateWindowWorkshopRoute = BasePlateWindowWorkshopImport.update({
+  id: '/plate_/window-workshop',
+  path: '/plate/window-workshop',
+  getParentRoute: () => BaseLazyRoute,
+} as any).lazy(() =>
+  import('./../../routes/_base.plate_.window-workshop.lazy').then(
+    (d) => d.Route,
+  ),
+)
+
 const BasePlatePlateWrapRoute = BasePlatePlateWrapImport.update({
   id: '/plate_/plate-wrap',
   path: '/plate/plate-wrap',
@@ -149,6 +161,18 @@ const BasePlateLineWorkshopRoute = BasePlateLineWorkshopImport.update({
   getParentRoute: () => BaseLazyRoute,
 } as any).lazy(() =>
   import('./../../routes/_base.plate_.line-workshop.lazy').then((d) => d.Route),
+)
+
+const BasePlateLineFrameWorkshopRoute = BasePlateLineFrameWorkshopImport.update(
+  {
+    id: '/plate_/line-frame-workshop',
+    path: '/plate/line-frame-workshop',
+    getParentRoute: () => BaseLazyRoute,
+  } as any,
+).lazy(() =>
+  import('./../../routes/_base.plate_.line-frame-workshop.lazy').then(
+    (d) => d.Route,
+  ),
 )
 
 const BasePlateLLineWrapRoute = BasePlateLLineWrapImport.update({
@@ -480,6 +504,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof BasePlateLLineWrapImport
       parentRoute: typeof BaseLazyImport
     }
+    '/_base/plate_/line-frame-workshop': {
+      id: '/_base/plate_/line-frame-workshop'
+      path: '/plate/line-frame-workshop'
+      fullPath: '/plate/line-frame-workshop'
+      preLoaderRoute: typeof BasePlateLineFrameWorkshopImport
+      parentRoute: typeof BaseLazyImport
+    }
     '/_base/plate_/line-workshop': {
       id: '/_base/plate_/line-workshop'
       path: '/plate/line-workshop'
@@ -513,6 +544,13 @@ declare module '@tanstack/react-router' {
       path: '/plate/plate-wrap'
       fullPath: '/plate/plate-wrap'
       preLoaderRoute: typeof BasePlatePlateWrapImport
+      parentRoute: typeof BaseLazyImport
+    }
+    '/_base/plate_/window-workshop': {
+      id: '/_base/plate_/window-workshop'
+      path: '/plate/window-workshop'
+      fullPath: '/plate/window-workshop'
+      preLoaderRoute: typeof BasePlateWindowWorkshopImport
       parentRoute: typeof BaseLazyImport
     }
     '/_base/plate_/wireframe': {
@@ -568,11 +606,13 @@ interface BaseLazyRouteChildren {
   BasePlateLLineFineCutRoute: typeof BasePlateLLineFineCutRoute
   BasePlateLLinePackageRoute: typeof BasePlateLLinePackageRoute
   BasePlateLLineWrapRoute: typeof BasePlateLLineWrapRoute
+  BasePlateLineFrameWorkshopRoute: typeof BasePlateLineFrameWorkshopRoute
   BasePlateLineWorkshopRoute: typeof BasePlateLineWorkshopRoute
   BasePlatePlateCuttingRoute: typeof BasePlatePlateCuttingRoute
   BasePlatePlateNailingRoute: typeof BasePlatePlateNailingRoute
   BasePlatePlatePackageRoute: typeof BasePlatePlatePackageRoute
   BasePlatePlateWrapRoute: typeof BasePlatePlateWrapRoute
+  BasePlateWindowWorkshopRoute: typeof BasePlateWindowWorkshopRoute
   BasePlateWireframeRoute: typeof BasePlateWireframeRoute
   BaseQualityQualityRoute: typeof BaseQualityQualityRoute
   BaseWarehouseCargoManagementRoute: typeof BaseWarehouseCargoManagementRoute
@@ -606,11 +646,13 @@ const BaseLazyRouteChildren: BaseLazyRouteChildren = {
   BasePlateLLineFineCutRoute: BasePlateLLineFineCutRoute,
   BasePlateLLinePackageRoute: BasePlateLLinePackageRoute,
   BasePlateLLineWrapRoute: BasePlateLLineWrapRoute,
+  BasePlateLineFrameWorkshopRoute: BasePlateLineFrameWorkshopRoute,
   BasePlateLineWorkshopRoute: BasePlateLineWorkshopRoute,
   BasePlatePlateCuttingRoute: BasePlatePlateCuttingRoute,
   BasePlatePlateNailingRoute: BasePlatePlateNailingRoute,
   BasePlatePlatePackageRoute: BasePlatePlatePackageRoute,
   BasePlatePlateWrapRoute: BasePlatePlateWrapRoute,
+  BasePlateWindowWorkshopRoute: BasePlateWindowWorkshopRoute,
   BasePlateWireframeRoute: BasePlateWireframeRoute,
   BaseQualityQualityRoute: BaseQualityQualityRoute,
   BaseWarehouseCargoManagementRoute: BaseWarehouseCargoManagementRoute,
@@ -643,11 +685,13 @@ export interface FileRoutesByFullPath {
   '/plate/l-line-fine-cut': typeof BasePlateLLineFineCutRoute
   '/plate/l-line-package': typeof BasePlateLLinePackageRoute
   '/plate/l-line-wrap': typeof BasePlateLLineWrapRoute
+  '/plate/line-frame-workshop': typeof BasePlateLineFrameWorkshopRoute
   '/plate/line-workshop': typeof BasePlateLineWorkshopRoute
   '/plate/plate-cutting': typeof BasePlatePlateCuttingRoute
   '/plate/plate-nailing': typeof BasePlatePlateNailingRoute
   '/plate/plate-package': typeof BasePlatePlatePackageRoute
   '/plate/plate-wrap': typeof BasePlatePlateWrapRoute
+  '/plate/window-workshop': typeof BasePlateWindowWorkshopRoute
   '/plate/wireframe': typeof BasePlateWireframeRoute
   '/quality/quality': typeof BaseQualityQualityRoute
   '/warehouse/cargo-management': typeof BaseWarehouseCargoManagementRoute
@@ -675,11 +719,13 @@ export interface FileRoutesByTo {
   '/plate/l-line-fine-cut': typeof BasePlateLLineFineCutRoute
   '/plate/l-line-package': typeof BasePlateLLinePackageRoute
   '/plate/l-line-wrap': typeof BasePlateLLineWrapRoute
+  '/plate/line-frame-workshop': typeof BasePlateLineFrameWorkshopRoute
   '/plate/line-workshop': typeof BasePlateLineWorkshopRoute
   '/plate/plate-cutting': typeof BasePlatePlateCuttingRoute
   '/plate/plate-nailing': typeof BasePlatePlateNailingRoute
   '/plate/plate-package': typeof BasePlatePlatePackageRoute
   '/plate/plate-wrap': typeof BasePlatePlateWrapRoute
+  '/plate/window-workshop': typeof BasePlateWindowWorkshopRoute
   '/plate/wireframe': typeof BasePlateWireframeRoute
   '/quality/quality': typeof BaseQualityQualityRoute
   '/warehouse/cargo-management': typeof BaseWarehouseCargoManagementRoute
@@ -709,11 +755,13 @@ export interface FileRoutesById {
   '/_base/plate_/l-line-fine-cut': typeof BasePlateLLineFineCutRoute
   '/_base/plate_/l-line-package': typeof BasePlateLLinePackageRoute
   '/_base/plate_/l-line-wrap': typeof BasePlateLLineWrapRoute
+  '/_base/plate_/line-frame-workshop': typeof BasePlateLineFrameWorkshopRoute
   '/_base/plate_/line-workshop': typeof BasePlateLineWorkshopRoute
   '/_base/plate_/plate-cutting': typeof BasePlatePlateCuttingRoute
   '/_base/plate_/plate-nailing': typeof BasePlatePlateNailingRoute
   '/_base/plate_/plate-package': typeof BasePlatePlatePackageRoute
   '/_base/plate_/plate-wrap': typeof BasePlatePlateWrapRoute
+  '/_base/plate_/window-workshop': typeof BasePlateWindowWorkshopRoute
   '/_base/plate_/wireframe': typeof BasePlateWireframeRoute
   '/_base/quality_/quality': typeof BaseQualityQualityRoute
   '/_base/warehouse_/cargo-management': typeof BaseWarehouseCargoManagementRoute
@@ -744,11 +792,13 @@ export interface FileRouteTypes {
     | '/plate/l-line-fine-cut'
     | '/plate/l-line-package'
     | '/plate/l-line-wrap'
+    | '/plate/line-frame-workshop'
     | '/plate/line-workshop'
     | '/plate/plate-cutting'
     | '/plate/plate-nailing'
     | '/plate/plate-package'
     | '/plate/plate-wrap'
+    | '/plate/window-workshop'
     | '/plate/wireframe'
     | '/quality/quality'
     | '/warehouse/cargo-management'
@@ -775,11 +825,13 @@ export interface FileRouteTypes {
     | '/plate/l-line-fine-cut'
     | '/plate/l-line-package'
     | '/plate/l-line-wrap'
+    | '/plate/line-frame-workshop'
     | '/plate/line-workshop'
     | '/plate/plate-cutting'
     | '/plate/plate-nailing'
     | '/plate/plate-package'
     | '/plate/plate-wrap'
+    | '/plate/window-workshop'
     | '/plate/wireframe'
     | '/quality/quality'
     | '/warehouse/cargo-management'
@@ -807,11 +859,13 @@ export interface FileRouteTypes {
     | '/_base/plate_/l-line-fine-cut'
     | '/_base/plate_/l-line-package'
     | '/_base/plate_/l-line-wrap'
+    | '/_base/plate_/line-frame-workshop'
     | '/_base/plate_/line-workshop'
     | '/_base/plate_/plate-cutting'
     | '/_base/plate_/plate-nailing'
     | '/_base/plate_/plate-package'
     | '/_base/plate_/plate-wrap'
+    | '/_base/plate_/window-workshop'
     | '/_base/plate_/wireframe'
     | '/_base/quality_/quality'
     | '/_base/warehouse_/cargo-management'
@@ -868,11 +922,13 @@ export const routeTree = rootRoute
         "/_base/plate_/l-line-fine-cut",
         "/_base/plate_/l-line-package",
         "/_base/plate_/l-line-wrap",
+        "/_base/plate_/line-frame-workshop",
         "/_base/plate_/line-workshop",
         "/_base/plate_/plate-cutting",
         "/_base/plate_/plate-nailing",
         "/_base/plate_/plate-package",
         "/_base/plate_/plate-wrap",
+        "/_base/plate_/window-workshop",
         "/_base/plate_/wireframe",
         "/_base/quality_/quality",
         "/_base/warehouse_/cargo-management",
@@ -955,6 +1011,10 @@ export const routeTree = rootRoute
       "filePath": "_base.plate_.l-line-wrap.tsx",
       "parent": "/_base"
     },
+    "/_base/plate_/line-frame-workshop": {
+      "filePath": "_base.plate_.line-frame-workshop.tsx",
+      "parent": "/_base"
+    },
     "/_base/plate_/line-workshop": {
       "filePath": "_base.plate_.line-workshop.tsx",
       "parent": "/_base"
@@ -973,6 +1033,10 @@ export const routeTree = rootRoute
     },
     "/_base/plate_/plate-wrap": {
       "filePath": "_base.plate_.plate-wrap.tsx",
+      "parent": "/_base"
+    },
+    "/_base/plate_/window-workshop": {
+      "filePath": "_base.plate_.window-workshop.tsx",
       "parent": "/_base"
     },
     "/_base/plate_/wireframe": {

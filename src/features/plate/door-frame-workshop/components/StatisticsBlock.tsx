@@ -1,8 +1,14 @@
-import { basicInfoQO } from '../queries'
-import type { BasicInfoVo } from '../types'
+import { linePersonQO } from '../queries'
+import type { LinePersonVo } from '../types'
 
-export function StatisticsBlock() {
-  const templates: Templates<BasicInfoVo> = [
+interface StatisticsBlockProps {
+  conditions: string
+}
+
+export function StatisticsBlock(props: StatisticsBlockProps) {
+  const { conditions } = props
+
+  const templates: Templates<LinePersonVo> = [
     { label: '车间主任', key: 'cDefindParm03' },
     { label: '线长人数', key: 'iManagerCount' },
     { label: '标配工人', key: 'iStandartWokerCount' },
@@ -12,9 +18,9 @@ export function StatisticsBlock() {
   ]
 
   const { data } = useQuery(
-    basicInfoQO({
-      orderByFileds: 'cFactoryUnitCode',
-      conditions: 'cFactoryUnitCode like FM0104'
+    linePersonQO({
+      orderByFileds: '',
+      conditions
     })
   )
 
@@ -27,7 +33,9 @@ export function StatisticsBlock() {
           className="space-x-4 text-2xl"
         >
           <span>{i.label}:</span>
-          <span className="text-2xl font-bold">{data?.[i.key]}</span>
+          <span className="text-2xl font-bold">
+            <AnimatedNumber value={data?.[i.key] as number} />
+          </span>
         </div>
       ))}
       <div />

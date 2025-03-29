@@ -25,7 +25,7 @@ export function MaterialBar() {
       },
       backgroundColor: '',
       title: {
-        text: '物料计划量 - 配送量对比',
+        text: '物料计划量 - 配送量对比（测试中）',
         left: 'center'
       },
       tooltip: {
@@ -46,7 +46,7 @@ export function MaterialBar() {
         align: 'left',
         top: 0,
         right: 0,
-        orient: 'horizontal'
+        orient: 'vertical'
       },
       xAxis: { type: 'value', name: '数量', min: 0, max: 150 },
       yAxis: {

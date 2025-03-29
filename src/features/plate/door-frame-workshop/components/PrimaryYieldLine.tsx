@@ -1,32 +1,38 @@
 import type { EChartsOption } from 'echarts'
 
-import { getRandomValues } from '@/features/random'
+import { primaryYieldQO } from '../queries'
+import type { PrimaryYieldVo } from '../types'
 
-export function PrimaryYieldLine() {
+interface PrimaryYieldLineProps {
+  conditions: string
+}
+
+export function PrimaryYieldLine(props: PrimaryYieldLineProps) {
+  const { conditions } = props
+
   const chartStore = useChartStore()
 
-  const [data, setData] = useState([
-    [88, 90, 92, 89, 99, 87],
-    [95, 95, 95, 95, 95, 95]
-  ])
+  const { data = [] } = useQuery(
+    primaryYieldQO({
+      orderByFileds: 'cProcessCode',
+      conditions
+    })
+  )
 
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setData([getRandomValues(6, 100, 80), getRandomValues(6, 100, 80)])
-    }, 5000)
-
-    return () => clearInterval(timer)
-  }, [])
-
-  const option: EChartsOption = useMemo(
+  const option: EChartsOption = useMemo<EChartsOption>(
     () => ({
       textStyle: {
-        fontFamily: 'inherit'
+        fontFamily: 'inherit',
+        fontSize: 16
       },
       backgroundColor: '',
       title: {
         text: '一次良率统计',
-        left: 'center'
+        left: 'center',
+        textStyle: {
+          fontSize: 24
+        },
+        top: 10
       },
       tooltip: {
         trigger: 'axis',
@@ -36,23 +42,22 @@ export function PrimaryYieldLine() {
         formatter: '{b}<br/>{a}: {c}%'
       },
       grid: {
-        left: 0,
-        right: 0,
+        left: 5,
+        right: 80,
         bottom: 10,
         tooltip: true,
         containLabel: true
       },
-      legend: {
-        data: ['一次良率', '标准良率'],
-        align: 'left',
-        top: 0,
-        right: 0,
-        orient: 'horizontal'
-      },
+      // legend: {
+      //   data: ['一次良率', '标准良率'],
+      //   align: 'left',
+      //   top: 0,
+      //   right: 0,
+      //   orient: 'horizontal'
+      // },
       xAxis: {
         type: 'category',
         name: '产线',
-        data: ['产线A', '产线B', '产线C', '产线D', '产线E', '产线F'],
         axisTick: {
           alignWithLabel: true
         }
@@ -60,26 +65,36 @@ export function PrimaryYieldLine() {
       yAxis: {
         type: 'value',
         name: '百分比',
-        min: 80,
+        min: 0,
         max: 100,
         axisLabel: {
-          formatter: '{value}%'
+          fontSize: 16,
+          interval: 0,
+          width: 60,
+          overflow: 'break'
         }
       },
       series: [
         {
-          type: 'line',
+          type: 'bar',
           name: '一次良率',
-          data: data[0],
-          label: { show: true, formatter: '{c}%' }
-        },
-        {
-          type: 'line',
-          name: '标准良率',
-          data: data[1],
-          label: { show: true, formatter: '{c}%' }
+          encode: {
+            x: 'cProcessName',
+            y: 'iRate'
+          },
+          label: {
+            show: true,
+            formatter: (params) => {
+              const d = params.data as PrimaryYieldVo
+              return `${Number(d.iRate).toFixed(0)}%`
+            },
+            position: 'top'
+          }
         }
-      ]
+      ],
+      dataset: {
+        source: data
+      }
     }),
     [data]
   )

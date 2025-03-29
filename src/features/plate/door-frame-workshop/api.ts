@@ -1,26 +1,27 @@
 import type {
-  BasicInfoVo,
   DeviceRepairDto,
   DeviceRepairVo,
   HourWorkingVo,
   InternalReturnReasonVo,
   InternalReturnVo,
+  LinePersonVo,
   MaterialCallVo,
   PackageNumVo,
+  PrimaryYieldVo,
   ProductionReachVo
 } from './types'
 
 export class DoorFrameWorkshopAPI {
   private static apiPrefix = KB_SERVICE_API_PREFIX
 
-  static async getBasicInfo(data: FullPageDto, signal?: AbortSignal) {
-    return httpClient.post<BasicInfoVo>(`${this.apiPrefix}/LINE_EXTEND/Get_Person_CJTJ`, data, {
+  static async getLinePerson(data: FullPageDto, signal?: AbortSignal) {
+    return httpClient.post<LinePersonVo>(`${this.apiPrefix}/LINE_EXTEND/Get_LINE_EXTEND`, data, {
       signal
     })
   }
 
   static async getProductionReach(data: FullPageDto, signal?: AbortSignal) {
-    return httpClient.post<ProductionReachVo[]>(`${this.apiPrefix}/MES_TASK/Get_GXTJ`, data, {
+    return httpClient.post<ProductionReachVo[]>(`${this.apiPrefix}/MES_TASK/Get_GD_SCDC`, data, {
       signal
     })
   }
@@ -31,8 +32,14 @@ export class DoorFrameWorkshopAPI {
     })
   }
 
+  static async getPrimaryYield(data: FullPageDto, signal?: AbortSignal) {
+    return httpClient.post<PrimaryYieldVo[]>(`${this.apiPrefix}/MES_TASK/Get_GD_YCLY`, data, {
+      signal
+    })
+  }
+
   static async getHourWorking(data: FullPageDto, signal?: AbortSignal) {
-    return httpClient.post<HourWorkingVo[]>(`${this.apiPrefix}/MES_TASK/Get_Task_GD_SDWWTJ`, data, {
+    return httpClient.post<HourWorkingVo[]>(`${this.apiPrefix}/MES_TASK/Get_GD_SDWWTJ`, data, {
       signal
     })
   }

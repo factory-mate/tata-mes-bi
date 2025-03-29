@@ -1,46 +1,42 @@
 import type { EChartsOption } from 'echarts'
 
 import { packageNumQO } from '../queries'
+import type { PackageNumVo } from '../types'
 
-export function PackageNumPie() {
+interface PackageNumPieProps {
+  conditions: string
+}
+
+export function PackageNumPie(props: PackageNumPieProps) {
+  const { conditions } = props
+
   const chartStore = useChartStore()
 
   const { data = [] } = useQuery(
     packageNumQO({
       orderByFileds: 'cFactoryUnitCode',
-      conditions: 'cProcessCode = GX0075'
+      conditions
     })
   )
 
-  const generateRandomData = () => {
-    const lines = ['工位 A', '工位 B', '工位 C', '工位 D', '工位 E']
-    return lines.map((line) => ({
-      line,
-      value: Math.floor(Math.random() * 60)
-    }))
-  }
-
-  const [source, setSource] = useState(generateRandomData())
-
-  const option: EChartsOption = useMemo(
+  const option = useMemo<EChartsOption>(
     () => ({
       textStyle: {
-        fontFamily: 'inherit'
+        fontFamily: 'inherit',
+        fontSize: 16
       },
       backgroundColor: '',
       title: {
         text: '工位包装数量占比统计',
-        left: 'center'
+        left: 'center',
+        textStyle: {
+          fontSize: 24
+        },
+        top: 10
       },
       tooltip: {
         trigger: 'item',
         formatter: '{b}: {d}%'
-      },
-      legend: {
-        orient: 'vertical',
-        right: 0,
-        top: 0,
-        data: source.map((i) => i.line)
       },
       grid: {
         left: 0,
@@ -53,20 +49,29 @@ export function PackageNumPie() {
         {
           type: 'pie',
           name: '百分比',
-          label: { show: true, position: 'inner', formatter: '{b}: {d}%' },
-          top: 10,
-          right: 0
+          label: {
+            show: true,
+            position: 'outside',
+            formatter: (params) => {
+              const d = params.data as PackageNumVo
+              return `${d.cFactoryUnitName}: ${d.AllCount} (${d.iRate}%)`
+            }
+          },
+          top: 40,
+          left: 0,
+          right: 0,
+          encode: {
+            itemName: 'cFactoryUnitName',
+            value: 'iRate',
+            tooltip: 'AllCount'
+          }
         }
       ],
       dataset: {
-        dimensions: [
-          { name: 'line', displayName: '工位' },
-          { name: 'value', displayName: '百分比' }
-        ],
-        source
+        source: data
       }
     }),
-    [source]
+    [data]
   )
 
   return (

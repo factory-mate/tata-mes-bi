@@ -2,38 +2,41 @@ import type { EChartsOption } from 'echarts'
 
 import { hourWorkingQO } from '../queries'
 
-export function HourWorkingBar() {
+interface HourWorkingBarProps {
+  conditions: string
+}
+
+export function HourWorkingBar(props: HourWorkingBarProps) {
+  const { conditions } = props
+
   const chartStore = useChartStore()
 
   const { data = [] } = useQuery(
     hourWorkingQO({
-      orderByFileds: 'GDCode',
-      conditions: 'GDCode in (FM010401,FM010404,FM010405,FM010406,FM010407,FM010409)'
+      orderByFileds: 'cProcessCode',
+      conditions
     })
   )
 
-  const generateRandomData = () => {
-    const hours = ['1小时', '2小时', '3小时', '4小时', '5小时', '6小时', '7小时', '8小时', '加班']
-    return hours.map((hour) => ({
-      hour,
-      a: Math.floor(Math.random() * 150),
-      b: Math.floor(Math.random() * 150),
-      c: Math.floor(Math.random() * 150),
-      d: Math.floor(Math.random() * 150)
-    }))
-  }
+  const { currentSlicedData } = useSlicedData({
+    data,
+    xAxisSize: 1
+  })
 
-  const [source, setSource] = useState(generateRandomData())
-
-  const option: EChartsOption = useMemo(
+  const option = useMemo<EChartsOption>(
     () => ({
       textStyle: {
-        fontFamily: 'inherit'
+        fontFamily: 'inherit',
+        fontSize: 16
       },
       backgroundColor: '',
       title: {
-        text: '工段小时加工量统计',
-        left: 'center'
+        text: `${currentSlicedData?.at(0)?.cProcessName ?? '工段'}小时加工量统计`,
+        left: 'center',
+        textStyle: {
+          fontSize: 24
+        },
+        top: 10
       },
       tooltip: {
         trigger: 'axis',
@@ -57,34 +60,45 @@ export function HourWorkingBar() {
       xAxis: {
         type: 'category',
         name: '小时',
+        data: ['1小时', '2小时', '3小时', '4小时', '5小时', '6小时', '7小时', '8小时', '加班'],
         axisTick: {
           alignWithLabel: true
+        },
+        axisLabel: {
+          fontSize: 16,
+          interval: 0,
+          width: 60
         }
       },
       yAxis: {
         type: 'value',
         name: '数量',
         min: 0,
-        max: 150
+        max: 1000,
+        nameTextStyle: {
+          padding: 8
+        },
+        axisLabel: {
+          fontSize: 16
+        }
       },
-      series: [
-        { type: 'bar', label: { show: true, position: 'top' } },
-        { type: 'bar', label: { show: true, position: 'top' } },
-        { type: 'bar', label: { show: true, position: 'top' } },
-        { type: 'bar', label: { show: true, position: 'top' } }
-      ],
-      dataset: {
-        dimensions: [
-          { name: 'hour', displayName: '小时' },
-          { name: 'a', displayName: '工段 A' },
-          { name: 'b', displayName: '工段 B' },
-          { name: 'c', displayName: '工段 C' },
-          { name: 'd', displayName: '工段 D' }
-        ],
-        source
+      series: {
+        type: 'bar',
+        label: { show: true, position: 'top' },
+        data: [
+          currentSlicedData?.at(0)?.iPackageCount01 ?? 0,
+          currentSlicedData?.at(0)?.iPackageCount02 ?? 0,
+          currentSlicedData?.at(0)?.iPackageCount03 ?? 0,
+          currentSlicedData?.at(0)?.iPackageCount04 ?? 0,
+          currentSlicedData?.at(0)?.iPackageCount05 ?? 0,
+          currentSlicedData?.at(0)?.iPackageCount06 ?? 0,
+          currentSlicedData?.at(0)?.iPackageCount07 ?? 0,
+          currentSlicedData?.at(0)?.iPackageCount08 ?? 0,
+          currentSlicedData?.at(0)?.iPackageCount09 ?? 0
+        ]
       }
     }),
-    [source]
+    [currentSlicedData]
   )
 
   return (

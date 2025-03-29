@@ -1,5 +1,3 @@
-import { createLazyFileRoute } from '@tanstack/react-router'
-
 import {
   DeviceRepairTable,
   Gauge,

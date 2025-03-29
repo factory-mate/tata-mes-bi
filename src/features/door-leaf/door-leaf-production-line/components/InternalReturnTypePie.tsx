@@ -65,8 +65,7 @@ export function InternalReturnTypePie(props: InternalReturnTypePieProps) {
           ['返修', data?.FXCount],
           ['重做', data?.CZCount]
         ]
-      },
-      stillShowZeroSum: false
+      }
     }),
     [data]
   )

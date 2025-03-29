@@ -1,17 +1,37 @@
-export interface BasicInfoVo {
+export interface LinePersonVo {
   cFactoryUnitCode: string
+  cFactoryUnitName: string
   iStandartWokerCount: number
   iManagerCount: number
   iActureWokerCount: number
-  cDefindParm01: number
-  cDefindParm02: number
+  UID: string
+  IsValid: true
+  IsDelete: true
+  cCreateUserCode: string
+  cCreateUserName: string
+  dCreateTime: string
+  cModifyUserCode: string
+  cModifyUserName: string
+  dModifyTime: string
+  cSourceAppType: string
+  iStatus: number
+  utfs: string
+  cDefindParm01: string
+  cDefindParm02: string
   cDefindParm03: string
+  cDefindParm04: string
+  cDefindParm05: string
+  cDefindParm06: string
+  cDefindParm07: string
+  cDefindParm08: string
+  cDefindParm09: string
+  cDefindParm10: string
 }
 
 export interface ProductionReachVo extends ChartRawData {
+  iType: number // 类型：1 计划 2：实际完工数
   cProcessCode: string
   cProcessName: string
-  EndCount: number
   AllCount: number
   iRate: number
 }
@@ -25,8 +45,18 @@ export interface PackageNumVo extends ChartRawData {
   iRate: string
 }
 
+export interface PrimaryYieldVo extends ChartRawData {
+  cType: string
+  cProcessCode: string
+  cProcessName: string
+  iRate: string
+}
+
 export interface HourWorkingVo extends ChartRawData {
-  GDCode: string
+  WSScanData: string
+  cProcessCode: string
+  cProcessName: string
+  cType: string
   iPackageCount01: number
   iPackageCount02: number
   iPackageCount03: number

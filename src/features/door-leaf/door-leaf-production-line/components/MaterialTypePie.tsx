@@ -20,7 +20,7 @@ export function MaterialTypePie(props: MaterialTypePieProps) {
 
   const { currentSlicedData } = useSlicedData({ data, xAxisSize: 11 })
 
-  const option: EChartsOption = useMemo(
+  const option = useMemo<EChartsOption>(
     () => ({
       textStyle: {
         fontFamily: 'inherit',
@@ -67,8 +67,7 @@ export function MaterialTypePie(props: MaterialTypePieProps) {
       ],
       dataset: {
         source: currentSlicedData
-      },
-      stillShowZeroSum: false
+      }
     }),
     [currentSlicedData]
   )

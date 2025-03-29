@@ -21,7 +21,7 @@ export function ProductionReachBar() {
       },
       backgroundColor: '',
       title: {
-        text: '工段生产达成统计',
+        text: '生产达成统计',
         left: 'center'
       },
       tooltip: {

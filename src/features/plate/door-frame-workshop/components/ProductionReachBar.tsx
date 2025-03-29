@@ -2,36 +2,48 @@ import type { EChartsOption } from 'echarts'
 
 import { productionReachQO } from '../queries'
 
-export function ProductionReachBar() {
+interface ProductionReachBarProps {
+  orderByFileds: string
+  conditions: string
+}
+
+export function ProductionReachBar(props: ProductionReachBarProps) {
+  const { orderByFileds, conditions } = props
+
   const chartStore = useChartStore()
 
   const { data = [] } = useQuery(
     productionReachQO({
-      orderByFileds: 'cProcessCode',
-      conditions: 'cProcessCode in (GX0065,GX0066,GX0067,GX0068,GX0072,GX0113,GX0075)'
+      orderByFileds,
+      conditions
     })
   )
 
-  const generateRandomData = () => {
-    const lines = ['工段 A', '工段 B', '工段 C', '工段 D']
-    return lines.map((line) => ({
-      line,
-      planNum: Math.floor(Math.random() * 150),
-      finishNum: Math.floor(Math.random() * 150)
-    }))
-  }
+  const option = useMemo<EChartsOption>(() => {
+    const planData = data.filter((i) => i.iType === 1)
+    const actualData = data.filter((i) => i.iType === 2)
 
-  const [source, setSource] = useState(generateRandomData())
+    const transformedData = planData.map((i) => {
+      const item = actualData.find((j) => j.cProcessCode === i.cProcessCode)
+      return {
+        ...i,
+        actualCount: item ? item.AllCount : 0
+      }
+    })
 
-  const option: EChartsOption = useMemo(
-    () => ({
+    return {
       textStyle: {
-        fontFamily: 'inherit'
+        fontFamily: 'inherit',
+        fontSize: 16
       },
       backgroundColor: '',
       title: {
-        text: '工段生产达成统计',
-        left: 'center'
+        text: '生产达成统计',
+        left: 'center',
+        textStyle: {
+          fontSize: 24
+        },
+        top: 10
       },
       tooltip: {
         trigger: 'axis',
@@ -39,15 +51,9 @@ export function ProductionReachBar() {
           type: 'cross'
         }
       },
-      legend: {
-        align: 'left',
-        top: 0,
-        right: 0,
-        orient: 'vertical'
-      },
       grid: {
         left: 0,
-        right: 70,
+        right: 60,
         bottom: 10,
         tooltip: true,
         containLabel: true
@@ -57,29 +63,35 @@ export function ProductionReachBar() {
         name: '工段',
         axisTick: {
           alignWithLabel: true
+        },
+        axisLabel: {
+          fontSize: 16,
+          interval: 0
         }
       },
       yAxis: {
         type: 'value',
         name: '数量',
         min: 0,
-        max: 150
+        max: 5000
       },
       series: [
-        { type: 'bar', label: { show: true, position: 'top' } },
-        { type: 'bar', label: { show: true, position: 'top' } }
+        {
+          type: 'bar',
+          label: { show: true, position: 'top' },
+          encode: { x: 'cProcessName', y: 'AllCount' }
+        },
+        {
+          type: 'bar',
+          label: { show: true, position: 'top' },
+          encode: { x: 'cProcessName', y: 'actualCount' }
+        }
       ],
       dataset: {
-        dimensions: [
-          { name: 'line', displayName: '工段' },
-          { name: 'planNum', displayName: '计划数量' },
-          { name: 'finishNum', displayName: '完成数量' }
-        ],
-        source
+        source: transformedData
       }
-    }),
-    [source]
-  )
+    }
+  }, [data])
 
   return (
     <ReactChart

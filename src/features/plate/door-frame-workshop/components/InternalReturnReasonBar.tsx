@@ -2,39 +2,36 @@ import type { EChartsOption } from 'echarts'
 
 import { internalReturnReasonQO } from '../queries'
 
-export function InternalReturnReasonBar() {
+interface InternalReturnReasonBarProps {
+  conditions: string
+}
+
+export function InternalReturnReasonBar(props: InternalReturnReasonBarProps) {
+  const { conditions } = props
+
   const chartStore = useChartStore()
 
   const { data = [] } = useQuery(
     internalReturnReasonQO({
       orderByFileds: 'cFactoryUnitCode',
-      conditions: 'cFactoryUnitCode like FM0104'
+      conditions
     })
   )
-
-  const generateRandomData = () => {
-    const lines = ['工段 A', '工段 B', '工段 C', '工段 D', '工段 E']
-    return lines.map((line) => ({
-      line,
-      gb: Math.floor(Math.random() * 150),
-      hh: Math.floor(Math.random() * 150),
-      bl: Math.floor(Math.random() * 150),
-      cd: Math.floor(Math.random() * 150),
-      kl: Math.floor(Math.random() * 150)
-    }))
-  }
-
-  const [source, setSource] = useState(generateRandomData())
 
   const option: EChartsOption = useMemo(
     () => ({
       textStyle: {
-        fontFamily: 'inherit'
+        fontFamily: 'inherit',
+        fontSize: 16
       },
       backgroundColor: '',
       title: {
         text: '内返原因统计 TOP5',
-        left: 'center'
+        left: 'center',
+        textStyle: {
+          fontSize: 24
+        },
+        top: 10
       },
       tooltip: {
         trigger: 'axis',
@@ -66,28 +63,29 @@ export function InternalReturnReasonBar() {
         type: 'value',
         name: '数量',
         min: 0,
-        max: 150
+        max: 150,
+        axisLabel: {
+          fontSize: 16
+        }
       },
       series: [
-        { type: 'bar', label: { show: true, position: 'top' } },
-        { type: 'bar', label: { show: true, position: 'top' } },
-        { type: 'bar', label: { show: true, position: 'top' } },
-        { type: 'bar', label: { show: true, position: 'top' } },
-        { type: 'bar', label: { show: true, position: 'top' } }
+        {
+          type: 'bar',
+          label: {
+            show: true,
+            position: 'top'
+          },
+          encode: {
+            x: 'cRepairReasonTypeName',
+            y: 'nQuantity'
+          }
+        }
       ],
       dataset: {
-        dimensions: [
-          { name: 'line', displayName: '工段' },
-          { name: 'gb', displayName: '鼓包' },
-          { name: 'hh', displayName: '划痕' },
-          { name: 'bl', displayName: '断裂' },
-          { name: 'cd', displayName: '尺寸' },
-          { name: 'kl', displayName: '颗粒' }
-        ],
-        source
+        source: data
       }
     }),
-    [source]
+    [data]
   )
 
   return (
