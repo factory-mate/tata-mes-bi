@@ -1,5 +1,4 @@
 export * from './DeviceRepairTable'
-export * from './Gauge'
 export * from './HourWorkingBar'
 export * from './InternalReturnBar'
 export * from './InternalReturnReasonBar'

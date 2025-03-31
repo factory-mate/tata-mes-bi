@@ -3,17 +3,18 @@ import type { EChartsOption } from 'echarts'
 import { hourWorkingQO } from '../queries'
 
 interface HourWorkingBarProps {
+  orderByFileds: string
   conditions: string
 }
 
 export function HourWorkingBar(props: HourWorkingBarProps) {
-  const { conditions } = props
+  const { orderByFileds, conditions } = props
 
   const chartStore = useChartStore()
 
   const { data = [] } = useQuery(
     hourWorkingQO({
-      orderByFileds: 'cProcessCode',
+      orderByFileds,
       conditions
     })
   )

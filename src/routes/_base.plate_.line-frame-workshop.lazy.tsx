@@ -45,23 +45,26 @@ function Page() {
       </BlockContainer>
 
       <BlockContainer className="col-span-4 row-span-3">
-        <HourWorkingBar conditions="cType = XKXT && cProcessCode in (GX0102,GX0103,GX0105)" />
+        <HourWorkingBar
+          orderByFileds="cProcessCode"
+          conditions="cType = XKXT && cProcessCode in (GX0102,GX0103,GX0105)"
+        />
       </BlockContainer>
       <BlockContainer className="col-span-4 row-span-3">
-        <InternalReturnBar conditions="cFactoryUnitCode like FM0105" />
+        <InternalReturnBar conditions="cFactoryUnitCode like FM010203" />
       </BlockContainer>
       <BlockContainer className="col-span-4 row-span-3">
-        <InternalReturnReasonBar conditions="cFactoryUnitCode like FM0105" />
+        <InternalReturnReasonBar conditions="cFactoryUnitCode like FM010203" />
       </BlockContainer>
 
       <BlockContainer className="col-span-4 row-span-4">
         <MaterialBar />
       </BlockContainer>
       <BlockContainer className="col-span-4 row-span-4">
-        <DeviceRepairTable cFactoryUnitCode="FM0105" />
+        <DeviceRepairTable cFactoryUnitCode="FM0102" />
       </BlockContainer>
       <BlockContainer className="col-span-4 row-span-4">
-        <MaterialCallTable conditions="cDefindParm05 like FM0105" />
+        <MaterialCallTable conditions="cDefindParm05 like FM0102" />
       </BlockContainer>
     </>
   )

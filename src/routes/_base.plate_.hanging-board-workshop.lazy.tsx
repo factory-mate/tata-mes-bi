@@ -2,17 +2,16 @@ import { createLazyFileRoute } from '@tanstack/react-router'
 
 import {
   DeviceRepairTable,
-  Gauge,
   HourWorkingBar,
   InternalReturnBar,
   InternalReturnReasonBar,
   MaterialBar,
-  MaterialTable,
+  MaterialCallTable,
   PackageNumPie,
   PrimaryYieldLine,
   ProductionReachBar,
-  StatisticsRow
-} from '@/features/plate/hanging-board-workshop'
+  StatisticsBlock
+} from '@/features/plate/door-frame-workshop'
 
 export const Route = createLazyFileRoute('/_base/plate_/hanging-board-workshop')({
   component: Page
@@ -29,40 +28,43 @@ function Page() {
       </div>
 
       <BlockContainer className="col-span-12 row-span-1">
-        <StatisticsRow />
+        <StatisticsBlock conditions="cKBType = 11" />
       </BlockContainer>
 
       <BlockContainer className="col-span-4 row-span-3">
-        <ProductionReachBar />
-      </BlockContainer>
-      <BlockContainer className="col-span-2 row-span-3">
-        <Gauge />
-      </BlockContainer>
-      <BlockContainer className="col-span-2 row-span-3">
-        <PackageNumPie />
+        <ProductionReachBar
+          orderByFileds="cProcessCode"
+          conditions="cType = GB"
+        />
       </BlockContainer>
       <BlockContainer className="col-span-4 row-span-3">
-        <PrimaryYieldLine />
+        <PackageNumPie conditions="cProcessCode = GX0087" />
+      </BlockContainer>
+      <BlockContainer className="col-span-4 row-span-3">
+        <PrimaryYieldLine conditions="cType = GB" />
       </BlockContainer>
 
       <BlockContainer className="col-span-4 row-span-3">
-        <HourWorkingBar />
+        <HourWorkingBar
+          orderByFileds="cType"
+          conditions="cType = GB"
+        />
       </BlockContainer>
       <BlockContainer className="col-span-4 row-span-3">
-        <InternalReturnBar />
+        <InternalReturnBar conditions="cFactoryUnitCode like FM010410" />
       </BlockContainer>
       <BlockContainer className="col-span-4 row-span-3">
-        <InternalReturnReasonBar />
+        <InternalReturnReasonBar conditions="cFactoryUnitCode like FM010410" />
       </BlockContainer>
 
       <BlockContainer className="col-span-4 row-span-4">
         <MaterialBar />
       </BlockContainer>
       <BlockContainer className="col-span-4 row-span-4">
-        <DeviceRepairTable />
+        <DeviceRepairTable cFactoryUnitCode="FM0104" />
       </BlockContainer>
       <BlockContainer className="col-span-4 row-span-4">
-        <MaterialTable />
+        <MaterialCallTable conditions="cDefindParm05 like FM0104" />
       </BlockContainer>
     </>
   )

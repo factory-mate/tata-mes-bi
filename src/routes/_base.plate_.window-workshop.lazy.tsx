@@ -45,7 +45,10 @@ function Page() {
       </BlockContainer>
 
       <BlockContainer className="col-span-4 row-span-3">
-        <HourWorkingBar conditions="cType = CY && cProcessCode in (GX0065,GX0068,GX0072,GX0075)" />
+        <HourWorkingBar
+          orderByFileds="cProcessCode"
+          conditions="cType = CY && cProcessCode in (GX0065,GX0068,GX0072,GX0075)"
+        />
       </BlockContainer>
       <BlockContainer className="col-span-4 row-span-3">
         <InternalReturnBar conditions="cFactoryUnitCode like FM010410" />

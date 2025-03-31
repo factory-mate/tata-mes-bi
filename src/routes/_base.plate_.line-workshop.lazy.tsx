@@ -34,7 +34,7 @@ function Page() {
       <BlockContainer className="col-span-4 row-span-3">
         <ProductionReachBar
           orderByFileds="cProcessCode"
-          conditions="cType = CY && cProcessCode in (GX0102,GX0103,GX0106,GX0108)"
+          conditions="cType = XT && cProcessCode in (GX0102,GX0103,GX0106,GX0108)"
         />
       </BlockContainer>
       <BlockContainer className="col-span-4 row-span-3">
@@ -45,7 +45,10 @@ function Page() {
       </BlockContainer>
 
       <BlockContainer className="col-span-4 row-span-3">
-        <HourWorkingBar conditions="cType = XT && cProcessCode in (GX0102,GX0103,GX0106,GX0108)" />
+        <HourWorkingBar
+          orderByFileds="cProcessCode"
+          conditions="cType = XT && cProcessCode in (GX0102,GX0103,GX0106,GX0108)"
+        />
       </BlockContainer>
       <BlockContainer className="col-span-4 row-span-3">
         <InternalReturnBar conditions="cFactoryUnitCode like FM0105" />
