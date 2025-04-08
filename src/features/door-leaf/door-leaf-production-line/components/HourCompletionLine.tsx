@@ -18,10 +18,16 @@ export function HourCompletionLine(props: HourCompletionLineProps) {
     })
   )
 
-  const { currentSlicedData } = useSlicedData({ data, xAxisSize: 1 })
+  const { currentSlicedData } = useSlicedData({
+    data: data.filter((i) => i.iType === 1),
+    xAxisSize: 2
+  })
 
   const option = useMemo<EChartsOption>(() => {
-    const actualData = currentSlicedData.at(0)
+    const standardData = currentSlicedData.at(0)
+    const actualData = data.find(
+      (i) => i.iType === 2 && i.cFactoryUnitCode === standardData?.cFactoryUnitCode
+    )
     return {
       textStyle: {
         fontFamily: 'inherit',
@@ -97,13 +103,27 @@ export function HourCompletionLine(props: HourCompletionLineProps) {
             actualData?.iEighthHour ?? 0,
             actualData?.iNinthHour ?? 0
           ],
-          label: {
-            show: true
-          }
+          label: { show: true }
+        },
+        {
+          type: 'line',
+          name: '标准量',
+          data: [
+            standardData?.iFirstHour ?? 0,
+            standardData?.iSecondHour ?? 0,
+            standardData?.iThirdHour ?? 0,
+            standardData?.iFourthHour ?? 0,
+            standardData?.iFifthHour ?? 0,
+            standardData?.iSixthHour ?? 0,
+            standardData?.iSeventhHour ?? 0,
+            standardData?.iEighthHour ?? 0,
+            standardData?.iNinthHour ?? 0
+          ],
+          label: { show: true }
         }
       ]
     }
-  }, [currentSlicedData])
+  }, [currentSlicedData, data])
 
   return (
     <ReactChart
