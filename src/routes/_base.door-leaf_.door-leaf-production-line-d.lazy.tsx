@@ -30,11 +30,11 @@ function Page() {
       </div>
 
       <BlockContainer className="col-span-6 row-span-1">
-        <LineCompleteRateBlock />
+        <LineCompleteRateBlock conditions="cFactoryUnitCode = FM01010104" />
       </BlockContainer>
 
       <BlockContainer className="col-span-6 row-span-1">
-        <LinePersonBlock />
+        <LinePersonBlock conditions="cFactoryUnitCode = FM01010104" />
       </BlockContainer>
 
       <BlockContainer className="col-span-4 row-span-4">

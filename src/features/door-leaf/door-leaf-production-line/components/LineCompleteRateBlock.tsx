@@ -1,7 +1,13 @@
 import { lineCompleteRateQO } from '../queries'
 import type { LineCompleteRateVo } from '../types'
 
-export function LineCompleteRateBlock() {
+interface LineCompleteRateBlockProps {
+  conditions: string
+}
+
+export function LineCompleteRateBlock(props: LineCompleteRateBlockProps) {
+  const { conditions } = props
+
   const templates: Templates<LineCompleteRateVo> = [
     { label: '任务数量', key: 'AllCount' },
     { label: '完成数', key: 'EndCount' },
@@ -11,7 +17,7 @@ export function LineCompleteRateBlock() {
   const { data } = useQuery(
     lineCompleteRateQO({
       orderByFileds: 'cFactoryUnitCode',
-      conditions: 'cFactoryUnitCode = FM01010101'
+      conditions
     })
   )
 

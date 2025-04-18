@@ -1,7 +1,13 @@
 import { linePersonQO } from '../queries'
 import type { LinePersonVo } from '../types'
 
-export function LinePersonBlock() {
+interface LinePersonBlockProps {
+  conditions: string
+}
+
+export function LinePersonBlock(props: LinePersonBlockProps) {
+  const { conditions } = props
+
   const templates: Templates<LinePersonVo> = [
     { label: '线长', key: 'iManagerCount' },
     { label: '标配人数', key: 'iStandartWokerCount' },
@@ -11,7 +17,7 @@ export function LinePersonBlock() {
   const { data } = useQuery(
     linePersonQO({
       orderByFileds: 'cFactoryUnitCode',
-      conditions: 'cFactoryUnitCode = FM01010101'
+      conditions
     })
   )
 
