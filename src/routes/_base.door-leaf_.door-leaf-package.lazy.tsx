@@ -1,10 +1,11 @@
 import { createLazyFileRoute } from '@tanstack/react-router'
 
 import {
+  AutomaticLineFinishCountStatistics,
   AutomaticLineHourCompletionLine,
   CheckTable,
   DeviceRepairTable,
-  FinishCountStatistics,
+  HandmadeFinishCountStatistics,
   HandmadeLineHourCompletionLine,
   InternalReturnReasonBar,
   InternalReturnTypePie,
@@ -29,10 +30,6 @@ function Page() {
         />
       </div>
 
-      {/* <BlockContainer className="col-span-6 row-span-1">
-        <LineCompeleteRateStatistics />
-      </BlockContainer> */}
-
       <BlockContainer className="col-span-12 row-span-1">
         <LinePersonStatistics />
       </BlockContainer>
@@ -49,11 +46,15 @@ function Page() {
         <TaskCountStatistics />
       </BlockContainer>
       <BlockContainer className="col-span-2 row-span-4">
-        <FinishCountStatistics />
-      </BlockContainer>
-      <BlockContainer className="col-span-2 row-span-4">
         <RateStatistics />
       </BlockContainer>
+      <BlockContainer className="col-span-2 row-span-4">
+        <div className="flex h-full flex-col items-center justify-center">
+          <AutomaticLineFinishCountStatistics />
+          <HandmadeFinishCountStatistics />
+        </div>
+      </BlockContainer>
+
       <BlockContainer className="col-span-4 row-span-4">
         <DeviceRepairTable />
       </BlockContainer>

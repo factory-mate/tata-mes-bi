@@ -34,7 +34,7 @@ export function StatisticsBlock(props: StatisticsBlockProps) {
         >
           <span>{i.label}:</span>
           <span className="text-2xl font-bold">
-            <AnimatedNumber value={data?.[i.key] as number} />
+            <span>{data?.[i.key]}</span>
           </span>
         </div>
       ))}

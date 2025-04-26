@@ -37,13 +37,13 @@ function Page() {
         <LinePersonBlock conditions="cFactoryUnitCode = FM01010107" />
       </BlockContainer>
 
-      <BlockContainer className="col-span-4 row-span-4">
+      <BlockContainer className="col-span-3 row-span-4">
         <MaterialCallTable conditions="cDefindParm05 like FM01010107" />
       </BlockContainer>
       <BlockContainer className="col-span-2 row-span-4">
         <InternalReturnTypePie conditions="cFactoryUnitCode = FM01010107" />
       </BlockContainer>
-      <BlockContainer className="col-span-2 row-span-4">
+      <BlockContainer className="col-span-3 row-span-4">
         <MaterialTypePie conditions="cFactoryUnitCode = FM01010107" />
       </BlockContainer>
       <BlockContainer className="col-span-1 row-span-4">

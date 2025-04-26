@@ -10,9 +10,9 @@ export function RateStatistics() {
 
   return (
     <div className="flex size-full flex-col items-center justify-center space-y-4">
-      <span className="text-3xl">达成率</span>
-      <span className="text-4xl font-bold">
-        <AnimatedNumber value={data?.iRate} />
+      <span className="text-4xl">达成率</span>
+      <span className="text-5xl font-bold">
+        <AnimatedNumber value={data?.at(0)?.iRate} />
       </span>
     </div>
   )

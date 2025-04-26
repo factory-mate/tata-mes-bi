@@ -1,6 +1,6 @@
 import { lineCompleteRateQO } from '../queries'
 
-export function FinishCountStatistics() {
+export function AutomaticLineFinishCountStatistics() {
   const { data } = useQuery(
     lineCompleteRateQO({
       orderByFileds: 'cFactoryUnitCode',
@@ -10,9 +10,9 @@ export function FinishCountStatistics() {
 
   return (
     <div className="flex size-full flex-col items-center justify-center space-y-4">
-      <span className="text-3xl">完成数</span>
-      <span className="text-4xl font-bold">
-        <AnimatedNumber value={data?.EndCount} />
+      <span className="text-4xl">自动线完成数</span>
+      <span className="text-5xl font-bold">
+        <AnimatedNumber value={data?.at(0)?.EndCount ?? 0} />
       </span>
     </div>
   )

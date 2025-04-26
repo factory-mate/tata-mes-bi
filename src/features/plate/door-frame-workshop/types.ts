@@ -50,6 +50,8 @@ export interface PrimaryYieldVo extends ChartRawData {
   cProcessCode: string
   cProcessName: string
   iRate: string
+  cFactoryUnitCode: string
+  cFactoryUnitName: string
 }
 
 export interface HourWorkingVo extends ChartRawData {

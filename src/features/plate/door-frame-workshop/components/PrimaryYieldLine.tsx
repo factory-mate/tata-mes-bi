@@ -39,7 +39,10 @@ export function PrimaryYieldLine(props: PrimaryYieldLineProps) {
         axisPointer: {
           type: 'cross'
         },
-        formatter: '{b}<br/>{a}: {c}%'
+        formatter: (params: any) => {
+          const d = params.at(0).data as PrimaryYieldVo
+          return `${d.cFactoryUnitName}: ${Number(d.iRate).toFixed(0)}%`
+        }
       },
       grid: {
         left: 5,
@@ -78,10 +81,7 @@ export function PrimaryYieldLine(props: PrimaryYieldLineProps) {
         {
           type: 'bar',
           name: '一次良率',
-          encode: {
-            x: 'cProcessName',
-            y: 'iRate'
-          },
+          encode: { x: 'cFactoryUnitName', y: 'iRate' },
           label: {
             show: true,
             formatter: (params) => {

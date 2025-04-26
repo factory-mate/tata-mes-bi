@@ -15,7 +15,7 @@ export class DoorLeafPackageAPI {
   private static apiPrefix = KB_SERVICE_API_PREFIX
 
   static async getLineCompleteRate(data: FullPageDto, signal?: AbortSignal) {
-    return httpClient.get<LineCompleteRateVo>(`${this.apiPrefix}/MES_TASK/Get_MSBZ_CXDCL`, data, {
+    return httpClient.get<LineCompleteRateVo[]>(`${this.apiPrefix}/MES_TASK/Get_MSBZ_CXDCL`, data, {
       signal
     })
   }

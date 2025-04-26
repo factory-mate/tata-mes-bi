@@ -67,7 +67,7 @@ export function AutomaticLineHourCompletionLine() {
         type: 'value',
         name: '数量',
         min: 0,
-        max: 100,
+        max: 200,
         nameTextStyle: {
           padding: 8
         },

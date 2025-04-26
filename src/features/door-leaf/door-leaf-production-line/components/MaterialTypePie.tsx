@@ -37,7 +37,11 @@ export function MaterialTypePie(props: MaterialTypePieProps) {
       },
       tooltip: {
         trigger: 'item',
-        formatter: '{b}: {d}%'
+        formatter: '{b}:{d}%'
+      },
+      legend: {
+        orient: 'vertical',
+        left: 0
       },
       grid: {
         left: 0,
@@ -52,9 +56,10 @@ export function MaterialTypePie(props: MaterialTypePieProps) {
           name: '百分比',
           label: {
             show: true,
-            position: 'inner',
-            formatter: '{b}: {d}%'
+            position: 'outside',
+            formatter: '{d}%'
           },
+          // radius: '50%',
           top: 40,
           left: 0,
           right: 0,
