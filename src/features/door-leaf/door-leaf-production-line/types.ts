@@ -57,6 +57,8 @@ export interface InternalReturnType extends ChartRawData {
   FXRate: number
   CZCount: number
   CZRate: number
+  OKRate: number
+  OKCount: number
 }
 
 export interface GaugeVo extends ChartRawData {

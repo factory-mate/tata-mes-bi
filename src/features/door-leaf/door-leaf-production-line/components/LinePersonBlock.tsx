@@ -16,7 +16,6 @@ export function LinePersonBlock(props: LinePersonBlockProps) {
 
   const { data } = useQuery(
     linePersonQO({
-      orderByFileds: 'cFactoryUnitCode',
       conditions
     })
   )

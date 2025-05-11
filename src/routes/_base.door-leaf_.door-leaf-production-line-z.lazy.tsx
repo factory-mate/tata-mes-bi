@@ -34,7 +34,7 @@ function Page() {
       </BlockContainer>
 
       <BlockContainer className="col-span-6 row-span-1">
-        <LinePersonBlock conditions="cFactoryUnitCode = FM01010107" />
+        <LinePersonBlock conditions="cKBType = 5" />
       </BlockContainer>
 
       <BlockContainer className="col-span-3 row-span-4">

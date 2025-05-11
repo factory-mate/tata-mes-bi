@@ -26,7 +26,7 @@ export function InternalReturnTypePie(props: InternalReturnTypePieProps) {
       },
       backgroundColor: '',
       title: {
-        text: '内返类型占比统计',
+        text: '合格率统计',
         left: 'center',
         textStyle: {
           fontSize: 24
@@ -36,6 +36,10 @@ export function InternalReturnTypePie(props: InternalReturnTypePieProps) {
       tooltip: {
         trigger: 'item',
         formatter: '{b}: {d}%'
+      },
+      legend: {
+        orient: 'vertical',
+        left: 0
       },
       grid: {
         left: 0,
@@ -50,8 +54,8 @@ export function InternalReturnTypePie(props: InternalReturnTypePieProps) {
           name: '百分比',
           label: {
             show: true,
-            position: 'inside',
-            formatter: '{b}: {d}%'
+            position: 'outside',
+            formatter: '{d}%'
           },
           top: 40,
           left: 0,
@@ -61,9 +65,10 @@ export function InternalReturnTypePie(props: InternalReturnTypePieProps) {
       dataset: {
         source: [
           ['type', 'value'],
-          ['维修', data?.WXCount],
-          ['返修', data?.FXCount],
-          ['重做', data?.CZCount]
+          ['维修', data?.WXRate],
+          ['返修', data?.FXRate],
+          ['重做', data?.CZRate],
+          ['合格', data?.OKRate]
         ]
       }
     }),
