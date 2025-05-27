@@ -30,7 +30,13 @@ export function LineCompleteRateBlock(props: LineCompleteRateBlockProps) {
           >
             <span>{i.label}:</span>
             <span className="text-2xl font-bold">
-              <AnimatedNumber value={data?.[i.key] as number} />
+              {i.key === 'iRate' ? (
+                <>
+                  <AnimatedNumber value={data?.[i.key] as number} />%
+                </>
+              ) : (
+                <AnimatedNumber value={data?.[i.key] as number} />
+              )}
             </span>
           </div>
         ))}
