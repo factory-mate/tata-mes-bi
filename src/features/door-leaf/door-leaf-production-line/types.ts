@@ -88,6 +88,13 @@ export interface InternalReturnReasonVo extends ChartRawData {
   nQuantity: number
 }
 
+export interface CheckVo {
+  cPositionName: string
+  cVouchType: string
+  All_iQuantity: number
+  End_iQuantity: number
+}
+
 export interface DeviceRepairVo {
   cLineName: string
   cPersonName: string
@@ -97,6 +104,14 @@ export interface DeviceRepairVo {
   dCreateTime: string
   iStatus: string
   iStatusName: string
+}
+
+export interface LineCompleteRateDto {
+  cFactoryUnitCode: string
+}
+
+export interface CheckDto {
+  cFactoryUnitCode: string
 }
 
 export interface DeviceRepairDto {

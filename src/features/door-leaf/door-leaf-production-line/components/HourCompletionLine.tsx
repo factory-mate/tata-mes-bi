@@ -79,8 +79,8 @@ export function HourCompletionLine(props: HourCompletionLineProps) {
       yAxis: {
         type: 'value',
         name: '数量',
-        min: 0,
-        max: 100,
+        min: 40,
+        max: 80,
         nameTextStyle: {
           padding: 8
         },
@@ -118,8 +118,8 @@ export function HourCompletionLine(props: HourCompletionLineProps) {
             standardData?.iSeventhHour ?? 0,
             standardData?.iEighthHour ?? 0,
             standardData?.iNinthHour ?? 0
-          ],
-          label: { show: true }
+          ]
+          // label: { show: true }
         }
       ]
     }

@@ -1,6 +1,8 @@
 import type { Page, PageDto } from '@/shared/types'
 
 import type {
+  CheckDto,
+  CheckVo,
   DeviceRepairDto,
   DeviceRepairVo,
   DeviceRunningStatusVo,
@@ -8,6 +10,7 @@ import type {
   HourCompletionVo,
   InternalReturnReasonVo,
   InternalReturnType,
+  LineCompleteRateDto,
   LineCompleteRateVo,
   LinePersonVo,
   MaterialCallVo,
@@ -18,8 +21,8 @@ import type {
 export class DoorLeafProductionLineAPI {
   private static apiPrefix = KB_SERVICE_API_PREFIX
 
-  static async getLineCompleteRate(data: FullPageDto, signal?: AbortSignal) {
-    return httpClient.post<LineCompleteRateVo>(`${this.apiPrefix}/MES_TASK/Get_CXDCL`, data, {
+  static async getLineCompleteRate(data: LineCompleteRateDto, signal?: AbortSignal) {
+    return httpClient.get<LineCompleteRateVo>(`${this.apiPrefix}/MES_TASK/Get_MS_CXDCL`, data, {
       signal
     })
   }
@@ -40,7 +43,7 @@ export class DoorLeafProductionLineAPI {
 
   static async getInternalReturnType(data: FullPageDto, signal?: AbortSignal) {
     return httpClient.post<InternalReturnType>(
-      `${this.apiPrefix}/MES_REPAIR_VOUCH/Get_NFZB`,
+      `${this.apiPrefix}/MES_REPAIR_VOUCH/Get_NFZB_MS`,
       data,
       {
         signal
@@ -63,6 +66,14 @@ export class DoorLeafProductionLineAPI {
       `${this.apiPrefix}/MES_REPAIR_VOUCH/Get_NFYYTJ`,
       data,
       { signal }
+    )
+  }
+
+  static async getCheck(params: CheckDto, signal?: AbortSignal) {
+    return httpClient.get<CheckVo[]>(
+      `${this.apiPrefix}/DEVICE_TOURVOUCH/Get_ZZ_TJ`,
+      {},
+      { signal, params }
     )
   }
 

@@ -2,6 +2,7 @@ import type { PageDto } from '@/shared/types'
 
 import { DoorLeafProductionLineAPI } from './api'
 import {
+  checkQK,
   deviceRepairQK,
   deviceRunningStatusQK,
   gaugeQK,
@@ -14,9 +15,9 @@ import {
   materialTypeQK,
   unfinishedTaskQK
 } from './query-keys'
-import type { DeviceRepairDto } from './types'
+import type { CheckDto, DeviceRepairDto, LineCompleteRateDto } from './types'
 
-export const lineCompleteRateQO = (data: FullPageDto) =>
+export const lineCompleteRateQO = (data: LineCompleteRateDto) =>
   queryOptions({
     queryKey: lineCompleteRateQK(data),
     queryFn: ({ signal }) => DoorLeafProductionLineAPI.getLineCompleteRate(data, signal)
@@ -56,6 +57,12 @@ export const internalReturnReasonQO = (data: FullPageDto) =>
   queryOptions({
     queryKey: internalReturnReasonQK(data),
     queryFn: ({ signal }) => DoorLeafProductionLineAPI.getInternalReturnReason(data, signal)
+  })
+
+export const checkQO = (params: CheckDto) =>
+  queryOptions({
+    queryKey: checkQK(params),
+    queryFn: ({ signal }) => DoorLeafProductionLineAPI.getCheck(params, signal)
   })
 
 export const deviceRepairQO = (params: DeviceRepairDto) =>
