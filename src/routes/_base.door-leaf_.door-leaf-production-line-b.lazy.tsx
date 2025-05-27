@@ -37,7 +37,7 @@ function Page() {
       </BlockContainer>
 
       <BlockContainer className="col-span-3 row-span-4">
-        <UnfinishedTaskTable conditions="cFactoryUnitCode = FM01010102 && cProcessCode = GX0026" />
+        <UnfinishedTaskTable conditions="cFactoryUnitCode = FM01010102 && cProcessCode = GX0121" />
       </BlockContainer>
       <BlockContainer className="col-span-3 row-span-4">
         <InternalReturnTypePie conditions="cFactoryUnitCode = FM01010102" />
