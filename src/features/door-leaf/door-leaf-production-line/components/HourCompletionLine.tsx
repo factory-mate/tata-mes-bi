@@ -79,8 +79,9 @@ export function HourCompletionLine(props: HourCompletionLineProps) {
       yAxis: {
         type: 'value',
         name: '数量',
-        min: 40,
+        min: 0,
         max: 80,
+        interval: 10,
         nameTextStyle: {
           padding: 8
         },

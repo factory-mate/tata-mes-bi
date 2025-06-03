@@ -67,7 +67,8 @@ export function HandmadeLineHourCompletionLine() {
         type: 'value',
         name: '数量',
         min: 0,
-        max: 100,
+        max: 400,
+        interval: 100,
         nameTextStyle: {
           padding: 8
         },

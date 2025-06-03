@@ -19,9 +19,8 @@ export function CheckTable(props: CheckTableProps) {
       title="工位设备点检/保养"
       columns={[
         { key: 'cPositionName', label: '工位' },
-        { key: 'cVouchType', label: '单据类型' },
-        { key: 'End_iQuantity', label: '完成数' },
-        { key: 'All_iQuantity', label: '总数' }
+        { key: 'Tou_iQuantity', label: '点检' },
+        { key: 'Pre_iQuantity', label: '保养' }
       ]}
       data={data}
     />

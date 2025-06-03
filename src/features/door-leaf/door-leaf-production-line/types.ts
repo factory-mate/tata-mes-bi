@@ -90,9 +90,8 @@ export interface InternalReturnReasonVo extends ChartRawData {
 
 export interface CheckVo {
   cPositionName: string
-  cVouchType: string
-  All_iQuantity: number
-  End_iQuantity: number
+  Tou_iQuantity: string
+  Pre_iQuantity: string
 }
 
 export interface DeviceRepairVo {
