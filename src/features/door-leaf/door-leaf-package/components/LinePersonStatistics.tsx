@@ -10,8 +10,8 @@ export function LinePersonStatistics() {
 
   const { data } = useQuery(
     linePersonQO({
-      orderByFileds: 'cFactoryUnitCode',
-      conditions: 'cFactoryUnitCode = FM01010401'
+      orderByFileds: '',
+      conditions: 'cKBType = 13'
     })
   )
 
