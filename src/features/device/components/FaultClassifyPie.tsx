@@ -1,7 +1,6 @@
 import type { EChartsOption } from 'echarts'
 
 import { faultClassifyQO } from '../queries'
-import type { FaultClassifyVo } from '../types'
 
 export function FaultClassifyPie() {
   const chartStore = useChartStore()
@@ -24,7 +23,12 @@ export function FaultClassifyPie() {
         top: 10
       },
       tooltip: {
-        trigger: 'item'
+        trigger: 'item',
+        formatter: '{b}: {d}%'
+      },
+      legend: {
+        orient: 'vertical',
+        left: 0
       },
       grid: {
         left: 0,
@@ -40,10 +44,7 @@ export function FaultClassifyPie() {
           label: {
             show: true,
             position: 'outside',
-            formatter: (params) => {
-              const d = params.data as FaultClassifyVo
-              return `${d.cFaultClassName}: ${d.nQuantity} (${d.iRate}%)`
-            }
+            formatter: '{d}%'
           },
           top: 40,
           left: 0,
