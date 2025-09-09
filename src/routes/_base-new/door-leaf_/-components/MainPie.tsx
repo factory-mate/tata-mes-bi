@@ -1,31 +1,24 @@
 import type { EChartsOption } from 'echarts'
 
-import { internalReturnTypeQO } from '../queries'
+import { lineCompleteRateQO } from '@/features/door-leaf/door-leaf-package'
 
-export function InternalReturnTypePie() {
+export default function MainPie() {
   const chartStore = useChartStore()
 
   const { data } = useQuery(
-    internalReturnTypeQO({
+    lineCompleteRateQO({
       orderByFileds: 'cFactoryUnitCode',
-      conditions: 'cFactoryUnitCode = FM01010401'
+      conditions: 'cFactoryUnitCode = FM01010101'
     })
   )
+
   const option: EChartsOption = useMemo(
     () => ({
       textStyle: {
         fontFamily: 'inherit',
-        fontSize: 16
+        fontSize: 22
       },
       backgroundColor: '',
-      title: {
-        text: '内返类型占比统计',
-        left: 'center',
-        textStyle: {
-          fontSize: 24
-        },
-        top: 10
-      },
       tooltip: {
         trigger: 'item',
         formatter: '{b}: {d}%'
@@ -43,20 +36,26 @@ export function InternalReturnTypePie() {
           name: '百分比',
           label: {
             show: true,
-            position: 'inside',
-            formatter: '{b}: {d}%'
+            position: 'outside',
+            // 显示具体数值，而不是百分比
+            formatter: '{c}'
           },
           top: 40,
-          left: 0,
-          right: 0
+          left: 15,
+          right: 0,
+          radius: ['40%', '80%']
         }
       ],
       dataset: {
         source: [
           ['type', 'value'],
-          ['维修', data?.[0]?.WXCount],
-          ['返修', data?.[0].FXCount],
-          ['重做', data?.[0].CZCount]
+          [
+            '未完成量',
+            (data?.at(0)?.AllCount ?? 0) -
+              ((data?.at(0)?.EndCount ?? 0) + (data?.at(1)?.EndCount ?? 0))
+          ],
+          ['自动线产量', data?.[0]?.EndCount ?? 0],
+          ['手动线产量', data?.[1]?.EndCount ?? 0]
         ]
       }
     }),
@@ -65,7 +64,15 @@ export function InternalReturnTypePie() {
 
   return (
     <ReactChart
-      className="size-full"
+      className="absolute size-full"
+      style={{
+        top: '22.5%',
+        left: 0,
+        right: 0,
+        margin: '0 auto',
+        width: '40%',
+        height: '40%'
+      }}
       theme={chartStore.theme}
       option={option}
     />

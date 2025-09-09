@@ -1,8 +1,8 @@
 import type { EChartsOption } from 'echarts'
 
-import { internalReturnTypeQO } from '../queries'
+import { internalReturnTypeQO } from '@/features/door-leaf/door-leaf-package'
 
-export function InternalReturnTypePie() {
+export default function InternalReturnTypePie() {
   const chartStore = useChartStore()
 
   const { data } = useQuery(
@@ -20,15 +20,20 @@ export function InternalReturnTypePie() {
       backgroundColor: '',
       title: {
         text: '内返类型占比统计',
-        left: 'center',
+        top: 6,
+        left: 30,
         textStyle: {
-          fontSize: 24
-        },
-        top: 10
+          fontSize: 18
+        }
       },
       tooltip: {
         trigger: 'item',
         formatter: '{b}: {d}%'
+      },
+      legend: {
+        orient: 'vertical',
+        left: 0,
+        top: 40
       },
       grid: {
         left: 0,
@@ -43,7 +48,7 @@ export function InternalReturnTypePie() {
           name: '百分比',
           label: {
             show: true,
-            position: 'inside',
+            position: 'outside',
             formatter: '{b}: {d}%'
           },
           top: 40,
@@ -54,9 +59,9 @@ export function InternalReturnTypePie() {
       dataset: {
         source: [
           ['type', 'value'],
-          ['维修', data?.[0]?.WXCount],
-          ['返修', data?.[0].FXCount],
-          ['重做', data?.[0].CZCount]
+          ['维修', data?.[0]?.WXCount ?? 0],
+          ['返修', data?.[0]?.FXCount ?? 0],
+          ['重做', data?.[0]?.CZCount ?? 0]
         ]
       }
     }),
@@ -65,7 +70,13 @@ export function InternalReturnTypePie() {
 
   return (
     <ReactChart
-      className="size-full"
+      className="absolute size-full"
+      style={{
+        top: '65.5%',
+        left: '1.8%',
+        width: '25.9%',
+        height: '26.5%'
+      }}
       theme={chartStore.theme}
       option={option}
     />

@@ -42,14 +42,23 @@ import { Route as BaseDoorLeafDoorLeafProductionLineCImport } from './../../rout
 import { Route as BaseDoorLeafDoorLeafProductionLineBImport } from './../../routes/_base.door-leaf_.door-leaf-production-line-b'
 import { Route as BaseDoorLeafDoorLeafProductionLineAImport } from './../../routes/_base.door-leaf_.door-leaf-production-line-a'
 import { Route as BaseDoorLeafDoorLeafPackageImport } from './../../routes/_base.door-leaf_.door-leaf-package'
+import { Route as BaseNewDoorLeafDoorLeafPackageNewImport } from './../../routes/_base-new/door-leaf_/door-leaf-package-new'
 
 // Create Virtual Routes
 
+const BaseNewLazyImport = createFileRoute('/_base-new')()
 const BaseLazyImport = createFileRoute('/_base')()
 const SplatLazyImport = createFileRoute('/$')()
 const BaseIndexLazyImport = createFileRoute('/_base/')()
 
 // Create/Update Routes
+
+const BaseNewLazyRoute = BaseNewLazyImport.update({
+  id: '/_base-new',
+  getParentRoute: () => rootRoute,
+} as any).lazy(() =>
+  import('./../../routes/_base-new/lazy').then((d) => d.Route),
+)
 
 const BaseLazyRoute = BaseLazyImport.update({
   id: '/_base',
@@ -353,6 +362,17 @@ const BaseDoorLeafDoorLeafPackageRoute =
     ),
   )
 
+const BaseNewDoorLeafDoorLeafPackageNewRoute =
+  BaseNewDoorLeafDoorLeafPackageNewImport.update({
+    id: '/door-leaf_/door-leaf-package-new',
+    path: '/door-leaf/door-leaf-package-new',
+    getParentRoute: () => BaseNewLazyRoute,
+  } as any).lazy(() =>
+    import(
+      './../../routes/_base-new/door-leaf_/door-leaf-package-new.lazy'
+    ).then((d) => d.Route),
+  )
+
 // Populate the FileRoutesByPath interface
 
 declare module '@tanstack/react-router' {
@@ -371,6 +391,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof BaseLazyImport
       parentRoute: typeof rootRoute
     }
+    '/_base-new': {
+      id: '/_base-new'
+      path: ''
+      fullPath: ''
+      preLoaderRoute: typeof BaseNewLazyImport
+      parentRoute: typeof rootRoute
+    }
     '/_base/device': {
       id: '/_base/device'
       path: '/device'
@@ -384,6 +411,13 @@ declare module '@tanstack/react-router' {
       fullPath: '/'
       preLoaderRoute: typeof BaseIndexLazyImport
       parentRoute: typeof BaseLazyImport
+    }
+    '/_base-new/door-leaf_/door-leaf-package-new': {
+      id: '/_base-new/door-leaf_/door-leaf-package-new'
+      path: '/door-leaf/door-leaf-package-new'
+      fullPath: '/door-leaf/door-leaf-package-new'
+      preLoaderRoute: typeof BaseNewDoorLeafDoorLeafPackageNewImport
+      parentRoute: typeof BaseNewLazyImport
     }
     '/_base/door-leaf_/door-leaf-package': {
       id: '/_base/door-leaf_/door-leaf-package'
@@ -663,11 +697,25 @@ const BaseLazyRouteWithChildren = BaseLazyRoute._addFileChildren(
   BaseLazyRouteChildren,
 )
 
+interface BaseNewLazyRouteChildren {
+  BaseNewDoorLeafDoorLeafPackageNewRoute: typeof BaseNewDoorLeafDoorLeafPackageNewRoute
+}
+
+const BaseNewLazyRouteChildren: BaseNewLazyRouteChildren = {
+  BaseNewDoorLeafDoorLeafPackageNewRoute:
+    BaseNewDoorLeafDoorLeafPackageNewRoute,
+}
+
+const BaseNewLazyRouteWithChildren = BaseNewLazyRoute._addFileChildren(
+  BaseNewLazyRouteChildren,
+)
+
 export interface FileRoutesByFullPath {
   '/$': typeof SplatLazyRoute
-  '': typeof BaseLazyRouteWithChildren
+  '': typeof BaseNewLazyRouteWithChildren
   '/device': typeof BaseDeviceRoute
   '/': typeof BaseIndexLazyRoute
+  '/door-leaf/door-leaf-package-new': typeof BaseNewDoorLeafDoorLeafPackageNewRoute
   '/door-leaf/door-leaf-package': typeof BaseDoorLeafDoorLeafPackageRoute
   '/door-leaf/door-leaf-production-line-a': typeof BaseDoorLeafDoorLeafProductionLineARoute
   '/door-leaf/door-leaf-production-line-b': typeof BaseDoorLeafDoorLeafProductionLineBRoute
@@ -700,8 +748,10 @@ export interface FileRoutesByFullPath {
 
 export interface FileRoutesByTo {
   '/$': typeof SplatLazyRoute
+  '': typeof BaseNewLazyRouteWithChildren
   '/device': typeof BaseDeviceRoute
   '/': typeof BaseIndexLazyRoute
+  '/door-leaf/door-leaf-package-new': typeof BaseNewDoorLeafDoorLeafPackageNewRoute
   '/door-leaf/door-leaf-package': typeof BaseDoorLeafDoorLeafPackageRoute
   '/door-leaf/door-leaf-production-line-a': typeof BaseDoorLeafDoorLeafProductionLineARoute
   '/door-leaf/door-leaf-production-line-b': typeof BaseDoorLeafDoorLeafProductionLineBRoute
@@ -736,8 +786,10 @@ export interface FileRoutesById {
   __root__: typeof rootRoute
   '/$': typeof SplatLazyRoute
   '/_base': typeof BaseLazyRouteWithChildren
+  '/_base-new': typeof BaseNewLazyRouteWithChildren
   '/_base/device': typeof BaseDeviceRoute
   '/_base/': typeof BaseIndexLazyRoute
+  '/_base-new/door-leaf_/door-leaf-package-new': typeof BaseNewDoorLeafDoorLeafPackageNewRoute
   '/_base/door-leaf_/door-leaf-package': typeof BaseDoorLeafDoorLeafPackageRoute
   '/_base/door-leaf_/door-leaf-production-line-a': typeof BaseDoorLeafDoorLeafProductionLineARoute
   '/_base/door-leaf_/door-leaf-production-line-b': typeof BaseDoorLeafDoorLeafProductionLineBRoute
@@ -775,6 +827,7 @@ export interface FileRouteTypes {
     | ''
     | '/device'
     | '/'
+    | '/door-leaf/door-leaf-package-new'
     | '/door-leaf/door-leaf-package'
     | '/door-leaf/door-leaf-production-line-a'
     | '/door-leaf/door-leaf-production-line-b'
@@ -806,8 +859,10 @@ export interface FileRouteTypes {
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/$'
+    | ''
     | '/device'
     | '/'
+    | '/door-leaf/door-leaf-package-new'
     | '/door-leaf/door-leaf-package'
     | '/door-leaf/door-leaf-production-line-a'
     | '/door-leaf/door-leaf-production-line-b'
@@ -840,8 +895,10 @@ export interface FileRouteTypes {
     | '__root__'
     | '/$'
     | '/_base'
+    | '/_base-new'
     | '/_base/device'
     | '/_base/'
+    | '/_base-new/door-leaf_/door-leaf-package-new'
     | '/_base/door-leaf_/door-leaf-package'
     | '/_base/door-leaf_/door-leaf-production-line-a'
     | '/_base/door-leaf_/door-leaf-production-line-b'
@@ -876,11 +933,13 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   SplatLazyRoute: typeof SplatLazyRoute
   BaseLazyRoute: typeof BaseLazyRouteWithChildren
+  BaseNewLazyRoute: typeof BaseNewLazyRouteWithChildren
 }
 
 const rootRouteChildren: RootRouteChildren = {
   SplatLazyRoute: SplatLazyRoute,
   BaseLazyRoute: BaseLazyRouteWithChildren,
+  BaseNewLazyRoute: BaseNewLazyRouteWithChildren,
 }
 
 export const routeTree = rootRoute
@@ -894,7 +953,8 @@ export const routeTree = rootRoute
       "filePath": "__root.tsx",
       "children": [
         "/$",
-        "/_base"
+        "/_base",
+        "/_base-new"
       ]
     },
     "/$": {
@@ -935,6 +995,12 @@ export const routeTree = rootRoute
         "/_base/warehouse_/warehouse"
       ]
     },
+    "/_base-new": {
+      "filePath": "_base-new/lazy.tsx",
+      "children": [
+        "/_base-new/door-leaf_/door-leaf-package-new"
+      ]
+    },
     "/_base/device": {
       "filePath": "_base.device.tsx",
       "parent": "/_base"
@@ -942,6 +1008,10 @@ export const routeTree = rootRoute
     "/_base/": {
       "filePath": "_base.index.lazy.tsx",
       "parent": "/_base"
+    },
+    "/_base-new/door-leaf_/door-leaf-package-new": {
+      "filePath": "_base-new/door-leaf_/door-leaf-package-new.tsx",
+      "parent": "/_base-new"
     },
     "/_base/door-leaf_/door-leaf-package": {
       "filePath": "_base.door-leaf_.door-leaf-package.tsx",

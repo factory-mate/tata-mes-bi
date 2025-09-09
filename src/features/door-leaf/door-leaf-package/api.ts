@@ -27,7 +27,7 @@ export class DoorLeafPackageAPI {
   }
 
   static async getInternalReturnType(data: FullPageDto, signal?: AbortSignal) {
-    return httpClient.post<InternalReturnType>(
+    return httpClient.post<InternalReturnType[]>(
       `${this.apiPrefix}/MES_REPAIR_VOUCH/Get_GD_NFZB`,
       data,
       {

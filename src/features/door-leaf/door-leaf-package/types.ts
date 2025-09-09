@@ -46,6 +46,7 @@ export interface InternalReturnType extends ChartRawData {
   FXRate: number
   CZCount: number
   CZRate: number
+  OKRate: number
 }
 
 export interface DeviceRepairVo {
